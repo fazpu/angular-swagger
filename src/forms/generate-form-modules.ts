@@ -2,21 +2,17 @@ import * as _ from 'lodash';
 import * as path from 'path';
 
 import * as conf from '../conf';
-import {ProcessedDefinition} from '../definitions';
 import {Config} from '../generate';
 import {MethodOutput} from '../requests/requests.models';
 import {Parameter} from '../types';
 import {createDir} from '../utils';
-// TODO! rename
-import {generateFormService} from './generate-form-service';
 import {createModule} from './process-module';
 import {createSharedModule} from './shared-module';
 import {generateHttpActions, getActionClassNameBase, getClassName} from './states/generate-http-actions';
 import {generateHttpEffects} from './states/generate-http-effects';
 import {generateHttpReducers} from './states/generate-http-reducers';
 
-export function createForms(config: Config, name: string, processedMethods: MethodOutput[],
-                            definitions: ProcessedDefinition[]) {
+export function createForms(config: Config, name: string, processedMethods: MethodOutput[]) {
   const kebabName = _.kebabCase(name);
   const formBaseDir = path.join(config.dest, conf.storeDir);
   const formDirName = path.join(formBaseDir, `${kebabName}`);
@@ -36,12 +32,6 @@ export function createForms(config: Config, name: string, processedMethods: Meth
 
     const actionClassNameBase = getActionClassNameBase(simpleName);
     const className = getClassName(simpleName);
-    const generateForms = formParams.length >= 1;
-
-    if (generateForms) {
-      // component.ts
-      generateFormService(config, name, formParams, definitions, simpleName, formSubDirName, className);
-    }
 
     if (config.generateStore) {
       // states
@@ -57,7 +47,7 @@ export function createForms(config: Config, name: string, processedMethods: Meth
       // form-shared-module.ts
       createSharedModule(config);
       // module.ts
-      createModule(config, name, actionClassNameBase, formSubDirName, simpleName, className, generateForms);
+      createModule(config, name, actionClassNameBase, formSubDirName, simpleName, className);
     }
   }
 }

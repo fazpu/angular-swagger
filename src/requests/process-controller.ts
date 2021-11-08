@@ -20,7 +20,7 @@ import {ControllerMethod, MethodOutput} from './requests.models';
  * @param name
  */
 export function processController(methods: ControllerMethod[], name: string, config: Config,
-                                  definitions: ProcessedDefinition[]) {
+                                  _definitions: ProcessedDefinition[]) {
   const filename = path.join(config.dest, conf.apiDir, `${name}.ts`);
   let usesGlobalType = false;
 
@@ -79,5 +79,5 @@ export function processController(methods: ControllerMethod[], name: string, con
   writeFile(filename, content, config.header);
 
   // forms
-  createForms(config, name, processedMethods, definitions);
+  createForms(config, name, processedMethods);
 }
