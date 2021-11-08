@@ -1,0 +1,82 @@
+{
+  "name": "swagger-angular-generator",
+  "version": "4.2.2",
+  "description": "Generator of API layer in TypeScript for Angular 5 apps",
+  "main": "dist/generate.js",
+  "types": "dist/generate.d.ts",
+  "bin": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "install:demo": "cd demo-app/client && npm i",
+    "start": "ts-node src/index.ts",
+    "start:debug": "node -r ts-node/register --inspect-brk src/index.ts",
+    "prebuild": "rm -rf dist",
+    "build": "tsc --outDir dist && cp -r src/common/templates dist/common/",
+    "postbuild": "npm run generate",
+    "preversion": "npm run build",
+    "postversion": "git status",
+    "generate": "cd demo-app/client && npm run generate",
+    "lint": "tslint -p tsconfig.json",
+    "postlint": "cd demo-app/client; npm run lint",
+    "test": "npm run test:src && npm run test:demo",
+    "test:demo": "cd demo-app/client && npm run test:ci",
+    "test:src": "ts-node node_modules/tape/bin/tape src/**/*.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:fazpu/angular-swagger.git"
+  },
+  "keywords": [
+    "swagger",
+    "api",
+    "client",
+    "typescript",
+    "generate",
+    "generator",
+    "angular"
+  ],
+  "author": "Jiri Puc, Jan Walter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fazpu/angular-swagger/issues"
+  },
+  "homepage": "https://github.com/fazpu/angular-swagger",
+  "dependencies": {
+    "commander": "^2.18.0",
+    "lodash": "^4.17.11",
+    "tsutils": "^3.8.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "^7.3.3",
+    "@angular/common": "^7.2.7",
+    "@angular/core": "^7.2.7",
+    "@angular/forms": "^7.2.7",
+    "@angular/http": "^7.2.7",
+    "@angular/platform-browser": "^7.2.7",
+    "@ngrx/effects": "^7.3.0",
+    "@ngrx/store": "^7.3.0",
+    "@types/commander": "^2.12.2",
+    "@types/lodash": "^4.14.121",
+    "@types/node": "^11.9.5",
+    "@types/tape": "^4.2.33",
+    "rxjs": "^6.4.0",
+    "tape": "^4.10.1",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.13.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.3.3333",
+    "zone.js": "^0.8.29"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.2.7",
+    "@angular/core": "^7.2.7",
+    "@angular/http": "^7.2.7",
+    "@angular/platform-browser": "^7.2.7",
+    "@ngrx/effects": "^7.3.0",
+    "@ngrx/store": "^7.3.0",
+    "rxjs": "^6.4.0",
+    "zone.js": "^0.8.29"
+  }
+}
