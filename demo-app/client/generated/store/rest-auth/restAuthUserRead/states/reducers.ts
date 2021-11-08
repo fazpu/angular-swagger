@@ -30,9 +30,10 @@ export function RestAuthUserReadReducer(
   state: RestAuthUserReadState = initialRestAuthUserReadState,
   action: actions.RestAuthUserReadAction): RestAuthUserReadState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERREAD_START: return {...state, loading: true, error: null};
+    case actions.Actions.RESTAUTHUSERREAD_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERREAD_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERREAD_CLEAN: return initialRestAuthUserReadState;
     default: return state;
   }
 }

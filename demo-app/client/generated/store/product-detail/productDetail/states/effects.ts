@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class ProductDetailEffects {
   @Effect()
   ProductDetail = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.productdetailService.productDetail(action.payload)
+    ofType<actions.ProductDetailStart>(actions.Actions.PRODUCTDETAIL_START),
+    switchMap((action: actions.ProductDetailStart) => this.productdetailService.productDetail(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.ProductDetailSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.ProductDetailError(error))),
       ),
     ),
   );

@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class PatchOrderEffects {
   @Effect()
   PatchOrder = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.orderService.patchOrder(action.payload)
+    ofType<actions.PatchOrderStart>(actions.Actions.PATCHORDER_START),
+    switchMap((action: actions.PatchOrderStart) => this.orderService.patchOrder(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.PatchOrderSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.PatchOrderError(error))),
       ),
     ),
   );

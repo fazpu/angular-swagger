@@ -29,9 +29,10 @@ export function RestAuthLogoutListReducer(
   state: RestAuthLogoutListState = initialRestAuthLogoutListState,
   action: actions.RestAuthLogoutListAction): RestAuthLogoutListState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHLOGOUTLIST_START: return {...state, loading: true, error: null};
+    case actions.Actions.RESTAUTHLOGOUTLIST_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.RESTAUTHLOGOUTLIST_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHLOGOUTLIST_CLEAN: return initialRestAuthLogoutListState;
     default: return state;
   }
 }

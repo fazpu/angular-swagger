@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class ShowTicketDetailEffects {
   @Effect()
   ShowTicketDetail = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.ticketingService.showTicketDetail(action.payload)
+    ofType<actions.ShowTicketDetailStart>(actions.Actions.SHOWTICKETDETAIL_START),
+    switchMap((action: actions.ShowTicketDetailStart) => this.ticketingService.showTicketDetail(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.ShowTicketDetailSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.ShowTicketDetailError(error))),
       ),
     ),
   );

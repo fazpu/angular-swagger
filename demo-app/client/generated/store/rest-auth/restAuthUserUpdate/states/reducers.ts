@@ -30,9 +30,10 @@ export function RestAuthUserUpdateReducer(
   state: RestAuthUserUpdateState = initialRestAuthUserUpdateState,
   action: actions.RestAuthUserUpdateAction): RestAuthUserUpdateState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERUPDATE_START: return {...state, loading: true, error: null};
+    case actions.Actions.RESTAUTHUSERUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERUPDATE_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.RESTAUTHUSERUPDATE_CLEAN: return initialRestAuthUserUpdateState;
     default: return state;
   }
 }

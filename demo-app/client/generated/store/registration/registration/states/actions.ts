@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {RegistrationParams} from '../../../../controllers/Registration';
 
 export enum Actions {
-  START = '[Registration registration] Start',
-  SUCCESS = '[Registration registration] Success',
-  ERROR = '[Registration registration] Error',
+  REGISTRATION_START = '[Registration registration] Start',
+  REGISTRATION_SUCCESS = '[Registration registration] Success',
+  REGISTRATION_ERROR = '[Registration registration] Error',
+  REGISTRATION_CLEAN = '[Registration registration] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class RegistrationStart implements Action {
+  readonly type = Actions.REGISTRATION_START;
   constructor(public payload: RegistrationParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class RegistrationSuccess implements Action {
+  readonly type = Actions.REGISTRATION_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class RegistrationError implements Action {
+  readonly type = Actions.REGISTRATION_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type RegistrationAction = Start | Success | Error;
+export class RegistrationClean implements Action {
+  readonly type = Actions.REGISTRATION_CLEAN;
+}
+
+export type RegistrationAction = RegistrationStart |
+RegistrationSuccess |
+RegistrationError |
+RegistrationClean;

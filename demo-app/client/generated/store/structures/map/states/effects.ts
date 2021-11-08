@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class MapEffects {
   @Effect()
   Map = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.structuresService.map(action.payload)
+    ofType<actions.MapStart>(actions.Actions.MAP_START),
+    switchMap((action: actions.MapStart) => this.structuresService.map(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.MapSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.MapError(error))),
       ),
     ),
   );

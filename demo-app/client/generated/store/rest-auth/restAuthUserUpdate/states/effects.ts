@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class RestAuthUserUpdateEffects {
   @Effect()
   RestAuthUserUpdate = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.restauthService.restAuthUserUpdate(action.payload)
+    ofType<actions.RestAuthUserUpdateStart>(actions.Actions.RESTAUTHUSERUPDATE_START),
+    switchMap((action: actions.RestAuthUserUpdateStart) => this.restauthService.restAuthUserUpdate(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.RestAuthUserUpdateSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.RestAuthUserUpdateError(error))),
       ),
     ),
   );

@@ -60,10 +60,13 @@ function getReducerDefinition(actionClassNameBase: string) {
   res += indent(`action: actions.${actionClassNameBase}Action): ${actionClassNameBase}State {\n\n`);
   res += indent(`switch (action.type) {\n`);
   res += indent([
-    'case actions.Actions.START: return {...state, loading: true, error: null};',
-    'case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};',
-    'case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};',
-    'default: return state;',
+    `case actions.Actions.${actionClassNameBase.toUpperCase()}_START: return {...state, loading: true, error: null};`,
+    // tslint:disable-next-line:max-line-length
+    `case actions.Actions.${actionClassNameBase.toUpperCase()}_SUCCESS: return {...state, data: action.payload, loading: false};`,
+    // tslint:disable-next-line:max-line-length
+    `case actions.Actions.${actionClassNameBase.toUpperCase()}_ERROR: return {...state, error: action.payload, loading: false};`,
+    `case actions.Actions.${actionClassNameBase.toUpperCase()}_CLEAN: return initial${actionClassNameBase}State;`,
+    `default: return state;`,
   ], 2);
   res += indent(`\n}\n`);
   res += `}\n`;

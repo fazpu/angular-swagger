@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {DeleteORDERParams} from '../../../../controllers/Order';
 
 export enum Actions {
-  START = '[Order deleteORDER] Start',
-  SUCCESS = '[Order deleteORDER] Success',
-  ERROR = '[Order deleteORDER] Error',
+  DELETEORDER_START = '[Order deleteORDER] Start',
+  DELETEORDER_SUCCESS = '[Order deleteORDER] Success',
+  DELETEORDER_ERROR = '[Order deleteORDER] Error',
+  DELETEORDER_CLEAN = '[Order deleteORDER] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class DeleteORDERStart implements Action {
+  readonly type = Actions.DELETEORDER_START;
   constructor(public payload: DeleteORDERParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class DeleteORDERSuccess implements Action {
+  readonly type = Actions.DELETEORDER_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class DeleteORDERError implements Action {
+  readonly type = Actions.DELETEORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type DeleteORDERAction = Start | Success | Error;
+export class DeleteORDERClean implements Action {
+  readonly type = Actions.DELETEORDER_CLEAN;
+}
+
+export type DeleteORDERAction = DeleteORDERStart |
+DeleteORDERSuccess |
+DeleteORDERError |
+DeleteORDERClean;

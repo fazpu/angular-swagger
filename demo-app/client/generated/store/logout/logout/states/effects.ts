@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class LogoutEffects {
   @Effect()
   Logout = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
+    ofType<actions.LogoutStart>(actions.Actions.LOGOUT_START),
     switchMap(() => this.logoutService.logout()
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.LogoutSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.LogoutError(error))),
       ),
     ),
   );

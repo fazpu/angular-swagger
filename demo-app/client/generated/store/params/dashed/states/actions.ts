@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {DashedParams} from '../../../../controllers/Params';
 
 export enum Actions {
-  START = '[Params dashed] Start',
-  SUCCESS = '[Params dashed] Success',
-  ERROR = '[Params dashed] Error',
+  DASHED_START = '[Params dashed] Start',
+  DASHED_SUCCESS = '[Params dashed] Success',
+  DASHED_ERROR = '[Params dashed] Error',
+  DASHED_CLEAN = '[Params dashed] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class DashedStart implements Action {
+  readonly type = Actions.DASHED_START;
   constructor(public payload: DashedParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class DashedSuccess implements Action {
+  readonly type = Actions.DASHED_SUCCESS;
   constructor(public payload: void) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class DashedError implements Action {
+  readonly type = Actions.DASHED_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type DashedAction = Start | Success | Error;
+export class DashedClean implements Action {
+  readonly type = Actions.DASHED_CLEAN;
+}
+
+export type DashedAction = DashedStart |
+DashedSuccess |
+DashedError |
+DashedClean;

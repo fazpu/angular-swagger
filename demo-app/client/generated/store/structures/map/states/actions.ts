@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {MapParams} from '../../../../controllers/Structures';
 
 export enum Actions {
-  START = '[Structures map] Start',
-  SUCCESS = '[Structures map] Success',
-  ERROR = '[Structures map] Error',
+  MAP_START = '[Structures map] Start',
+  MAP_SUCCESS = '[Structures map] Success',
+  MAP_ERROR = '[Structures map] Error',
+  MAP_CLEAN = '[Structures map] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class MapStart implements Action {
+  readonly type = Actions.MAP_START;
   constructor(public payload: MapParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class MapSuccess implements Action {
+  readonly type = Actions.MAP_SUCCESS;
   constructor(public payload: void) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class MapError implements Action {
+  readonly type = Actions.MAP_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type MapAction = Start | Success | Error;
+export class MapClean implements Action {
+  readonly type = Actions.MAP_CLEAN;
+}
+
+export type MapAction = MapStart |
+MapSuccess |
+MapError |
+MapClean;

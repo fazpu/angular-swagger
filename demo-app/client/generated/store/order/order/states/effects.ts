@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class OrderEffects {
   @Effect()
   Order = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.orderService.order(action.payload)
+    ofType<actions.OrderStart>(actions.Actions.ORDER_START),
+    switchMap((action: actions.OrderStart) => this.orderService.order(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.OrderSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.OrderError(error))),
       ),
     ),
   );

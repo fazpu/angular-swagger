@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class DashedEffects {
   @Effect()
   Dashed = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.paramsService.dashed(action.payload)
+    ofType<actions.DashedStart>(actions.Actions.DASHED_START),
+    switchMap((action: actions.DashedStart) => this.paramsService.dashed(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.DashedSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.DashedError(error))),
       ),
     ),
   );

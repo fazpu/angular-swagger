@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class RestAuthLogoutListEffects {
   @Effect()
   RestAuthLogoutList = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
+    ofType<actions.RestAuthLogoutListStart>(actions.Actions.RESTAUTHLOGOUTLIST_START),
     switchMap(() => this.restauthService.restAuthLogoutList()
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.RestAuthLogoutListSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.RestAuthLogoutListError(error))),
       ),
     ),
   );

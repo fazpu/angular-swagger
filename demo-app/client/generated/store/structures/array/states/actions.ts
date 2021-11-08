@@ -11,24 +11,32 @@ import {ArrayParams} from '../../../../controllers/Structures';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[Structures array] Start',
-  SUCCESS = '[Structures array] Success',
-  ERROR = '[Structures array] Error',
+  ARRAY_START = '[Structures array] Start',
+  ARRAY_SUCCESS = '[Structures array] Success',
+  ARRAY_ERROR = '[Structures array] Error',
+  ARRAY_CLEAN = '[Structures array] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class ArrayStart implements Action {
+  readonly type = Actions.ARRAY_START;
   constructor(public payload: ArrayParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class ArraySuccess implements Action {
+  readonly type = Actions.ARRAY_SUCCESS;
   constructor(public payload: __model.ArrayGeneratedInlineModel) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class ArrayError implements Action {
+  readonly type = Actions.ARRAY_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type ArrayAction = Start | Success | Error;
+export class ArrayClean implements Action {
+  readonly type = Actions.ARRAY_CLEAN;
+}
+
+export type ArrayAction = ArrayStart |
+ArraySuccess |
+ArrayError |
+ArrayClean;

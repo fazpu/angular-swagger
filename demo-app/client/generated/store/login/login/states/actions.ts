@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {LoginParams} from '../../../../controllers/Login';
 
 export enum Actions {
-  START = '[Login login] Start',
-  SUCCESS = '[Login login] Success',
-  ERROR = '[Login login] Error',
+  LOGIN_START = '[Login login] Start',
+  LOGIN_SUCCESS = '[Login login] Success',
+  LOGIN_ERROR = '[Login login] Error',
+  LOGIN_CLEAN = '[Login login] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class LoginStart implements Action {
+  readonly type = Actions.LOGIN_START;
   constructor(public payload: LoginParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class LoginSuccess implements Action {
+  readonly type = Actions.LOGIN_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class LoginError implements Action {
+  readonly type = Actions.LOGIN_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type LoginAction = Start | Success | Error;
+export class LoginClean implements Action {
+  readonly type = Actions.LOGIN_CLEAN;
+}
+
+export type LoginAction = LoginStart |
+LoginSuccess |
+LoginError |
+LoginClean;

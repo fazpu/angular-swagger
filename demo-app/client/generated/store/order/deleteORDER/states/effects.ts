@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class DeleteORDEREffects {
   @Effect()
   DeleteORDER = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.orderService.deleteORDER(action.payload)
+    ofType<actions.DeleteORDERStart>(actions.Actions.DELETEORDER_START),
+    switchMap((action: actions.DeleteORDERStart) => this.orderService.deleteORDER(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.DeleteORDERSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.DeleteORDERError(error))),
       ),
     ),
   );

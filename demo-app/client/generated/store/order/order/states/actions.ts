@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {OrderParams} from '../../../../controllers/Order';
 
 export enum Actions {
-  START = '[Order order] Start',
-  SUCCESS = '[Order order] Success',
-  ERROR = '[Order order] Error',
+  ORDER_START = '[Order order] Start',
+  ORDER_SUCCESS = '[Order order] Success',
+  ORDER_ERROR = '[Order order] Error',
+  ORDER_CLEAN = '[Order order] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class OrderStart implements Action {
+  readonly type = Actions.ORDER_START;
   constructor(public payload: OrderParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class OrderSuccess implements Action {
+  readonly type = Actions.ORDER_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class OrderError implements Action {
+  readonly type = Actions.ORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type OrderAction = Start | Success | Error;
+export class OrderClean implements Action {
+  readonly type = Actions.ORDER_CLEAN;
+}
+
+export type OrderAction = OrderStart |
+OrderSuccess |
+OrderError |
+OrderClean;

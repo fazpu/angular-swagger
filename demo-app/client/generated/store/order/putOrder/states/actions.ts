@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {PutOrderParams} from '../../../../controllers/Order';
 
 export enum Actions {
-  START = '[Order putOrder] Start',
-  SUCCESS = '[Order putOrder] Success',
-  ERROR = '[Order putOrder] Error',
+  PUTORDER_START = '[Order putOrder] Start',
+  PUTORDER_SUCCESS = '[Order putOrder] Success',
+  PUTORDER_ERROR = '[Order putOrder] Error',
+  PUTORDER_CLEAN = '[Order putOrder] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class PutOrderStart implements Action {
+  readonly type = Actions.PUTORDER_START;
   constructor(public payload: PutOrderParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class PutOrderSuccess implements Action {
+  readonly type = Actions.PUTORDER_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class PutOrderError implements Action {
+  readonly type = Actions.PUTORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type PutOrderAction = Start | Success | Error;
+export class PutOrderClean implements Action {
+  readonly type = Actions.PUTORDER_CLEAN;
+}
+
+export type PutOrderAction = PutOrderStart |
+PutOrderSuccess |
+PutOrderError |
+PutOrderClean;

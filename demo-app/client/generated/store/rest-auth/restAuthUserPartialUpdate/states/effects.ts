@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class RestAuthUserPartialUpdateEffects {
   @Effect()
   RestAuthUserPartialUpdate = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.restauthService.restAuthUserPartialUpdate(action.payload)
+    ofType<actions.RestAuthUserPartialUpdateStart>(actions.Actions.RESTAUTHUSERPARTIALUPDATE_START),
+    switchMap((action: actions.RestAuthUserPartialUpdateStart) => this.restauthService.restAuthUserPartialUpdate(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.RestAuthUserPartialUpdateSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.RestAuthUserPartialUpdateError(error))),
       ),
     ),
   );

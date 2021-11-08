@@ -29,9 +29,10 @@ export function DashedReducer(
   state: DashedState = initialDashedState,
   action: actions.DashedAction): DashedState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.DASHED_START: return {...state, loading: true, error: null};
+    case actions.Actions.DASHED_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.DASHED_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.DASHED_CLEAN: return initialDashedState;
     default: return state;
   }
 }

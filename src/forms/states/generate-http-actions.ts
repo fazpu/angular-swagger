@@ -14,9 +14,10 @@ export function generateHttpActions(config: Config, name: string, responseDef: R
   const hasParams = paramGroups.length >= 1;
   content += getActionImports(name, simpleName, hasParams, responseDef.type.startsWith('__model.'));
   content += getActionTypes(name, simpleName);
-  content += getActionStartDefinition(simpleName, hasParams);
-  content += getActionSuccessDefinition(responseDef);
-  content += getActionErrorDefinition();
+  content += getActionStartDefinition(simpleName, hasParams, actionClassNameBase);
+  content += getActionSuccessDefinition(responseDef, actionClassNameBase);
+  content += getActionErrorDefinition(actionClassNameBase);
+  content += getActionCleanDefinition(actionClassNameBase);
   content += getActionOverviewType(actionClassNameBase);
 
   const actionsFileName = path.join(formSubDirName, stateDir, `actions.ts`);
@@ -40,18 +41,19 @@ function getActionImports(name: string, simpleName: string, hasParams: boolean,
 function getActionTypes(controllerName: string, methodName: string) {
   let res = `export enum Actions {\n`;
   res += indent([
-    `START = '[${controllerName} ${methodName}] Start',`,
-    `SUCCESS = '[${controllerName} ${methodName}] Success',`,
-    `ERROR = '[${controllerName} ${methodName}] Error',`,
+    `${methodName.toUpperCase()}_START = '[${controllerName} ${methodName}] Start',`,
+    `${methodName.toUpperCase()}_SUCCESS = '[${controllerName} ${methodName}] Success',`,
+    `${methodName.toUpperCase()}_ERROR = '[${controllerName} ${methodName}] Error',`,
+    `${methodName.toUpperCase()}_CLEAN = '[${controllerName} ${methodName}] Clean',`,
   ]);
   res += `\n}\n\n`;
 
   return res;
 }
 
-function getActionStartDefinition(name: string, hasParams: boolean) {
-  let res = `export class Start implements Action {\n`;
-  res += indent(`readonly type = Actions.START;\n`);
+function getActionStartDefinition(name: string, hasParams: boolean, actionClassNameBase: string) {
+  let res = `export class ${actionClassNameBase}Start implements Action {\n`;
+  res += indent(`readonly type = Actions.${actionClassNameBase.toUpperCase()}_START;\n`);
   const params = hasParams ? `public payload: ${ _.upperFirst(name) }Params` : '';
   res += indent(`constructor(${params}) {}\n`);
   res += `}\n`;
@@ -60,9 +62,9 @@ function getActionStartDefinition(name: string, hasParams: boolean) {
   return res;
 }
 
-function getActionSuccessDefinition(response: ResponseDef) {
-  let res = `export class Success implements Action {\n`;
-  res += indent(`readonly type = Actions.SUCCESS;\n`);
+function getActionSuccessDefinition(response: ResponseDef, actionClassNameBase: string) {
+  let res = `export class ${actionClassNameBase}Success implements Action {\n`;
+  res += indent(`readonly type = Actions.${actionClassNameBase.toUpperCase()}_SUCCESS;\n`);
   res += indent(`constructor(public payload: ${response.type}) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -70,9 +72,9 @@ function getActionSuccessDefinition(response: ResponseDef) {
   return res;
 }
 
-function getActionErrorDefinition() {
-  let res = `export class Error implements Action {\n`;
-  res += indent(`readonly type = Actions.ERROR;\n`);
+function getActionErrorDefinition(actionClassNameBase: string) {
+  let res = `export class ${actionClassNameBase}Error implements Action {\n`;
+  res += indent(`readonly type = Actions.${actionClassNameBase.toUpperCase()}_ERROR;\n`);
   res += indent(`constructor(public payload: HttpErrorResponse) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -80,8 +82,21 @@ function getActionErrorDefinition() {
   return res;
 }
 
+function getActionCleanDefinition(actionClassNameBase: string) {
+  let res = `export class ${actionClassNameBase}Clean implements Action {\n`;
+  res += indent(`readonly type = Actions.${actionClassNameBase.toUpperCase()}_CLEAN;\n`);
+  res += `}\n`;
+  res += `\n`;
+
+  return res;
+}
+
 function getActionOverviewType(actionClassNameBase: string) {
-  return `export type ${actionClassNameBase}Action = Start | Success | Error;\n`;
+  let res = `export type ${actionClassNameBase}Action = ${actionClassNameBase}Start |\n`;
+  res += `${actionClassNameBase}Success |\n`;
+  res += `${actionClassNameBase}Error |\n`;
+  res += `${actionClassNameBase}Clean;\n`;
+  return res;
 }
 
 export function getActionClassNameBase(name: string) {

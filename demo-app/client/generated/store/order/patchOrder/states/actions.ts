@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {PatchOrderParams} from '../../../../controllers/Order';
 
 export enum Actions {
-  START = '[Order patchOrder] Start',
-  SUCCESS = '[Order patchOrder] Success',
-  ERROR = '[Order patchOrder] Error',
+  PATCHORDER_START = '[Order patchOrder] Start',
+  PATCHORDER_SUCCESS = '[Order patchOrder] Success',
+  PATCHORDER_ERROR = '[Order patchOrder] Error',
+  PATCHORDER_CLEAN = '[Order patchOrder] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class PatchOrderStart implements Action {
+  readonly type = Actions.PATCHORDER_START;
   constructor(public payload: PatchOrderParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class PatchOrderSuccess implements Action {
+  readonly type = Actions.PATCHORDER_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class PatchOrderError implements Action {
+  readonly type = Actions.PATCHORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type PatchOrderAction = Start | Success | Error;
+export class PatchOrderClean implements Action {
+  readonly type = Actions.PATCHORDER_CLEAN;
+}
+
+export type PatchOrderAction = PatchOrderStart |
+PatchOrderSuccess |
+PatchOrderError |
+PatchOrderClean;

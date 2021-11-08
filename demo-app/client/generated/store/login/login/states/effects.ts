@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class LoginEffects {
   @Effect()
   Login = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.loginService.login(action.payload)
+    ofType<actions.LoginStart>(actions.Actions.LOGIN_START),
+    switchMap((action: actions.LoginStart) => this.loginService.login(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.LoginSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.LoginError(error))),
       ),
     ),
   );

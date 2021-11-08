@@ -11,24 +11,32 @@ import {ShowTicketDetailParams} from '../../../../controllers/Ticketing';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[Ticketing showTicketDetail] Start',
-  SUCCESS = '[Ticketing showTicketDetail] Success',
-  ERROR = '[Ticketing showTicketDetail] Error',
+  SHOWTICKETDETAIL_START = '[Ticketing showTicketDetail] Start',
+  SHOWTICKETDETAIL_SUCCESS = '[Ticketing showTicketDetail] Success',
+  SHOWTICKETDETAIL_ERROR = '[Ticketing showTicketDetail] Error',
+  SHOWTICKETDETAIL_CLEAN = '[Ticketing showTicketDetail] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class ShowTicketDetailStart implements Action {
+  readonly type = Actions.SHOWTICKETDETAIL_START;
   constructor(public payload: ShowTicketDetailParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class ShowTicketDetailSuccess implements Action {
+  readonly type = Actions.SHOWTICKETDETAIL_SUCCESS;
   constructor(public payload: __model.TicketDetailOutput[]) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class ShowTicketDetailError implements Action {
+  readonly type = Actions.SHOWTICKETDETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type ShowTicketDetailAction = Start | Success | Error;
+export class ShowTicketDetailClean implements Action {
+  readonly type = Actions.SHOWTICKETDETAIL_CLEAN;
+}
+
+export type ShowTicketDetailAction = ShowTicketDetailStart |
+ShowTicketDetailSuccess |
+ShowTicketDetailError |
+ShowTicketDetailClean;

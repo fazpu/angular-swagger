@@ -29,9 +29,10 @@ export function OrderReducer(
   state: OrderState = initialOrderState,
   action: actions.OrderAction): OrderState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.ORDER_START: return {...state, loading: true, error: null};
+    case actions.Actions.ORDER_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.ORDER_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.ORDER_CLEAN: return initialOrderState;
     default: return state;
   }
 }

@@ -30,9 +30,10 @@ export function ShowTicketDetailReducer(
   state: ShowTicketDetailState = initialShowTicketDetailState,
   action: actions.ShowTicketDetailAction): ShowTicketDetailState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.SHOWTICKETDETAIL_START: return {...state, loading: true, error: null};
+    case actions.Actions.SHOWTICKETDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.SHOWTICKETDETAIL_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.SHOWTICKETDETAIL_CLEAN: return initialShowTicketDetailState;
     default: return state;
   }
 }

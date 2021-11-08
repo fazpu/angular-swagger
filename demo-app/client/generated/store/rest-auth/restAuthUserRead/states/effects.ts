@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class RestAuthUserReadEffects {
   @Effect()
   RestAuthUserRead = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
+    ofType<actions.RestAuthUserReadStart>(actions.Actions.RESTAUTHUSERREAD_START),
     switchMap(() => this.restauthService.restAuthUserRead()
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.RestAuthUserReadSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.RestAuthUserReadError(error))),
       ),
     ),
   );

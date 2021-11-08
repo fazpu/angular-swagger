@@ -19,11 +19,11 @@ import * as actions from './actions';
 export class ArrayEffects {
   @Effect()
   Array = this.storeActions.pipe(
-    ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.structuresService.array(action.payload)
+    ofType<actions.ArrayStart>(actions.Actions.ARRAY_START),
+    switchMap((action: actions.ArrayStart) => this.structuresService.array(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
+        map(result => new actions.ArraySuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new actions.ArrayError(error))),
       ),
     ),
   );

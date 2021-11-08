@@ -11,24 +11,32 @@ import {ProductDetailParams} from '../../../../controllers/ProductDetail';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[ProductDetail productDetail] Start',
-  SUCCESS = '[ProductDetail productDetail] Success',
-  ERROR = '[ProductDetail productDetail] Error',
+  PRODUCTDETAIL_START = '[ProductDetail productDetail] Start',
+  PRODUCTDETAIL_SUCCESS = '[ProductDetail productDetail] Success',
+  PRODUCTDETAIL_ERROR = '[ProductDetail productDetail] Error',
+  PRODUCTDETAIL_CLEAN = '[ProductDetail productDetail] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class ProductDetailStart implements Action {
+  readonly type = Actions.PRODUCTDETAIL_START;
   constructor(public payload: ProductDetailParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class ProductDetailSuccess implements Action {
+  readonly type = Actions.PRODUCTDETAIL_SUCCESS;
   constructor(public payload: __model.ProductDetail) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class ProductDetailError implements Action {
+  readonly type = Actions.PRODUCTDETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type ProductDetailAction = Start | Success | Error;
+export class ProductDetailClean implements Action {
+  readonly type = Actions.PRODUCTDETAIL_CLEAN;
+}
+
+export type ProductDetailAction = ProductDetailStart |
+ProductDetailSuccess |
+ProductDetailError |
+ProductDetailClean;

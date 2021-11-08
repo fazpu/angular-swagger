@@ -9,24 +9,32 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 
 export enum Actions {
-  START = '[RestAuth restAuthLogoutList] Start',
-  SUCCESS = '[RestAuth restAuthLogoutList] Success',
-  ERROR = '[RestAuth restAuthLogoutList] Error',
+  RESTAUTHLOGOUTLIST_START = '[RestAuth restAuthLogoutList] Start',
+  RESTAUTHLOGOUTLIST_SUCCESS = '[RestAuth restAuthLogoutList] Success',
+  RESTAUTHLOGOUTLIST_ERROR = '[RestAuth restAuthLogoutList] Error',
+  RESTAUTHLOGOUTLIST_CLEAN = '[RestAuth restAuthLogoutList] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class RestAuthLogoutListStart implements Action {
+  readonly type = Actions.RESTAUTHLOGOUTLIST_START;
   constructor() {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class RestAuthLogoutListSuccess implements Action {
+  readonly type = Actions.RESTAUTHLOGOUTLIST_SUCCESS;
   constructor(public payload: void) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class RestAuthLogoutListError implements Action {
+  readonly type = Actions.RESTAUTHLOGOUTLIST_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type RestAuthLogoutListAction = Start | Success | Error;
+export class RestAuthLogoutListClean implements Action {
+  readonly type = Actions.RESTAUTHLOGOUTLIST_CLEAN;
+}
+
+export type RestAuthLogoutListAction = RestAuthLogoutListStart |
+RestAuthLogoutListSuccess |
+RestAuthLogoutListError |
+RestAuthLogoutListClean;

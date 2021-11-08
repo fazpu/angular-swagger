@@ -52,14 +52,15 @@ function getEffectDefinition(actionClassNameBase: string, name: string, simpleNa
 
   let res = indent(`@Effect()\n`);
   res += indent(`${actionClassNameBase} = this.storeActions.pipe(\n`);
-  res += indent(`ofType<actions.Start>(actions.Actions.START),\n`, 2);
-  const actionParam = hasParams ? 'action: actions.Start' : '';
+  // tslint:disable-next-line:max-line-length
+  res += indent(`ofType<actions.${actionClassNameBase}Start>(actions.Actions.${actionClassNameBase.toUpperCase()}_START),\n`, 2);
+  const actionParam = hasParams ? `action: actions.${actionClassNameBase}Start` : '';
   res += indent(
     `switchMap((${actionParam}) => ` +
     `this.${name.toLowerCase()}Service.${simpleName}(${startActionPayloadDefinition})\n`, 2);
   res += indent(`.pipe(\n`, 3);
-  res += indent(`map(result => new actions.Success(result)),\n`, 4);
-  res += indent(`catchError((error: HttpErrorResponse) => of(new actions.Error(error))),\n`, 4);
+  res += indent(`map(result => new actions.${actionClassNameBase}Success(result)),\n`, 4);
+  res += indent(`catchError((error: HttpErrorResponse) => of(new actions.${actionClassNameBase}Error(error))),\n`, 4);
   res += indent(`),\n`, 3);
   res += indent(`),\n`, 2);
   res += indent(`);\n`);

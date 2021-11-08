@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import {PositionsParams} from '../../../../controllers/Career';
 
 export enum Actions {
-  START = '[Career positions] Start',
-  SUCCESS = '[Career positions] Success',
-  ERROR = '[Career positions] Error',
+  POSITIONS_START = '[Career positions] Start',
+  POSITIONS_SUCCESS = '[Career positions] Success',
+  POSITIONS_ERROR = '[Career positions] Error',
+  POSITIONS_CLEAN = '[Career positions] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class PositionsStart implements Action {
+  readonly type = Actions.POSITIONS_START;
   constructor(public payload: PositionsParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class PositionsSuccess implements Action {
+  readonly type = Actions.POSITIONS_SUCCESS;
   constructor(public payload: object) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class PositionsError implements Action {
+  readonly type = Actions.POSITIONS_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type PositionsAction = Start | Success | Error;
+export class PositionsClean implements Action {
+  readonly type = Actions.POSITIONS_CLEAN;
+}
+
+export type PositionsAction = PositionsStart |
+PositionsSuccess |
+PositionsError |
+PositionsClean;

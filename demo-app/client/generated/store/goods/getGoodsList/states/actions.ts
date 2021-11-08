@@ -11,24 +11,32 @@ import {GetGoodsListParams} from '../../../../controllers/Goods';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[Goods getGoodsList] Start',
-  SUCCESS = '[Goods getGoodsList] Success',
-  ERROR = '[Goods getGoodsList] Error',
+  GETGOODSLIST_START = '[Goods getGoodsList] Start',
+  GETGOODSLIST_SUCCESS = '[Goods getGoodsList] Success',
+  GETGOODSLIST_ERROR = '[Goods getGoodsList] Error',
+  GETGOODSLIST_CLEAN = '[Goods getGoodsList] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class GetGoodsListStart implements Action {
+  readonly type = Actions.GETGOODSLIST_START;
   constructor(public payload: GetGoodsListParams) {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class GetGoodsListSuccess implements Action {
+  readonly type = Actions.GETGOODSLIST_SUCCESS;
   constructor(public payload: __model.GetGoodsListGeneratedInlineModel) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class GetGoodsListError implements Action {
+  readonly type = Actions.GETGOODSLIST_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type GetGoodsListAction = Start | Success | Error;
+export class GetGoodsListClean implements Action {
+  readonly type = Actions.GETGOODSLIST_CLEAN;
+}
+
+export type GetGoodsListAction = GetGoodsListStart |
+GetGoodsListSuccess |
+GetGoodsListError |
+GetGoodsListClean;

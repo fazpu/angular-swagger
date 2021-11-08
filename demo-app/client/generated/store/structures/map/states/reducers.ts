@@ -29,9 +29,10 @@ export function MapReducer(
   state: MapState = initialMapState,
   action: actions.MapAction): MapState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.MAP_START: return {...state, loading: true, error: null};
+    case actions.Actions.MAP_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.MAP_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.MAP_CLEAN: return initialMapState;
     default: return state;
   }
 }

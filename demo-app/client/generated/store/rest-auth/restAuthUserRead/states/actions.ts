@@ -10,24 +10,32 @@ import {Action} from '@ngrx/store';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[RestAuth restAuthUserRead] Start',
-  SUCCESS = '[RestAuth restAuthUserRead] Success',
-  ERROR = '[RestAuth restAuthUserRead] Error',
+  RESTAUTHUSERREAD_START = '[RestAuth restAuthUserRead] Start',
+  RESTAUTHUSERREAD_SUCCESS = '[RestAuth restAuthUserRead] Success',
+  RESTAUTHUSERREAD_ERROR = '[RestAuth restAuthUserRead] Error',
+  RESTAUTHUSERREAD_CLEAN = '[RestAuth restAuthUserRead] Clean',
 }
 
-export class Start implements Action {
-  readonly type = Actions.START;
+export class RestAuthUserReadStart implements Action {
+  readonly type = Actions.RESTAUTHUSERREAD_START;
   constructor() {}
 }
 
-export class Success implements Action {
-  readonly type = Actions.SUCCESS;
+export class RestAuthUserReadSuccess implements Action {
+  readonly type = Actions.RESTAUTHUSERREAD_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
-export class Error implements Action {
-  readonly type = Actions.ERROR;
+export class RestAuthUserReadError implements Action {
+  readonly type = Actions.RESTAUTHUSERREAD_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type RestAuthUserReadAction = Start | Success | Error;
+export class RestAuthUserReadClean implements Action {
+  readonly type = Actions.RESTAUTHUSERREAD_CLEAN;
+}
+
+export type RestAuthUserReadAction = RestAuthUserReadStart |
+RestAuthUserReadSuccess |
+RestAuthUserReadError |
+RestAuthUserReadClean;

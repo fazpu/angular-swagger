@@ -29,9 +29,10 @@ export function RegistrationReducer(
   state: RegistrationState = initialRegistrationState,
   action: actions.RegistrationAction): RegistrationState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.REGISTRATION_START: return {...state, loading: true, error: null};
+    case actions.Actions.REGISTRATION_SUCCESS: return {...state, data: action.payload, loading: false};
+    case actions.Actions.REGISTRATION_ERROR: return {...state, error: action.payload, loading: false};
+    case actions.Actions.REGISTRATION_CLEAN: return initialRegistrationState;
     default: return state;
   }
 }
