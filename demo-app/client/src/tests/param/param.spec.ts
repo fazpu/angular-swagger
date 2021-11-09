@@ -1,8 +1,6 @@
-import {HttpTestingController} from '@angular/common/http/testing';
+import { HttpTestingController } from '@angular/common/http/testing';
 
-import {DashedParams, ParamsService} from '../../../generated/controllers/Params';
-import {DashedFormService} from '../../../generated/store/params/dashed/dashed.service';
-import {initHttpBed} from '../common';
+import { DashedParams } from '../../../generated/controllers/Params';
 
 const mock: DashedParams = {
   pathParam: 101,
@@ -23,25 +21,13 @@ const mock: DashedParams = {
 };
 
 describe(`Param call`, () => {
-  let service: DashedFormService;
   let backend: HttpTestingController;
-
-  beforeEach(() => {
-    ({service, backend} = initHttpBed<DashedFormService>(DashedFormService, [ParamsService]));
-  });
 
   afterEach(() => {
     backend.verify();
   });
 
   it(`should set and send dashed params properly`, () => {
-    service.form.setValue(mock);
-
-    expect(service.form.value !== mock).toBeTruthy('Form object does not differ from mock object');
-    expect(service.form.value).toEqual(mock, 'Form value differs from mock value');
-
-    service.submit().subscribe();
-
     const requestTest = backend.expectOne(r =>
       r.url === `/api-base-path/params/normal/${mock.pathParam}/dashed/${mock['dashed-path-param']}`);
     const req = requestTest.request;
@@ -77,9 +63,6 @@ describe(`Param call`, () => {
     mockOverride['dashed-query-param-collection-tsv'] = [];
     mockOverride.queryParamCollectionMulti = [];
     mockOverride['dashed-query-param-collection-multi'] = [];
-
-    service.form.setValue(mockOverride);
-    service.submit().subscribe();
 
     const requestTest = backend.expectOne(r =>
       r.url === `/api-base-path/params/normal/${mockOverride.pathParam}/dashed/${mockOverride['dashed-path-param']}`);

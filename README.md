@@ -1,4 +1,4 @@
-# Angular Swagger
+# Angular Swagger2
 This repository was derived from [swagger-angular-generator](https://github.com/jnwltr/swagger-angular-generator).
 The main difference is that it drops support for form services and extends ngrx generation capabilities.
 
@@ -16,9 +16,6 @@ Generate minimalistic TypeScript API layer for Angular with full type reflection
 ### Interfaces
 - request and response interfaces are created
 
-### Forms services for the PUT and POST methods
-- forms can be created by merely importing a service and using it in HTML templates (see below)
-
 ### NGRX modules for endpoints (optional)
 - so that the server responses can be reached in the redux store
 - requests can be triggered by dispatching an action
@@ -26,7 +23,7 @@ Generate minimalistic TypeScript API layer for Angular with full type reflection
 ##### Have a look at the [demo-app generated files](demo-app/client/generated) to get better understanding what is being generated.
 
 ## Install
-`npm i swagger-angular-generator`
+`npm i swagger-angular2`
 
 ## Options
 `-h` - show help
@@ -44,19 +41,19 @@ Generate minimalistic TypeScript API layer for Angular with full type reflection
 1. get the swagger scheme (typically at http(s)://[server]/[app-path]/v2/api/api-docs)
 1. save it to json file in input directory and optionally **format** it for better diff
 1. run via
-    1. **directly** `./node_modules/.bin/swagger-angular-generator`
-    1. **as module** `swagger-angular-generator` package, `npm run generate`
+    1. **directly** `./node_modules/.bin/swagger-angular2`
+    1. **as module** `swagger-angular2` package, `npm run generate`
         ```javascript
         "script": {
-          "generate": "swagger-angular-generator -s src/api/scheme.json -d src/api/generated"
+          "generate": "swagger-angular2 -s src/api/scheme.json -d src/api/generated"
           ...
         }
         ```
     1. or **programatically** as a method invocation
         ```typescript
-        import {generate} from 'swagger-angular-generator';
+        import {generate} from 'swagger-angular2';
         // or using CommonJS loader
-        const {generate} = require('swagger-angular-generator');
+        const {generate} = require('swagger-angular2');
 
         generate('conf/api/api-docs.json', 'src/api');
         ```
@@ -319,8 +316,8 @@ generated inside Order.ts
 
 ### Docker image
 
-1. `docker build . -t swagger-angular-generator`
-1. `docker run -u $(id -u) -it -v "$PWD":/code swagger-angular-generator bash`
+1. `docker build . -t swagger-angular2`
+1. `docker run -u $(id -u) -it -v "$PWD":/code swagger-angular2 bash`
 1. `npm i`
 1. `npm run install:demo`
 
