@@ -72,7 +72,7 @@ export function writeFile(file: string, content: string, header = '', fileType: 
   if (fileType === 'ts') {
     if (!disableFlags) disableFlags = ['max-len'];
     let disable = '';
-    if (disableFlags.length) disable = `/* eslint-disable ${disableFlags.join(' ')} */\n`;
+    if (disableFlags.length) disable = `/* eslint-disable ${disableFlags.join(', ')} */\n`;
     if (header) header += '\n';
     content = `${disable}${header}${content}`;
   }

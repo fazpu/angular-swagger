@@ -35,7 +35,7 @@ export class RegistrationService {
    * create registration credentials
    * http://example.com/swagger/swagger-ui.html#!/Registration/Registration
    */
-  registration(params: RegistrationParams): Observable<object> {
+  registration(params: RegistrationParams): Observable<Record<string, unknown>> {
     const formDataParams = {
       email: params.email,
       password1: params.password1,
@@ -45,6 +45,6 @@ export class RegistrationService {
     const pathParams = {
       registrationType: params.registrationType,
     };
-    return this.http.post<object>(`/api-base-path/registration/${pathParams.registrationType}`, formDataParams);
+    return this.http.post<Record<string, unknown>>(`/api-base-path/registration/${pathParams.registrationType}`, formDataParams);
   }
 }

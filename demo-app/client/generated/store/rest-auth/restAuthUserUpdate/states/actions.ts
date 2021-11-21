@@ -1,4 +1,4 @@
-/* eslint-disable max-line-length max-classes-per-file */
+/* eslint-disable max-len, max-classes-per-file */
 /**
  * Test Swagger
  * v1

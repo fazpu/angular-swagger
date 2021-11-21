@@ -1,4 +1,4 @@
-/* eslint-disable max-line-length max-classes-per-file */
+/* eslint-disable max-len, max-classes-per-file */
 /**
  * Test Swagger
  * v1
@@ -22,7 +22,7 @@ export class LogoutStart implements Action {
 
 export class LogoutSuccess implements Action {
   readonly type = Actions.LOGOUT_SUCCESS;
-  constructor(public payload: object) {}
+  constructor(public payload: Record<string, unknown>) {}
 }
 
 export class LogoutError implements Action {

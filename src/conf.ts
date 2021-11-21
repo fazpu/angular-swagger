@@ -28,7 +28,7 @@ export const nativeTypes: {[key in NativeNames]: string} = {
   integer: 'number',
   long: 'number',
   number: 'number',
-  object: 'object',
+  object: 'Record<string, unknown>',
   password: 'string',
   string: 'string',
 };

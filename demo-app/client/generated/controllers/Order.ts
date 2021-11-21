@@ -59,7 +59,7 @@ export class OrderService {
    * create order
    * http://example.com/swagger/swagger-ui.html#!/Order/Order
    */
-  order(params: OrderParams): Observable<object> {
+  order(params: OrderParams): Observable<Record<string, unknown>> {
     const bodyParams = params.orderDto;
 
     const queryParamBase = {
@@ -75,14 +75,14 @@ export class OrderService {
       }
     });
 
-    return this.http.post<object>(`/api-base-path/order`, bodyParams || {}, {params: queryParams});
+    return this.http.post<Record<string, unknown>>(`/api-base-path/order`, bodyParams || {}, {params: queryParams});
   }
 
   /**
    * Patches order
    * http://example.com/swagger/swagger-ui.html#!/Order/PatchOrder
    */
-  patchOrder(params: PatchOrderParams): Observable<object> {
+  patchOrder(params: PatchOrderParams): Observable<Record<string, unknown>> {
     const pathParams = {
       orderId: params.orderId,
     };
@@ -91,14 +91,14 @@ export class OrderService {
       model: params.model,
     };
 
-    return this.http.patch<object>(`/api-base-path/order/${pathParams.orderId}`, bodyParams || {});
+    return this.http.patch<Record<string, unknown>>(`/api-base-path/order/${pathParams.orderId}`, bodyParams || {});
   }
 
   /**
    * Put for order
    * http://example.com/swagger/swagger-ui.html#!/Order/Put-Order
    */
-  putOrder(params: PutOrderParams): Observable<object> {
+  putOrder(params: PutOrderParams): Observable<Record<string, unknown>> {
     const pathParams = {
       orderId: params.orderId,
     };
@@ -108,20 +108,20 @@ export class OrderService {
       customerName: params.customerName,
     };
 
-    return this.http.put<object>(`/api-base-path/order/${pathParams.orderId}`, bodyParams || {});
+    return this.http.put<Record<string, unknown>>(`/api-base-path/order/${pathParams.orderId}`, bodyParams || {});
   }
 
   /**
    * Delete order
    * http://example.com/swagger/swagger-ui.html#!/Order/deleteORDER
    */
-  deleteORDER(params: DeleteORDERParams): Observable<object> {
+  deleteORDER(params: DeleteORDERParams): Observable<Record<string, unknown>> {
     const pathParams = {
       orderId: params.orderId,
     };
-    return this.http.delete<object>(`/api-base-path/order/${pathParams.orderId}`);
+    return this.http.delete<Record<string, unknown>>(`/api-base-path/order/${pathParams.orderId}`);
   }
-  deleteORDER_(orderId: string): Observable<object> {
+  deleteORDER_(orderId: string): Observable<Record<string, unknown>> {
     return this.deleteORDER({orderId});
   }
 

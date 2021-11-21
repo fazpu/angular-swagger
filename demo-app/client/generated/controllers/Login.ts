@@ -24,13 +24,13 @@ export class LoginService {
    * create registration credentials
    * http://example.com/swagger/swagger-ui.html#!/Login/Registration
    */
-  login(params: LoginParams): Observable<object> {
+  login(params: LoginParams): Observable<Record<string, unknown>> {
     const formDataParams = {
       loginDto: params.loginDto,
     };
-    return this.http.post<object>(`/api-base-path/login`, formDataParams);
+    return this.http.post<Record<string, unknown>>(`/api-base-path/login`, formDataParams);
   }
-  login_(loginDto: __model.LoginDto): Observable<object> {
+  login_(loginDto: __model.LoginDto): Observable<Record<string, unknown>> {
     return this.login({loginDto});
   }
 

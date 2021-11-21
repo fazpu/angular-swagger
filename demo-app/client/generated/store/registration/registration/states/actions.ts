@@ -1,4 +1,4 @@
-/* eslint-disable max-line-length max-classes-per-file */
+/* eslint-disable max-len, max-classes-per-file */
 /**
  * Test Swagger
  * v1
@@ -23,7 +23,7 @@ export class RegistrationStart implements Action {
 
 export class RegistrationSuccess implements Action {
   readonly type = Actions.REGISTRATION_SUCCESS;
-  constructor(public payload: object) {}
+  constructor(public payload: Record<string, unknown>) {}
 }
 
 export class RegistrationError implements Action {

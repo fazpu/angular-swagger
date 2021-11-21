@@ -11,7 +11,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import * as actions from './actions';
 
 export interface PatchOrderState {
-  data: object | null;
+  data: Record<string, unknown> | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }

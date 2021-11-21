@@ -27,11 +27,11 @@ export class CareerService {
    * get career
    * http://example.com/swagger/swagger-ui.html#!/Career/Career
    */
-  positions(params: PositionsParams): Observable<object> {
+  positions(params: PositionsParams): Observable<Record<string, unknown>> {
     const pathParams = {
       positionId: params.positionId,
       version: params.version,
     };
-    return this.http.get<object>(`/api-base-path/career/v${pathParams.version}/positions/${pathParams.positionId}`);
+    return this.http.get<Record<string, unknown>>(`/api-base-path/career/v${pathParams.version}/positions/${pathParams.positionId}`);
   }
 }
