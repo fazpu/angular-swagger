@@ -79,7 +79,7 @@ export function processDefinition(def: Schema, name: string, config: Config): Pr
 
     output += `export interface ${name} {\n`;
     output += indent(_.map(properties, 'property').join('\n'));
-    output += `\n}\n`;
+    output += '\n}\n';
 
     // concat non-empty enum lines
     const enumLines = _.map(properties, 'enumDeclaration').filter(Boolean).join('\n\n');

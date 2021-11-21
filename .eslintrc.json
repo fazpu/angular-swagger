@@ -15,6 +15,8 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
@@ -34,7 +36,25 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "object-curly-spacing": "off",
+        "@typescript-eslint/object-curly-spacing": ["error"],
+        "arrow-parens": ["error", "as-needed"],
+        "no-console": "error",
+        "curly": ["error", "multi-line"],
+        "@typescript-eslint/explicit-member-accessibility": ["error", {
+          "overrides": {
+            "methods": "no-public"
+          }
+        }],
+        "@typescript-eslint/no-inferrable-types": ["error"],
+        "no-multi-spaces": ["error"],
+        "quote-props": ["error", "as-needed"],
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "no-useless-escape": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"]
       }
     },
     {

@@ -25,7 +25,6 @@ export function processMethod(method: ControllerMethod, unwrapSingleParamMethods
   const allowed: string[] = conf.allowedParams[method.methodName];
   let paramSeparation: string[] = [];
   let paramsSignature = '';
-  let params: string;
   let usesGlobalType = false;
   let paramTypes: ParamLocation[] = [];
   let paramGroups: Partial<Record<ParamLocation, Parameter[]>> = {};
@@ -50,7 +49,7 @@ export function processMethod(method: ControllerMethod, unwrapSingleParamMethods
     }
   }
 
-  params = getRequestParams(paramTypes, method.methodName);
+  const params = getRequestParams(paramTypes, method.methodName);
 
   methodDef += '\n';
   methodDef += makeComment([method.summary, method.description, method.swaggerUrl].filter(Boolean));

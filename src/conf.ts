@@ -51,6 +51,7 @@ export const controllerIgnores = ['BackOffice'];
 // once other one is needed, make it file-based
 export const adHocExceptions: {[key: string]: {[key: string]: [RegExp, string]}} = {
   api: {
+    // eslint-disable-next-line no-regex-spaces
     Help: [/^  itemNumbers\?: ref;$/m, '  itemNumbers?: number[]'],
   },
 };

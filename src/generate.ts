@@ -3,9 +3,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import * as conf from './conf';
-import { processDefinitions } from './definitions';
-import { processPaths } from './requests/process-paths';
-import { createDir, emptyDir, out, processHeader, TermColors } from './utils';
+import {processDefinitions} from './definitions';
+import {processPaths} from './requests/process-paths';
+import {createDir, emptyDir, out, processHeader, TermColors} from './utils';
 
 export interface Config {
   header: string;
@@ -31,6 +31,7 @@ export function generate(
   swaggerUrlPath: string = conf.swaggerUrlPath,
   omitVersion = false) {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let schema: any;
 
   try {

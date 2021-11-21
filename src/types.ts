@@ -22,6 +22,7 @@ export type HttpResponse = {
 
 interface ParameterSchemaBase {
   allowEmptyValue?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   default?: any;
   description?: string;
   enum?: string[] | number[];
@@ -51,6 +52,7 @@ export type QueryCollectionFormat = 'csv' | 'ssv' | 'tsv' | 'pipes' | 'multi';
 export interface Schema extends ParameterSchemaBase {
   $ref?: string;
   additionalProperties?: Schema;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   example?: any;
   readOnly?: boolean;
   required?: string[];

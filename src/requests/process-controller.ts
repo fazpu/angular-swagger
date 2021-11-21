@@ -20,6 +20,7 @@ import {ControllerMethod, MethodOutput} from './requests.models';
  * @param name
  */
 export function processController(methods: ControllerMethod[], name: string, config: Config,
+                                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                                   _definitions: ProcessedDefinition[]) {
   const filename = path.join(config.dest, conf.apiDir, `${name}.ts`);
   let usesGlobalType = false;

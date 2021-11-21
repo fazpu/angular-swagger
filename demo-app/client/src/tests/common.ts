@@ -7,6 +7,7 @@ interface HttpBed<T> {
   backend: HttpTestingController;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ClassInterface<T> = new (...a: any[]) => T;
 
 /**
@@ -14,6 +15,7 @@ type ClassInterface<T> = new (...a: any[]) => T;
  * @param service to be tested
  * @param providers additional providers to be injected
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function initHttpBed<T>(service: ClassInterface<T>, providers: Array<ClassInterface<any>> = []): HttpBed<T> {
   TestBed.configureTestingModule({
     imports: [

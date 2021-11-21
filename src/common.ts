@@ -53,16 +53,18 @@ export function processProperty(prop: Schema, name = '', namespace = '',
   } else {
     let defType: DefType;
     switch (prop.type) {
-      case undefined:
+      case undefined: {
         defType = translateType(prop.$ref);
         type = defType.type;
         break;
-      case 'array':
+      }
+      case 'array': {
         defType = translateType(prop.items && (prop.items.type || prop.items.$ref));
         const itemProp = processProperty(prop.items)[0];
         type = `${itemProp.property}[]`;
         break;
-      default:
+      }
+      default: {
         if (prop.additionalProperties) {
           const ap = prop.additionalProperties;
           let additionalType: string;
@@ -86,6 +88,7 @@ export function processProperty(prop: Schema, name = '', namespace = '',
           defType = translateType(prop.type);
           type = defType.type;
         }
+      }
     }
 
     native = defType.native;
@@ -133,6 +136,7 @@ export function processProperty(prop: Schema, name = '', namespace = '',
  */
 export function normalizeDef(type: string): string {
   let res = '';
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const generic = type.match(/([^«]+)«(.+)»/);
     if (!generic) {

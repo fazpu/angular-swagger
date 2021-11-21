@@ -70,9 +70,9 @@ export function indent(input: string | string[], level = 1): string {
 export function writeFile(file: string, content: string, header = '', fileType: FileType = 'ts',
                           disableFlags?: string[]): void {
   if (fileType === 'ts') {
-    if (!disableFlags) disableFlags = ['max-line-length'];
+    if (!disableFlags) disableFlags = ['max-len'];
     let disable = '';
-    if (disableFlags.length) disable = `/* tslint:disable:${disableFlags.join(' ')} */\n`;
+    if (disableFlags.length) disable = `/* eslint-disable ${disableFlags.join(' ')} */\n`;
     if (header) header += '\n';
     content = `${disable}${header}${content}`;
   }
@@ -105,6 +105,7 @@ export function makeComment(input: string | string[]): string {
  * @param swaggerUrlPath the path where the swagger ui definition can be found
  * @param version should API version info be included in generated files
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function processHeader(schemaDef: any, omitVersion = false): string {
   const relevant = {
     info: schemaDef.info,
@@ -146,6 +147,7 @@ export function out(text: string | string[], color?: TermColors) {
  * @param others
  * @param keys
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function merge(favoured: any[], others: any[], ...keys: string[]): any[] {
   const othersFiltered = others
     .filter(elem => {

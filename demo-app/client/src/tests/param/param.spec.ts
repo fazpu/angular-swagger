@@ -1,6 +1,6 @@
-import { HttpTestingController } from '@angular/common/http/testing';
+import {HttpTestingController} from '@angular/common/http/testing';
 
-import { DashedParams } from '../../../generated/controllers/Params';
+import {DashedParams} from '../../../generated/controllers/Params';
 
 const mock: DashedParams = {
   pathParam: 101,
@@ -37,7 +37,9 @@ describe(`Param call`, () => {
     expect(req.params.get('queryParamCollectionCsv')).toEqual(mock.queryParamCollectionCsv.join(','));
     expect(req.params.get('queryParamCollectionSsv')).toEqual(mock.queryParamCollectionSsv.join(' '));
     // `number[]` stored that way - not cast to `string[]`
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(req.params.getAll('queryParamCollectionMulti') as any[])
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .toEqual(mock.queryParamCollectionMulti as any[]);
 
     expect(req.params.get('dashed-query-param')).toEqual(mock['dashed-query-param'].toString());

@@ -52,7 +52,7 @@ function getEffectDefinition(actionClassNameBase: string, name: string, simpleNa
 
   let res = indent(`@Effect()\n`);
   res += indent(`${actionClassNameBase} = this.storeActions.pipe(\n`);
-  // tslint:disable-next-line:max-line-length
+  // eslint-disable-next-line max-len
   res += indent(`ofType<actions.${actionClassNameBase}Start>(actions.Actions.${actionClassNameBase.toUpperCase()}_START),\n`, 2);
   const actionParam = hasParams ? `action: actions.${actionClassNameBase}Start` : '';
   res += indent(
