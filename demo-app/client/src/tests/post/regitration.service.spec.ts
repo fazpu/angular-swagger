@@ -28,11 +28,21 @@ describe(`LoginService`, () => {
         },
       },
     };
+    const paramsResponse = {
+      email: 'test@test.com',
+      password1: 'password1',
+      password2: 'password2',
+      selfRefParam: {
+        prop1: 'property1',
+        parent: {
+          prop1: 'property1',
+        },
+      },
+    }
     service.registration(params).subscribe();
 
     const req = backend.expectOne('/api-base-path/registration/admin').request;
     expect(req.method).toBe('POST');
-    const bodyParams = {...params};
-    expect(req.body).toEqual(bodyParams);
+    expect(req.body).toEqual(paramsResponse);
   });
 });

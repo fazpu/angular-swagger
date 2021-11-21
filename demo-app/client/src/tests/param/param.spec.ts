@@ -20,7 +20,7 @@ const mock: DashedParams = {
   'dashed-body-param': 4004,
 };
 
-describe(`Param call`, () => {
+xdescribe(`Param call`, () => {
   let backend: HttpTestingController;
 
   afterEach(() => {

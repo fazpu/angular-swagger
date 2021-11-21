@@ -22,12 +22,15 @@ describe(`Order put`, () => {
       model: 'test-model',
       customerName: 'Johnny Cash',
     };
+    const paramsResponse = {
+      producer: 'test-producer',
+      model: 'test-model',
+      customerName: 'Johnny Cash',
+    }
     service.putOrder(params).subscribe();
 
     const req = backend.expectOne('/api-base-path/order/100').request;
     expect(req.method).toBe('PUT');
-    const bodyParams = {...params};
-    delete bodyParams.orderId;
-    expect(req.body).toEqual(bodyParams);
+    expect(req.body).toEqual(paramsResponse);
   });
 });
