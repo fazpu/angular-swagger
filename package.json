@@ -1,6 +1,6 @@
 {
   "name": "angular-swagger2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generator of types, API and NGRX layer in TypeScript for Angular 12 apps",
   "main": "dist/generate.js",
   "types": "dist/generate.d.ts",
@@ -22,7 +22,8 @@
     "postlint": "cd demo-app/client; npm run lint",
     "test": "npm run test:src && npm run test:demo",
     "test:demo": "cd demo-app/client && npm run test:ci",
-    "test:src": "ts-node node_modules/tape/bin/tape src/**/*.spec.ts"
+    "test:src": "ts-node node_modules/tape/bin/tape src/**/*.spec.ts",
+    "prepublish": "npm run prebuild && npm run build && npm run postbuild && npm run preversion && npm run postversion"
   },
   "repository": {
     "type": "git",
@@ -35,9 +36,10 @@
     "typescript",
     "generate",
     "generator",
-    "angular"
+    "angular",
+    "ngrx"
   ],
-  "author": "Jiri Puc, Jan Walter",
+  "author": "Jiri Puc",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fazpu/angular-swagger2/issues"
