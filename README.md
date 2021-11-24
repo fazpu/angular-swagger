@@ -62,7 +62,7 @@ The resulting API layer contains the following structure in the destination dire
 
 1. `controllers` directory stores services containing all API methods devided by controllers
 1. `defs` directory stores all response interfaces and enums
-1. `store` directory has modules, which contain associated form service and NGRX actions, reducers and effects
+1. `store` directory has modules, which contain NGRX actions, reducers and effects
 1. `model.ts` file reexports all of them together for a simple access
 
 When updating your code for new backend version, we recommend you to follow these steps:
@@ -118,52 +118,7 @@ export class MyComponent implements OnInit {
 }
 ```
 
-#### Usage of Forms services
-- the `exampleFormService` service is generated and holds the `FormGroup` definition that corresponds
-  with the request data structure
-- Array-like structures use `FormArrayExtended` that extends native Angulars' `FormArray` and holds the definition of array item so new items can be created for data via `.setValue()` or empty via `.createControl()`.
-- Map-like structures use `FormMap` that extends native Angulars' `FormGroup` and holds the definition of map value item so new items can be created for data via `.setValue()` or empty via `.createControl()`.
-- there's a helper method `safeSetValue()` that sets the shape and data of all `AbstractControl`'s ancestors and never fails (compatible data form the shape and are set, the rest is ignored).
-- use it in the template the following way
-- check the details in the generated test files, e.g.
-  - [generated form](demo-app/client/generated/store/structures/map/map.service.ts),
-  - [array tests](demo-app/client/src/tests/form/array.spec.ts),
-  - [map tests](demo-app/client/src/tests/form/map.spec.ts).
-
-```html
-<form [formGroup]="exampleFormService.form" (ngSubmit)="sendForm()" class="full-width">
-    <input type="text" name="email" placeholder="email"
-           formControlName="email" />
-    <button type="submit"
-            [disabled]="exampleFormService.form.invalid">Save</button>
-</form>
-```
-
-- this is the corresponding component
-```typescript
-@Component({
-  selector: 'example-component',
-  templateUrl: 'example-component.html',
-})
-export class ExampleComponent implements OnDestroy {
-  constructor(public exampleFormService: ExampleFormService) {}
-  sendForm() {...}
-}
-```
-
-- the generated service looks like this
-```typescript
-export class ExampleFormService {
-  form: FormGroup;
-  constructor(private exampleService: ExampleService) {
-    this.form = new FormGroup({
-      email: new FormControl(undefined, [Validators.email, Validators.required]),
-    });
-  }
-}
-```
-
-#### NGRX workflow with generated modules, actions, effects, reducers and form services
+#### NGRX workflow with generated modules, actions, effects, reducerss
 
 ##### Import the generated module
 ```typescript
@@ -181,13 +136,11 @@ export class YourModule {}
 ```typescript
 @NgModule({
   imports: [
-    FormsSharedModule,
     NgrxStoreModule.forFeature(selectorName, ExampleReducer),
     NgrxEffectsModule.forFeature([ExampleEffects]),
   ],
   providers: [
     ExampleService,
-    ExampleFormService,
   ],
 })
 export class ExampleModule {}
@@ -202,8 +155,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs/Subject';
-import {ExampleFormService} from '../../generated/store/example/exampleModule/example.service';
-import {Start as ExampleStart} from '../../generated/store/example/exampleModule/states/actions';
+import {ExampleStart} from '../../generated/store/example/exampleModule/states/actions';
 import {AppState} from '../states/exmaple.models';
 
 @Component({
@@ -213,12 +165,11 @@ import {AppState} from '../states/exmaple.models';
 export class ExampleComponent implements OnDestroy {
 
   constructor(
-    public exampleFormService: ExampleFormService,
     private store: Store<AppState>,
   ) {}
 
   sendForm() {
-    this.store.dispatch(new ExampleStart(this.exampleFormService.form.value));
+    this.store.dispatch(new ExampleStart());
   }
 
   ngOnDestroy() {
