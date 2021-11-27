@@ -23,15 +23,15 @@ Generate minimalistic TypeScript API layer for Angular with full type reflection
 ##### Have a look at the [demo-app generated files](demo-app/client/generated) to get better understanding what is being generated.
 
 ## Install
-`npm i swagger-angular2`
+`npm i angular-swagger2`
 
 ## Options
-`-h` - show help
-`-s`, `--src` - source directory
-`-d`, `--dest` - destination directory, default: `src/api`
-`--no-store` - do not generate the ngrx modules
-`-u, --swagger-URL-path` - swagger URL path, where the swagger ui documentation can be found; default: `/swagger`, i.e. the resulting address would be `http://example/swagger`
-`-o, --omit-version` - disables API version information to be generated in comments for each file
+- `-h` - show help
+- `-s`, `--src` - source directory
+- `-d`, `--dest` - destination directory, default: `src/api`
+- `--no-store` - do not generate the ngrx modules
+- `-u, --swagger-URL-path` - swagger URL path, where the swagger ui documentation can be found; default: `/swagger`, i.e. the resulting address would be `http://example/swagger`
+- `-o, --omit-version` - disables API version information to be generated in comments for each file
 
 
 ## Use
@@ -41,19 +41,19 @@ Generate minimalistic TypeScript API layer for Angular with full type reflection
 1. get the swagger scheme (typically at http(s)://[server]/[app-path]/v2/api/api-docs)
 1. save it to json file in input directory and optionally **format** it for better diff
 1. run via
-    1. **directly** `./node_modules/.bin/swagger-angular2`
-    1. **as module** `swagger-angular2` package, `npm run generate`
+    1. **directly** `./node_modules/.bin/angular-swagger2`
+    1. **as module** `angular-swagger2` package, `npm run generate`
         ```javascript
         "script": {
-          "generate": "swagger-angular2 -s src/api/scheme.json -d src/api/generated"
+          "generate": "angular-swagger2 -s src/api/scheme.json -d src/api/generated"
           ...
         }
         ```
     1. or **programatically** as a method invocation
         ```typescript
-        import {generate} from 'swagger-angular2';
+        import {generate} from 'angular-swagger2';
         // or using CommonJS loader
-        const {generate} = require('swagger-angular2');
+        const {generate} = require('angular-swagger2');
 
         generate('conf/api/api-docs.json', 'src/api');
         ```
@@ -263,12 +263,12 @@ generated inside Order.ts
 
 ## Development
 
-* at least Node.js 8 is needed
+* developed with node v16
 
 ### Docker image
 
-1. `docker build . -t swagger-angular2`
-1. `docker run -u $(id -u) -it -v "$PWD":/code swagger-angular2 bash`
+1. `docker build . -t angular-swagger2`
+1. `docker run -u $(id -u) -it -v "$PWD":/code angular-swagger2 bash`
 1. `npm i`
 1. `npm run install:demo`
 
