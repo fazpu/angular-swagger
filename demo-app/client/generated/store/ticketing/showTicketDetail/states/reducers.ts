@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {ShowTicketDetailAction, ShowTicketDetailActions} from './actions';
 
 export interface ShowTicketDetailState {
   data: __model.TicketDetailOutput[] | null;
@@ -28,12 +28,12 @@ export const getShowTicketDetailStateSelector = createFeatureSelector<ShowTicket
 
 export function ShowTicketDetailReducer(
   state: ShowTicketDetailState = initialShowTicketDetailState,
-  action: actions.ShowTicketDetailAction): ShowTicketDetailState {
+  action: ShowTicketDetailAction): ShowTicketDetailState {
   switch (action.type) {
-    case actions.Actions.SHOWTICKETDETAIL_START: return {...state, loading: true, error: null};
-    case actions.Actions.SHOWTICKETDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.SHOWTICKETDETAIL_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.SHOWTICKETDETAIL_CLEAN: return initialShowTicketDetailState;
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_START: return {...state, loading: true, error: null};
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_ERROR: return {...state, error: action.payload, loading: false};
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_CLEAN: return initialShowTicketDetailState;
     default: return state;
   }
 }

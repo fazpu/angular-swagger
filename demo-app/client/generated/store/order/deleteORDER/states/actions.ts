@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {DeleteORDERParams} from '../../../../controllers/Order';
 
-export enum Actions {
+export enum DeleteORDERActions {
   DELETEORDER_START = '[Order deleteORDER] Start',
   DELETEORDER_SUCCESS = '[Order deleteORDER] Success',
   DELETEORDER_ERROR = '[Order deleteORDER] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class DeleteORDERStart implements Action {
-  readonly type = Actions.DELETEORDER_START;
+  readonly type = DeleteORDERActions.DELETEORDER_START;
   constructor(public payload: DeleteORDERParams) {}
 }
 
 export class DeleteORDERSuccess implements Action {
-  readonly type = Actions.DELETEORDER_SUCCESS;
+  readonly type = DeleteORDERActions.DELETEORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class DeleteORDERError implements Action {
-  readonly type = Actions.DELETEORDER_ERROR;
+  readonly type = DeleteORDERActions.DELETEORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class DeleteORDERClean implements Action {
-  readonly type = Actions.DELETEORDER_CLEAN;
+  readonly type = DeleteORDERActions.DELETEORDER_CLEAN;
 }
 
 export type DeleteORDERAction = DeleteORDERStart |

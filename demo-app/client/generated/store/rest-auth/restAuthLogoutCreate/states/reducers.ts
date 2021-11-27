@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {RestAuthLogoutCreateAction, RestAuthLogoutCreateActions} from './actions';
 
 export interface RestAuthLogoutCreateState {
   data: void | null;
@@ -27,12 +27,12 @@ export const getRestAuthLogoutCreateStateSelector = createFeatureSelector<RestAu
 
 export function RestAuthLogoutCreateReducer(
   state: RestAuthLogoutCreateState = initialRestAuthLogoutCreateState,
-  action: actions.RestAuthLogoutCreateAction): RestAuthLogoutCreateState {
+  action: RestAuthLogoutCreateAction): RestAuthLogoutCreateState {
   switch (action.type) {
-    case actions.Actions.RESTAUTHLOGOUTCREATE_START: return {...state, loading: true, error: null};
-    case actions.Actions.RESTAUTHLOGOUTCREATE_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.RESTAUTHLOGOUTCREATE_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.RESTAUTHLOGOUTCREATE_CLEAN: return initialRestAuthLogoutCreateState;
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START: return {...state, loading: true, error: null};
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS: return {...state, data: action.payload, loading: false};
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR: return {...state, error: action.payload, loading: false};
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN: return initialRestAuthLogoutCreateState;
     default: return state;
   }
 }

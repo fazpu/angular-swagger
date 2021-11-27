@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {LogoutService} from '../../../../controllers/Logout';
-import * as actions from './actions';
+import {LogoutActions, LogoutError, LogoutStart, LogoutSuccess} from './actions';
 
 @Injectable()
 export class LogoutEffects {
   @Effect()
   Logout = this.storeActions.pipe(
-    ofType<actions.LogoutStart>(actions.Actions.LOGOUT_START),
+    ofType<LogoutStart>(LogoutActions.LOGOUT_START),
     switchMap(() => this.logoutService.logout()
       .pipe(
-        map(result => new actions.LogoutSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.LogoutError(error))),
+        map(result => new LogoutSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new LogoutError(error))),
       ),
     ),
   );

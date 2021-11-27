@@ -8,7 +8,7 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 
-export enum Actions {
+export enum RestAuthLogoutCreateActions {
   RESTAUTHLOGOUTCREATE_START = '[RestAuth restAuthLogoutCreate] Start',
   RESTAUTHLOGOUTCREATE_SUCCESS = '[RestAuth restAuthLogoutCreate] Success',
   RESTAUTHLOGOUTCREATE_ERROR = '[RestAuth restAuthLogoutCreate] Error',
@@ -16,22 +16,22 @@ export enum Actions {
 }
 
 export class RestAuthLogoutCreateStart implements Action {
-  readonly type = Actions.RESTAUTHLOGOUTCREATE_START;
+  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START;
   constructor() {}
 }
 
 export class RestAuthLogoutCreateSuccess implements Action {
-  readonly type = Actions.RESTAUTHLOGOUTCREATE_SUCCESS;
+  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class RestAuthLogoutCreateError implements Action {
-  readonly type = Actions.RESTAUTHLOGOUTCREATE_ERROR;
+  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthLogoutCreateClean implements Action {
-  readonly type = Actions.RESTAUTHLOGOUTCREATE_CLEAN;
+  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN;
 }
 
 export type RestAuthLogoutCreateAction = RestAuthLogoutCreateStart |

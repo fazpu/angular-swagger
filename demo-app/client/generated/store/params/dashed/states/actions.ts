@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {DashedParams} from '../../../../controllers/Params';
 
-export enum Actions {
+export enum DashedActions {
   DASHED_START = '[Params dashed] Start',
   DASHED_SUCCESS = '[Params dashed] Success',
   DASHED_ERROR = '[Params dashed] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class DashedStart implements Action {
-  readonly type = Actions.DASHED_START;
+  readonly type = DashedActions.DASHED_START;
   constructor(public payload: DashedParams) {}
 }
 
 export class DashedSuccess implements Action {
-  readonly type = Actions.DASHED_SUCCESS;
+  readonly type = DashedActions.DASHED_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class DashedError implements Action {
-  readonly type = Actions.DASHED_ERROR;
+  readonly type = DashedActions.DASHED_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class DashedClean implements Action {
-  readonly type = Actions.DASHED_CLEAN;
+  readonly type = DashedActions.DASHED_CLEAN;
 }
 
 export type DashedAction = DashedStart |

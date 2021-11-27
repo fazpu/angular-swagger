@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {DeleteORDERAction, DeleteORDERActions} from './actions';
 
 export interface DeleteORDERState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getDeleteORDERStateSelector = createFeatureSelector<DeleteORDERStat
 
 export function DeleteORDERReducer(
   state: DeleteORDERState = initialDeleteORDERState,
-  action: actions.DeleteORDERAction): DeleteORDERState {
+  action: DeleteORDERAction): DeleteORDERState {
   switch (action.type) {
-    case actions.Actions.DELETEORDER_START: return {...state, loading: true, error: null};
-    case actions.Actions.DELETEORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.DELETEORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.DELETEORDER_CLEAN: return initialDeleteORDERState;
+    case DeleteORDERActions.DELETEORDER_START: return {...state, loading: true, error: null};
+    case DeleteORDERActions.DELETEORDER_SUCCESS: return {...state, data: action.payload, loading: false};
+    case DeleteORDERActions.DELETEORDER_ERROR: return {...state, error: action.payload, loading: false};
+    case DeleteORDERActions.DELETEORDER_CLEAN: return initialDeleteORDERState;
     default: return state;
   }
 }

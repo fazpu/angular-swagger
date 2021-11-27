@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {RestAuthService} from '../../../../controllers/RestAuth';
-import * as actions from './actions';
+import {RestAuthLogoutCreateActions, RestAuthLogoutCreateError, RestAuthLogoutCreateStart, RestAuthLogoutCreateSuccess} from './actions';
 
 @Injectable()
 export class RestAuthLogoutCreateEffects {
   @Effect()
   RestAuthLogoutCreate = this.storeActions.pipe(
-    ofType<actions.RestAuthLogoutCreateStart>(actions.Actions.RESTAUTHLOGOUTCREATE_START),
+    ofType<RestAuthLogoutCreateStart>(RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START),
     switchMap(() => this.restauthService.restAuthLogoutCreate()
       .pipe(
-        map(result => new actions.RestAuthLogoutCreateSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.RestAuthLogoutCreateError(error))),
+        map(result => new RestAuthLogoutCreateSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new RestAuthLogoutCreateError(error))),
       ),
     ),
   );

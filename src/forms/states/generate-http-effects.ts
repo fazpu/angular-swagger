@@ -6,7 +6,7 @@ import {indent, writeFile} from '../../utils';
 export function generateHttpEffects(config: Config, name: string, simpleName: string, actionClassNameBase: string,
                                     formSubDirName: string, paramGroups: Parameter[]) {
   let content = '';
-  content += getEffectsImports(name);
+  content += getEffectsImports(name, actionClassNameBase);
   content += getEffectsStartDefinition(actionClassNameBase);
   content += getEffectDefinition(actionClassNameBase, name, simpleName, paramGroups.length >= 1);
   content += getConstructorDefinition(name);
@@ -16,7 +16,7 @@ export function generateHttpEffects(config: Config, name: string, simpleName: st
   writeFile(effectsFileName, content, config.header);
 }
 
-function getEffectsImports(name: string) {
+function getEffectsImports(name: string, actionClassNameBase: string) {
   let res = `import {HttpErrorResponse} from '@angular/common/http';\n`;
   res += `import {Injectable} from '@angular/core';\n`;
   res += `import {Actions, Effect, ofType} from '@ngrx/effects';\n`;
@@ -25,7 +25,7 @@ function getEffectsImports(name: string) {
   res += '\n';
   res += `import {catchError, map, switchMap} from 'rxjs/operators';\n`;
   res += `import {${name}Service} from '../../../../controllers/${name}';\n`;
-  res += `import * as actions from './actions';\n`;
+  res += `import {${actionClassNameBase}Actions, ${actionClassNameBase}Error, ${actionClassNameBase}Start, ${actionClassNameBase}Success} from './actions';\n`;
   res += `\n`;
 
   return res;
@@ -53,14 +53,14 @@ function getEffectDefinition(actionClassNameBase: string, name: string, simpleNa
   let res = indent(`@Effect()\n`);
   res += indent(`${actionClassNameBase} = this.storeActions.pipe(\n`);
   // eslint-disable-next-line max-len
-  res += indent(`ofType<actions.${actionClassNameBase}Start>(actions.Actions.${actionClassNameBase.toUpperCase()}_START),\n`, 2);
-  const actionParam = hasParams ? `action: actions.${actionClassNameBase}Start` : '';
+  res += indent(`ofType<${actionClassNameBase}Start>(${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START),\n`, 2);
+  const actionParam = hasParams ? `action: ${actionClassNameBase}Start` : '';
   res += indent(
     `switchMap((${actionParam}) => ` +
     `this.${name.toLowerCase()}Service.${simpleName}(${startActionPayloadDefinition})\n`, 2);
   res += indent(`.pipe(\n`, 3);
-  res += indent(`map(result => new actions.${actionClassNameBase}Success(result)),\n`, 4);
-  res += indent(`catchError((error: HttpErrorResponse) => of(new actions.${actionClassNameBase}Error(error))),\n`, 4);
+  res += indent(`map(result => new ${actionClassNameBase}Success(result)),\n`, 4);
+  res += indent(`catchError((error: HttpErrorResponse) => of(new ${actionClassNameBase}Error(error))),\n`, 4);
   res += indent(`),\n`, 3);
   res += indent(`),\n`, 2);
   res += indent(`);\n`);

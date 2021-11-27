@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {StructuresService} from '../../../../controllers/Structures';
-import * as actions from './actions';
+import {MapActions, MapError, MapStart, MapSuccess} from './actions';
 
 @Injectable()
 export class MapEffects {
   @Effect()
   Map = this.storeActions.pipe(
-    ofType<actions.MapStart>(actions.Actions.MAP_START),
-    switchMap((action: actions.MapStart) => this.structuresService.map(action.payload)
+    ofType<MapStart>(MapActions.MAP_START),
+    switchMap((action: MapStart) => this.structuresService.map(action.payload)
       .pipe(
-        map(result => new actions.MapSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.MapError(error))),
+        map(result => new MapSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new MapError(error))),
       ),
     ),
   );

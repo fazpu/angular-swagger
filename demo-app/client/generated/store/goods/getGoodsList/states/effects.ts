@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {GoodsService} from '../../../../controllers/Goods';
-import * as actions from './actions';
+import {GetGoodsListActions, GetGoodsListError, GetGoodsListStart, GetGoodsListSuccess} from './actions';
 
 @Injectable()
 export class GetGoodsListEffects {
   @Effect()
   GetGoodsList = this.storeActions.pipe(
-    ofType<actions.GetGoodsListStart>(actions.Actions.GETGOODSLIST_START),
-    switchMap((action: actions.GetGoodsListStart) => this.goodsService.getGoodsList(action.payload)
+    ofType<GetGoodsListStart>(GetGoodsListActions.GETGOODSLIST_START),
+    switchMap((action: GetGoodsListStart) => this.goodsService.getGoodsList(action.payload)
       .pipe(
-        map(result => new actions.GetGoodsListSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.GetGoodsListError(error))),
+        map(result => new GetGoodsListSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new GetGoodsListError(error))),
       ),
     ),
   );

@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {RestAuthUserUpdateAction, RestAuthUserUpdateActions} from './actions';
 
 export interface RestAuthUserUpdateState {
   data: __model.UserDetails | null;
@@ -28,12 +28,12 @@ export const getRestAuthUserUpdateStateSelector = createFeatureSelector<RestAuth
 
 export function RestAuthUserUpdateReducer(
   state: RestAuthUserUpdateState = initialRestAuthUserUpdateState,
-  action: actions.RestAuthUserUpdateAction): RestAuthUserUpdateState {
+  action: RestAuthUserUpdateAction): RestAuthUserUpdateState {
   switch (action.type) {
-    case actions.Actions.RESTAUTHUSERUPDATE_START: return {...state, loading: true, error: null};
-    case actions.Actions.RESTAUTHUSERUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERUPDATE_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERUPDATE_CLEAN: return initialRestAuthUserUpdateState;
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START: return {...state, loading: true, error: null};
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR: return {...state, error: action.payload, loading: false};
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN: return initialRestAuthUserUpdateState;
     default: return state;
   }
 }

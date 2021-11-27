@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {CareerService} from '../../../../controllers/Career';
-import * as actions from './actions';
+import {PositionsActions, PositionsError, PositionsStart, PositionsSuccess} from './actions';
 
 @Injectable()
 export class PositionsEffects {
   @Effect()
   Positions = this.storeActions.pipe(
-    ofType<actions.PositionsStart>(actions.Actions.POSITIONS_START),
-    switchMap((action: actions.PositionsStart) => this.careerService.positions(action.payload)
+    ofType<PositionsStart>(PositionsActions.POSITIONS_START),
+    switchMap((action: PositionsStart) => this.careerService.positions(action.payload)
       .pipe(
-        map(result => new actions.PositionsSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.PositionsError(error))),
+        map(result => new PositionsSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new PositionsError(error))),
       ),
     ),
   );

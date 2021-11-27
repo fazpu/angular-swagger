@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {MapAction, MapActions} from './actions';
 
 export interface MapState {
   data: void | null;
@@ -27,12 +27,12 @@ export const getMapStateSelector = createFeatureSelector<MapState>(selectorName)
 
 export function MapReducer(
   state: MapState = initialMapState,
-  action: actions.MapAction): MapState {
+  action: MapAction): MapState {
   switch (action.type) {
-    case actions.Actions.MAP_START: return {...state, loading: true, error: null};
-    case actions.Actions.MAP_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.MAP_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.MAP_CLEAN: return initialMapState;
+    case MapActions.MAP_START: return {...state, loading: true, error: null};
+    case MapActions.MAP_SUCCESS: return {...state, data: action.payload, loading: false};
+    case MapActions.MAP_ERROR: return {...state, error: action.payload, loading: false};
+    case MapActions.MAP_CLEAN: return initialMapState;
     default: return state;
   }
 }

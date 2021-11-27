@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {RegistrationParams} from '../../../../controllers/Registration';
 
-export enum Actions {
+export enum RegistrationActions {
   REGISTRATION_START = '[Registration registration] Start',
   REGISTRATION_SUCCESS = '[Registration registration] Success',
   REGISTRATION_ERROR = '[Registration registration] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class RegistrationStart implements Action {
-  readonly type = Actions.REGISTRATION_START;
+  readonly type = RegistrationActions.REGISTRATION_START;
   constructor(public payload: RegistrationParams) {}
 }
 
 export class RegistrationSuccess implements Action {
-  readonly type = Actions.REGISTRATION_SUCCESS;
+  readonly type = RegistrationActions.REGISTRATION_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class RegistrationError implements Action {
-  readonly type = Actions.REGISTRATION_ERROR;
+  readonly type = RegistrationActions.REGISTRATION_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RegistrationClean implements Action {
-  readonly type = Actions.REGISTRATION_CLEAN;
+  readonly type = RegistrationActions.REGISTRATION_CLEAN;
 }
 
 export type RegistrationAction = RegistrationStart |

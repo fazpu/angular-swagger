@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {RestAuthUserReadAction, RestAuthUserReadActions} from './actions';
 
 export interface RestAuthUserReadState {
   data: __model.UserDetails | null;
@@ -28,12 +28,12 @@ export const getRestAuthUserReadStateSelector = createFeatureSelector<RestAuthUs
 
 export function RestAuthUserReadReducer(
   state: RestAuthUserReadState = initialRestAuthUserReadState,
-  action: actions.RestAuthUserReadAction): RestAuthUserReadState {
+  action: RestAuthUserReadAction): RestAuthUserReadState {
   switch (action.type) {
-    case actions.Actions.RESTAUTHUSERREAD_START: return {...state, loading: true, error: null};
-    case actions.Actions.RESTAUTHUSERREAD_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERREAD_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERREAD_CLEAN: return initialRestAuthUserReadState;
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_START: return {...state, loading: true, error: null};
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS: return {...state, data: action.payload, loading: false};
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR: return {...state, error: action.payload, loading: false};
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN: return initialRestAuthUserReadState;
     default: return state;
   }
 }

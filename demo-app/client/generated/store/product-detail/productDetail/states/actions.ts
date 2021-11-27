@@ -10,7 +10,7 @@ import {Action} from '@ngrx/store';
 import {ProductDetailParams} from '../../../../controllers/ProductDetail';
 import * as __model from '../../../../model';
 
-export enum Actions {
+export enum ProductDetailActions {
   PRODUCTDETAIL_START = '[ProductDetail productDetail] Start',
   PRODUCTDETAIL_SUCCESS = '[ProductDetail productDetail] Success',
   PRODUCTDETAIL_ERROR = '[ProductDetail productDetail] Error',
@@ -18,22 +18,22 @@ export enum Actions {
 }
 
 export class ProductDetailStart implements Action {
-  readonly type = Actions.PRODUCTDETAIL_START;
+  readonly type = ProductDetailActions.PRODUCTDETAIL_START;
   constructor(public payload: ProductDetailParams) {}
 }
 
 export class ProductDetailSuccess implements Action {
-  readonly type = Actions.PRODUCTDETAIL_SUCCESS;
+  readonly type = ProductDetailActions.PRODUCTDETAIL_SUCCESS;
   constructor(public payload: __model.ProductDetail) {}
 }
 
 export class ProductDetailError implements Action {
-  readonly type = Actions.PRODUCTDETAIL_ERROR;
+  readonly type = ProductDetailActions.PRODUCTDETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ProductDetailClean implements Action {
-  readonly type = Actions.PRODUCTDETAIL_CLEAN;
+  readonly type = ProductDetailActions.PRODUCTDETAIL_CLEAN;
 }
 
 export type ProductDetailAction = ProductDetailStart |

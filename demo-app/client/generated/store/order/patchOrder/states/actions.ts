@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {PatchOrderParams} from '../../../../controllers/Order';
 
-export enum Actions {
+export enum PatchOrderActions {
   PATCHORDER_START = '[Order patchOrder] Start',
   PATCHORDER_SUCCESS = '[Order patchOrder] Success',
   PATCHORDER_ERROR = '[Order patchOrder] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class PatchOrderStart implements Action {
-  readonly type = Actions.PATCHORDER_START;
+  readonly type = PatchOrderActions.PATCHORDER_START;
   constructor(public payload: PatchOrderParams) {}
 }
 
 export class PatchOrderSuccess implements Action {
-  readonly type = Actions.PATCHORDER_SUCCESS;
+  readonly type = PatchOrderActions.PATCHORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class PatchOrderError implements Action {
-  readonly type = Actions.PATCHORDER_ERROR;
+  readonly type = PatchOrderActions.PATCHORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class PatchOrderClean implements Action {
-  readonly type = Actions.PATCHORDER_CLEAN;
+  readonly type = PatchOrderActions.PATCHORDER_CLEAN;
 }
 
 export type PatchOrderAction = PatchOrderStart |

@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {MapParams} from '../../../../controllers/Structures';
 
-export enum Actions {
+export enum MapActions {
   MAP_START = '[Structures map] Start',
   MAP_SUCCESS = '[Structures map] Success',
   MAP_ERROR = '[Structures map] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class MapStart implements Action {
-  readonly type = Actions.MAP_START;
+  readonly type = MapActions.MAP_START;
   constructor(public payload: MapParams) {}
 }
 
 export class MapSuccess implements Action {
-  readonly type = Actions.MAP_SUCCESS;
+  readonly type = MapActions.MAP_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class MapError implements Action {
-  readonly type = Actions.MAP_ERROR;
+  readonly type = MapActions.MAP_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class MapClean implements Action {
-  readonly type = Actions.MAP_CLEAN;
+  readonly type = MapActions.MAP_CLEAN;
 }
 
 export type MapAction = MapStart |

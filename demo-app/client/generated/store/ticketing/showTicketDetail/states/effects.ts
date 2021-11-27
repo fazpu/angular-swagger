@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {TicketingService} from '../../../../controllers/Ticketing';
-import * as actions from './actions';
+import {ShowTicketDetailActions, ShowTicketDetailError, ShowTicketDetailStart, ShowTicketDetailSuccess} from './actions';
 
 @Injectable()
 export class ShowTicketDetailEffects {
   @Effect()
   ShowTicketDetail = this.storeActions.pipe(
-    ofType<actions.ShowTicketDetailStart>(actions.Actions.SHOWTICKETDETAIL_START),
-    switchMap((action: actions.ShowTicketDetailStart) => this.ticketingService.showTicketDetail(action.payload)
+    ofType<ShowTicketDetailStart>(ShowTicketDetailActions.SHOWTICKETDETAIL_START),
+    switchMap((action: ShowTicketDetailStart) => this.ticketingService.showTicketDetail(action.payload)
       .pipe(
-        map(result => new actions.ShowTicketDetailSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.ShowTicketDetailError(error))),
+        map(result => new ShowTicketDetailSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new ShowTicketDetailError(error))),
       ),
     ),
   );
