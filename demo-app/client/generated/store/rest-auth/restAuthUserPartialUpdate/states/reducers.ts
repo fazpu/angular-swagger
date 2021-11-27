@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {RestAuthUserPartialUpdateAction, RestAuthUserPartialUpdateActions} from './actions';
 
 export interface RestAuthUserPartialUpdateState {
   data: __model.UserDetails | null;
@@ -28,12 +28,12 @@ export const getRestAuthUserPartialUpdateStateSelector = createFeatureSelector<R
 
 export function RestAuthUserPartialUpdateReducer(
   state: RestAuthUserPartialUpdateState = initialRestAuthUserPartialUpdateState,
-  action: actions.RestAuthUserPartialUpdateAction): RestAuthUserPartialUpdateState {
+  action: RestAuthUserPartialUpdateAction): RestAuthUserPartialUpdateState {
   switch (action.type) {
-    case actions.Actions.RESTAUTHUSERPARTIALUPDATE_START: return {...state, loading: true, error: null};
-    case actions.Actions.RESTAUTHUSERPARTIALUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERPARTIALUPDATE_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.RESTAUTHUSERPARTIALUPDATE_CLEAN: return initialRestAuthUserPartialUpdateState;
+    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_START: return {...state, loading: true, error: null};
+    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
+    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_ERROR: return {...state, error: action.payload, loading: false};
+    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_CLEAN: return initialRestAuthUserPartialUpdateState;
     default: return state;
   }
 }

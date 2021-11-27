@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {ProductDetailAction, ProductDetailActions} from './actions';
 
 export interface ProductDetailState {
   data: __model.ProductDetail | null;
@@ -28,12 +28,12 @@ export const getProductDetailStateSelector = createFeatureSelector<ProductDetail
 
 export function ProductDetailReducer(
   state: ProductDetailState = initialProductDetailState,
-  action: actions.ProductDetailAction): ProductDetailState {
+  action: ProductDetailAction): ProductDetailState {
   switch (action.type) {
-    case actions.Actions.PRODUCTDETAIL_START: return {...state, loading: true, error: null};
-    case actions.Actions.PRODUCTDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.PRODUCTDETAIL_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.PRODUCTDETAIL_CLEAN: return initialProductDetailState;
+    case ProductDetailActions.PRODUCTDETAIL_START: return {...state, loading: true, error: null};
+    case ProductDetailActions.PRODUCTDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
+    case ProductDetailActions.PRODUCTDETAIL_ERROR: return {...state, error: action.payload, loading: false};
+    case ProductDetailActions.PRODUCTDETAIL_CLEAN: return initialProductDetailState;
     default: return state;
   }
 }

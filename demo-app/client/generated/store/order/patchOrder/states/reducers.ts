@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {PatchOrderAction, PatchOrderActions} from './actions';
 
 export interface PatchOrderState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getPatchOrderStateSelector = createFeatureSelector<PatchOrderState>
 
 export function PatchOrderReducer(
   state: PatchOrderState = initialPatchOrderState,
-  action: actions.PatchOrderAction): PatchOrderState {
+  action: PatchOrderAction): PatchOrderState {
   switch (action.type) {
-    case actions.Actions.PATCHORDER_START: return {...state, loading: true, error: null};
-    case actions.Actions.PATCHORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.PATCHORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.PATCHORDER_CLEAN: return initialPatchOrderState;
+    case PatchOrderActions.PATCHORDER_START: return {...state, loading: true, error: null};
+    case PatchOrderActions.PATCHORDER_SUCCESS: return {...state, data: action.payload, loading: false};
+    case PatchOrderActions.PATCHORDER_ERROR: return {...state, error: action.payload, loading: false};
+    case PatchOrderActions.PATCHORDER_CLEAN: return initialPatchOrderState;
     default: return state;
   }
 }

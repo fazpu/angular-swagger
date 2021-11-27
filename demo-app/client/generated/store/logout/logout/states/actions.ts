@@ -8,7 +8,7 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 
-export enum Actions {
+export enum LogoutActions {
   LOGOUT_START = '[Logout logout] Start',
   LOGOUT_SUCCESS = '[Logout logout] Success',
   LOGOUT_ERROR = '[Logout logout] Error',
@@ -16,22 +16,22 @@ export enum Actions {
 }
 
 export class LogoutStart implements Action {
-  readonly type = Actions.LOGOUT_START;
+  readonly type = LogoutActions.LOGOUT_START;
   constructor() {}
 }
 
 export class LogoutSuccess implements Action {
-  readonly type = Actions.LOGOUT_SUCCESS;
+  readonly type = LogoutActions.LOGOUT_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class LogoutError implements Action {
-  readonly type = Actions.LOGOUT_ERROR;
+  readonly type = LogoutActions.LOGOUT_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class LogoutClean implements Action {
-  readonly type = Actions.LOGOUT_CLEAN;
+  readonly type = LogoutActions.LOGOUT_CLEAN;
 }
 
 export type LogoutAction = LogoutStart |

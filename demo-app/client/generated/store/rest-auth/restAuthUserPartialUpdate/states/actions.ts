@@ -10,7 +10,7 @@ import {Action} from '@ngrx/store';
 import {RestAuthUserPartialUpdateParams} from '../../../../controllers/RestAuth';
 import * as __model from '../../../../model';
 
-export enum Actions {
+export enum RestAuthUserPartialUpdateActions {
   RESTAUTHUSERPARTIALUPDATE_START = '[RestAuth restAuthUserPartialUpdate] Start',
   RESTAUTHUSERPARTIALUPDATE_SUCCESS = '[RestAuth restAuthUserPartialUpdate] Success',
   RESTAUTHUSERPARTIALUPDATE_ERROR = '[RestAuth restAuthUserPartialUpdate] Error',
@@ -18,22 +18,22 @@ export enum Actions {
 }
 
 export class RestAuthUserPartialUpdateStart implements Action {
-  readonly type = Actions.RESTAUTHUSERPARTIALUPDATE_START;
+  readonly type = RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_START;
   constructor(public payload: RestAuthUserPartialUpdateParams) {}
 }
 
 export class RestAuthUserPartialUpdateSuccess implements Action {
-  readonly type = Actions.RESTAUTHUSERPARTIALUPDATE_SUCCESS;
+  readonly type = RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserPartialUpdateError implements Action {
-  readonly type = Actions.RESTAUTHUSERPARTIALUPDATE_ERROR;
+  readonly type = RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserPartialUpdateClean implements Action {
-  readonly type = Actions.RESTAUTHUSERPARTIALUPDATE_CLEAN;
+  readonly type = RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_CLEAN;
 }
 
 export type RestAuthUserPartialUpdateAction = RestAuthUserPartialUpdateStart |

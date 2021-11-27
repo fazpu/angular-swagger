@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {OrderService} from '../../../../controllers/Order';
-import * as actions from './actions';
+import {OrderActions, OrderError, OrderStart, OrderSuccess} from './actions';
 
 @Injectable()
 export class OrderEffects {
   @Effect()
   Order = this.storeActions.pipe(
-    ofType<actions.OrderStart>(actions.Actions.ORDER_START),
-    switchMap((action: actions.OrderStart) => this.orderService.order(action.payload)
+    ofType<OrderStart>(OrderActions.ORDER_START),
+    switchMap((action: OrderStart) => this.orderService.order(action.payload)
       .pipe(
-        map(result => new actions.OrderSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.OrderError(error))),
+        map(result => new OrderSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new OrderError(error))),
       ),
     ),
   );

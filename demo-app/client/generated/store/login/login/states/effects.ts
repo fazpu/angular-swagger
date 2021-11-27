@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {LoginService} from '../../../../controllers/Login';
-import * as actions from './actions';
+import {LoginActions, LoginError, LoginStart, LoginSuccess} from './actions';
 
 @Injectable()
 export class LoginEffects {
   @Effect()
   Login = this.storeActions.pipe(
-    ofType<actions.LoginStart>(actions.Actions.LOGIN_START),
-    switchMap((action: actions.LoginStart) => this.loginService.login(action.payload)
+    ofType<LoginStart>(LoginActions.LOGIN_START),
+    switchMap((action: LoginStart) => this.loginService.login(action.payload)
       .pipe(
-        map(result => new actions.LoginSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.LoginError(error))),
+        map(result => new LoginSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new LoginError(error))),
       ),
     ),
   );

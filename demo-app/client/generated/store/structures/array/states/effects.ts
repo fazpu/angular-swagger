@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {StructuresService} from '../../../../controllers/Structures';
-import * as actions from './actions';
+import {ArrayActions, ArrayError, ArrayStart, ArraySuccess} from './actions';
 
 @Injectable()
 export class ArrayEffects {
   @Effect()
   Array = this.storeActions.pipe(
-    ofType<actions.ArrayStart>(actions.Actions.ARRAY_START),
-    switchMap((action: actions.ArrayStart) => this.structuresService.array(action.payload)
+    ofType<ArrayStart>(ArrayActions.ARRAY_START),
+    switchMap((action: ArrayStart) => this.structuresService.array(action.payload)
       .pipe(
-        map(result => new actions.ArraySuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.ArrayError(error))),
+        map(result => new ArraySuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new ArrayError(error))),
       ),
     ),
   );

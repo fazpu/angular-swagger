@@ -1,6 +1,6 @@
 # Angular Swagger2
 This repository was derived from [swagger-angular-generator](https://github.com/jnwltr/swagger-angular-generator).
-The main difference is that it drops support for form services and extends ngrx generation capabilities.
+The main difference is that it drops support for form services and extends ngrx generation capabilities, introduces eslint and Angular 12 support.
 
 ## Purpose
 
@@ -188,11 +188,11 @@ export class ExampleComponent implements OnDestroy {
 @Injectable()
 export class ExampleEffects {
   @Effect()
-  CreateProductCategory = this.storeActions.ofType<actions.Start>(actions.Actions.START).pipe(
-    switchMap((action: actions.Start) => this.exampleService.exampleEndpointMethod(action.payload)
+  CreateProductCategory = this.storeActions.ofType<ExampleStart>(ExampleActions.START).pipe(
+    switchMap((action: ExampleStart) => this.exampleService.exampleEndpointMethod(action.payload)
       .pipe(
-        map(result => new actions.Success(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.Error(error.message))),
+        map(result => new ExampleSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new ExampleError(error.message))),
       ),
     ),
   );
@@ -224,11 +224,11 @@ export const getExampleSelector = createFeatureSelector<ExampleState>(selectorNa
 
 export function ExampleReducer(
   state: ExampleState = initialExampleState,
-  action: actions.ExampleAction): ExampleState {
+  action: ExampleAction): ExampleState {
   switch (action.type) {
-    case actions.Actions.START: return {...state, loading: true, error: null};
-    case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ERROR: return {...state, error: action.payload, loading: false};
+    case ExampleActions.START: return {...state, loading: true, error: null};
+    case ExampleActions.SUCCESS: return {...state, data: action.payload, loading: false};
+    case ExampleActions.ERROR: return {...state, error: action.payload, loading: false};
     default: return state;
   }
 }

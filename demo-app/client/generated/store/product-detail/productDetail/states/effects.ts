@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {ProductDetailService} from '../../../../controllers/ProductDetail';
-import * as actions from './actions';
+import {ProductDetailActions, ProductDetailError, ProductDetailStart, ProductDetailSuccess} from './actions';
 
 @Injectable()
 export class ProductDetailEffects {
   @Effect()
   ProductDetail = this.storeActions.pipe(
-    ofType<actions.ProductDetailStart>(actions.Actions.PRODUCTDETAIL_START),
-    switchMap((action: actions.ProductDetailStart) => this.productdetailService.productDetail(action.payload)
+    ofType<ProductDetailStart>(ProductDetailActions.PRODUCTDETAIL_START),
+    switchMap((action: ProductDetailStart) => this.productdetailService.productDetail(action.payload)
       .pipe(
-        map(result => new actions.ProductDetailSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.ProductDetailError(error))),
+        map(result => new ProductDetailSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new ProductDetailError(error))),
       ),
     ),
   );

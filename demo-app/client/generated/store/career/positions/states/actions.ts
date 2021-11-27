@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {PositionsParams} from '../../../../controllers/Career';
 
-export enum Actions {
+export enum PositionsActions {
   POSITIONS_START = '[Career positions] Start',
   POSITIONS_SUCCESS = '[Career positions] Success',
   POSITIONS_ERROR = '[Career positions] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class PositionsStart implements Action {
-  readonly type = Actions.POSITIONS_START;
+  readonly type = PositionsActions.POSITIONS_START;
   constructor(public payload: PositionsParams) {}
 }
 
 export class PositionsSuccess implements Action {
-  readonly type = Actions.POSITIONS_SUCCESS;
+  readonly type = PositionsActions.POSITIONS_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class PositionsError implements Action {
-  readonly type = Actions.POSITIONS_ERROR;
+  readonly type = PositionsActions.POSITIONS_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class PositionsClean implements Action {
-  readonly type = Actions.POSITIONS_CLEAN;
+  readonly type = PositionsActions.POSITIONS_CLEAN;
 }
 
 export type PositionsAction = PositionsStart |

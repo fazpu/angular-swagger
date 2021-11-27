@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {RegistrationService} from '../../../../controllers/Registration';
-import * as actions from './actions';
+import {RegistrationActions, RegistrationError, RegistrationStart, RegistrationSuccess} from './actions';
 
 @Injectable()
 export class RegistrationEffects {
   @Effect()
   Registration = this.storeActions.pipe(
-    ofType<actions.RegistrationStart>(actions.Actions.REGISTRATION_START),
-    switchMap((action: actions.RegistrationStart) => this.registrationService.registration(action.payload)
+    ofType<RegistrationStart>(RegistrationActions.REGISTRATION_START),
+    switchMap((action: RegistrationStart) => this.registrationService.registration(action.payload)
       .pipe(
-        map(result => new actions.RegistrationSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.RegistrationError(error))),
+        map(result => new RegistrationSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new RegistrationError(error))),
       ),
     ),
   );

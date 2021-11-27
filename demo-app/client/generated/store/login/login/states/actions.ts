@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import {LoginParams} from '../../../../controllers/Login';
 
-export enum Actions {
+export enum LoginActions {
   LOGIN_START = '[Login login] Start',
   LOGIN_SUCCESS = '[Login login] Success',
   LOGIN_ERROR = '[Login login] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class LoginStart implements Action {
-  readonly type = Actions.LOGIN_START;
+  readonly type = LoginActions.LOGIN_START;
   constructor(public payload: LoginParams) {}
 }
 
 export class LoginSuccess implements Action {
-  readonly type = Actions.LOGIN_SUCCESS;
+  readonly type = LoginActions.LOGIN_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class LoginError implements Action {
-  readonly type = Actions.LOGIN_ERROR;
+  readonly type = LoginActions.LOGIN_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class LoginClean implements Action {
-  readonly type = Actions.LOGIN_CLEAN;
+  readonly type = LoginActions.LOGIN_CLEAN;
 }
 
 export type LoginAction = LoginStart |

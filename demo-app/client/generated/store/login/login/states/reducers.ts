@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {LoginAction, LoginActions} from './actions';
 
 export interface LoginState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getLoginStateSelector = createFeatureSelector<LoginState>(selectorN
 
 export function LoginReducer(
   state: LoginState = initialLoginState,
-  action: actions.LoginAction): LoginState {
+  action: LoginAction): LoginState {
   switch (action.type) {
-    case actions.Actions.LOGIN_START: return {...state, loading: true, error: null};
-    case actions.Actions.LOGIN_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.LOGIN_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.LOGIN_CLEAN: return initialLoginState;
+    case LoginActions.LOGIN_START: return {...state, loading: true, error: null};
+    case LoginActions.LOGIN_SUCCESS: return {...state, data: action.payload, loading: false};
+    case LoginActions.LOGIN_ERROR: return {...state, error: action.payload, loading: false};
+    case LoginActions.LOGIN_CLEAN: return initialLoginState;
     default: return state;
   }
 }

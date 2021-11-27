@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {OrderAction, OrderActions} from './actions';
 
 export interface OrderState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getOrderStateSelector = createFeatureSelector<OrderState>(selectorN
 
 export function OrderReducer(
   state: OrderState = initialOrderState,
-  action: actions.OrderAction): OrderState {
+  action: OrderAction): OrderState {
   switch (action.type) {
-    case actions.Actions.ORDER_START: return {...state, loading: true, error: null};
-    case actions.Actions.ORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.ORDER_CLEAN: return initialOrderState;
+    case OrderActions.ORDER_START: return {...state, loading: true, error: null};
+    case OrderActions.ORDER_SUCCESS: return {...state, data: action.payload, loading: false};
+    case OrderActions.ORDER_ERROR: return {...state, error: action.payload, loading: false};
+    case OrderActions.ORDER_CLEAN: return initialOrderState;
     default: return state;
   }
 }

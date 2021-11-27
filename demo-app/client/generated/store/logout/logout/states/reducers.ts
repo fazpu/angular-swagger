@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {LogoutAction, LogoutActions} from './actions';
 
 export interface LogoutState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getLogoutStateSelector = createFeatureSelector<LogoutState>(selecto
 
 export function LogoutReducer(
   state: LogoutState = initialLogoutState,
-  action: actions.LogoutAction): LogoutState {
+  action: LogoutAction): LogoutState {
   switch (action.type) {
-    case actions.Actions.LOGOUT_START: return {...state, loading: true, error: null};
-    case actions.Actions.LOGOUT_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.LOGOUT_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.LOGOUT_CLEAN: return initialLogoutState;
+    case LogoutActions.LOGOUT_START: return {...state, loading: true, error: null};
+    case LogoutActions.LOGOUT_SUCCESS: return {...state, data: action.payload, loading: false};
+    case LogoutActions.LOGOUT_ERROR: return {...state, error: action.payload, loading: false};
+    case LogoutActions.LOGOUT_CLEAN: return initialLogoutState;
     default: return state;
   }
 }

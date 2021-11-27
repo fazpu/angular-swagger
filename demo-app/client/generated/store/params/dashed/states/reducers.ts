@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {DashedAction, DashedActions} from './actions';
 
 export interface DashedState {
   data: void | null;
@@ -27,12 +27,12 @@ export const getDashedStateSelector = createFeatureSelector<DashedState>(selecto
 
 export function DashedReducer(
   state: DashedState = initialDashedState,
-  action: actions.DashedAction): DashedState {
+  action: DashedAction): DashedState {
   switch (action.type) {
-    case actions.Actions.DASHED_START: return {...state, loading: true, error: null};
-    case actions.Actions.DASHED_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.DASHED_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.DASHED_CLEAN: return initialDashedState;
+    case DashedActions.DASHED_START: return {...state, loading: true, error: null};
+    case DashedActions.DASHED_SUCCESS: return {...state, data: action.payload, loading: false};
+    case DashedActions.DASHED_ERROR: return {...state, error: action.payload, loading: false};
+    case DashedActions.DASHED_CLEAN: return initialDashedState;
     default: return state;
   }
 }

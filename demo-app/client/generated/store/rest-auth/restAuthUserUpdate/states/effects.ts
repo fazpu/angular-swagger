@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {RestAuthService} from '../../../../controllers/RestAuth';
-import * as actions from './actions';
+import {RestAuthUserUpdateActions, RestAuthUserUpdateError, RestAuthUserUpdateStart, RestAuthUserUpdateSuccess} from './actions';
 
 @Injectable()
 export class RestAuthUserUpdateEffects {
   @Effect()
   RestAuthUserUpdate = this.storeActions.pipe(
-    ofType<actions.RestAuthUserUpdateStart>(actions.Actions.RESTAUTHUSERUPDATE_START),
-    switchMap((action: actions.RestAuthUserUpdateStart) => this.restauthService.restAuthUserUpdate(action.payload)
+    ofType<RestAuthUserUpdateStart>(RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START),
+    switchMap((action: RestAuthUserUpdateStart) => this.restauthService.restAuthUserUpdate(action.payload)
       .pipe(
-        map(result => new actions.RestAuthUserUpdateSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.RestAuthUserUpdateError(error))),
+        map(result => new RestAuthUserUpdateSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new RestAuthUserUpdateError(error))),
       ),
     ),
   );

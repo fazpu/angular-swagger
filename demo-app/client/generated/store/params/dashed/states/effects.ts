@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {ParamsService} from '../../../../controllers/Params';
-import * as actions from './actions';
+import {DashedActions, DashedError, DashedStart, DashedSuccess} from './actions';
 
 @Injectable()
 export class DashedEffects {
   @Effect()
   Dashed = this.storeActions.pipe(
-    ofType<actions.DashedStart>(actions.Actions.DASHED_START),
-    switchMap((action: actions.DashedStart) => this.paramsService.dashed(action.payload)
+    ofType<DashedStart>(DashedActions.DASHED_START),
+    switchMap((action: DashedStart) => this.paramsService.dashed(action.payload)
       .pipe(
-        map(result => new actions.DashedSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.DashedError(error))),
+        map(result => new DashedSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new DashedError(error))),
       ),
     ),
   );

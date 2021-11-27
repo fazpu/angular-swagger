@@ -7,7 +7,7 @@ import {indent, writeFile} from '../../utils';
 export function generateHttpReducers(config: Config, name: string, actionClassNameBase: string,
                                      formSubDirName: string, responseType: string) {
   let content = '';
-  content += getReducerImports(responseType.startsWith('__model.'));
+  content += getReducerImports(responseType.startsWith('__model.'), actionClassNameBase);
   content += getStateInteface(actionClassNameBase, responseType);
   content += getInitialState(actionClassNameBase);
   content += getFeatureSelector(name, actionClassNameBase);
@@ -17,11 +17,11 @@ export function generateHttpReducers(config: Config, name: string, actionClassNa
   writeFile(reducersFileName, content, config.header);
 }
 
-function getReducerImports(usesModels: boolean) {
+function getReducerImports(usesModels: boolean, actionClassNameBase: string) {
   let res = `import {createFeatureSelector} from '@ngrx/store';\n\n`;
   res += `import {HttpErrorResponse} from '@angular/common/http';\n`;
   if (usesModels) res += `import * as __model from '../../../../model';\n`;
-  res += `import * as actions from './actions';\n\n`;
+  res += `import {${actionClassNameBase}Action, ${actionClassNameBase}Actions} from './actions';\n\n`;
 
   return res;
 }
@@ -57,15 +57,15 @@ function getFeatureSelector(name: string, actionClassNameBase: string) {
 function getReducerDefinition(actionClassNameBase: string) {
   let res = `export function ${actionClassNameBase}Reducer(\n`;
   res += indent(`state: ${actionClassNameBase}State = initial${actionClassNameBase}State,\n`);
-  res += indent(`action: actions.${actionClassNameBase}Action): ${actionClassNameBase}State {\n\n`);
+  res += indent(`action: ${actionClassNameBase}Action): ${actionClassNameBase}State {\n\n`);
   res += indent(`switch (action.type) {\n`);
   res += indent([
-    `case actions.Actions.${actionClassNameBase.toUpperCase()}_START: return {...state, loading: true, error: null};`,
+    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START: return {...state, loading: true, error: null};`,
     // eslint-disable-next-line max-len
-    `case actions.Actions.${actionClassNameBase.toUpperCase()}_SUCCESS: return {...state, data: action.payload, loading: false};`,
+    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS: return {...state, data: action.payload, loading: false};`,
     // eslint-disable-next-line max-len
-    `case actions.Actions.${actionClassNameBase.toUpperCase()}_ERROR: return {...state, error: action.payload, loading: false};`,
-    `case actions.Actions.${actionClassNameBase.toUpperCase()}_CLEAN: return initial${actionClassNameBase}State;`,
+    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR: return {...state, error: action.payload, loading: false};`,
+    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN: return initial${actionClassNameBase}State;`,
     `default: return state;`,
   ], 2);
   res += indent(`\n}\n`);

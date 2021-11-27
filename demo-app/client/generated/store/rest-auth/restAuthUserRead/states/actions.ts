@@ -9,7 +9,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 import * as __model from '../../../../model';
 
-export enum Actions {
+export enum RestAuthUserReadActions {
   RESTAUTHUSERREAD_START = '[RestAuth restAuthUserRead] Start',
   RESTAUTHUSERREAD_SUCCESS = '[RestAuth restAuthUserRead] Success',
   RESTAUTHUSERREAD_ERROR = '[RestAuth restAuthUserRead] Error',
@@ -17,22 +17,22 @@ export enum Actions {
 }
 
 export class RestAuthUserReadStart implements Action {
-  readonly type = Actions.RESTAUTHUSERREAD_START;
+  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_START;
   constructor() {}
 }
 
 export class RestAuthUserReadSuccess implements Action {
-  readonly type = Actions.RESTAUTHUSERREAD_SUCCESS;
+  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserReadError implements Action {
-  readonly type = Actions.RESTAUTHUSERREAD_ERROR;
+  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserReadClean implements Action {
-  readonly type = Actions.RESTAUTHUSERREAD_CLEAN;
+  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN;
 }
 
 export type RestAuthUserReadAction = RestAuthUserReadStart |

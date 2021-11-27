@@ -13,17 +13,17 @@ import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {RestAuthService} from '../../../../controllers/RestAuth';
-import * as actions from './actions';
+import {RestAuthLogoutListActions, RestAuthLogoutListError, RestAuthLogoutListStart, RestAuthLogoutListSuccess} from './actions';
 
 @Injectable()
 export class RestAuthLogoutListEffects {
   @Effect()
   RestAuthLogoutList = this.storeActions.pipe(
-    ofType<actions.RestAuthLogoutListStart>(actions.Actions.RESTAUTHLOGOUTLIST_START),
+    ofType<RestAuthLogoutListStart>(RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_START),
     switchMap(() => this.restauthService.restAuthLogoutList()
       .pipe(
-        map(result => new actions.RestAuthLogoutListSuccess(result)),
-        catchError((error: HttpErrorResponse) => of(new actions.RestAuthLogoutListError(error))),
+        map(result => new RestAuthLogoutListSuccess(result)),
+        catchError((error: HttpErrorResponse) => of(new RestAuthLogoutListError(error))),
       ),
     ),
   );

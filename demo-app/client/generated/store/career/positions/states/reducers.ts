@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {PositionsAction, PositionsActions} from './actions';
 
 export interface PositionsState {
   data: Record<string, unknown> | null;
@@ -27,12 +27,12 @@ export const getPositionsStateSelector = createFeatureSelector<PositionsState>(s
 
 export function PositionsReducer(
   state: PositionsState = initialPositionsState,
-  action: actions.PositionsAction): PositionsState {
+  action: PositionsAction): PositionsState {
   switch (action.type) {
-    case actions.Actions.POSITIONS_START: return {...state, loading: true, error: null};
-    case actions.Actions.POSITIONS_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.POSITIONS_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.POSITIONS_CLEAN: return initialPositionsState;
+    case PositionsActions.POSITIONS_START: return {...state, loading: true, error: null};
+    case PositionsActions.POSITIONS_SUCCESS: return {...state, data: action.payload, loading: false};
+    case PositionsActions.POSITIONS_ERROR: return {...state, error: action.payload, loading: false};
+    case PositionsActions.POSITIONS_CLEAN: return initialPositionsState;
     default: return state;
   }
 }

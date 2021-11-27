@@ -8,7 +8,7 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as actions from './actions';
+import {RestAuthLogoutListAction, RestAuthLogoutListActions} from './actions';
 
 export interface RestAuthLogoutListState {
   data: void | null;
@@ -27,12 +27,12 @@ export const getRestAuthLogoutListStateSelector = createFeatureSelector<RestAuth
 
 export function RestAuthLogoutListReducer(
   state: RestAuthLogoutListState = initialRestAuthLogoutListState,
-  action: actions.RestAuthLogoutListAction): RestAuthLogoutListState {
+  action: RestAuthLogoutListAction): RestAuthLogoutListState {
   switch (action.type) {
-    case actions.Actions.RESTAUTHLOGOUTLIST_START: return {...state, loading: true, error: null};
-    case actions.Actions.RESTAUTHLOGOUTLIST_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.RESTAUTHLOGOUTLIST_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.RESTAUTHLOGOUTLIST_CLEAN: return initialRestAuthLogoutListState;
+    case RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_START: return {...state, loading: true, error: null};
+    case RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_SUCCESS: return {...state, data: action.payload, loading: false};
+    case RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_ERROR: return {...state, error: action.payload, loading: false};
+    case RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_CLEAN: return initialRestAuthLogoutListState;
     default: return state;
   }
 }

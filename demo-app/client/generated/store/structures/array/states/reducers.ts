@@ -9,7 +9,7 @@ import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
-import * as actions from './actions';
+import {ArrayAction, ArrayActions} from './actions';
 
 export interface ArrayState {
   data: __model.ArrayGeneratedInlineModel | null;
@@ -28,12 +28,12 @@ export const getArrayStateSelector = createFeatureSelector<ArrayState>(selectorN
 
 export function ArrayReducer(
   state: ArrayState = initialArrayState,
-  action: actions.ArrayAction): ArrayState {
+  action: ArrayAction): ArrayState {
   switch (action.type) {
-    case actions.Actions.ARRAY_START: return {...state, loading: true, error: null};
-    case actions.Actions.ARRAY_SUCCESS: return {...state, data: action.payload, loading: false};
-    case actions.Actions.ARRAY_ERROR: return {...state, error: action.payload, loading: false};
-    case actions.Actions.ARRAY_CLEAN: return initialArrayState;
+    case ArrayActions.ARRAY_START: return {...state, loading: true, error: null};
+    case ArrayActions.ARRAY_SUCCESS: return {...state, data: action.payload, loading: false};
+    case ArrayActions.ARRAY_ERROR: return {...state, error: action.payload, loading: false};
+    case ArrayActions.ARRAY_CLEAN: return initialArrayState;
     default: return state;
   }
 }
