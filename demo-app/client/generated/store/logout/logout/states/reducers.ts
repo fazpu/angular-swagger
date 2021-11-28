@@ -28,11 +28,21 @@ export const getLogoutStateSelector = createFeatureSelector<LogoutState>(selecto
 export function LogoutReducer(
   state: LogoutState = initialLogoutState,
   action: LogoutAction): LogoutState {
+
   switch (action.type) {
-    case LogoutActions.LOGOUT_START: return {...state, loading: true, error: null};
-    case LogoutActions.LOGOUT_SUCCESS: return {...state, data: action.payload, loading: false};
-    case LogoutActions.LOGOUT_ERROR: return {...state, error: action.payload, loading: false};
-    case LogoutActions.LOGOUT_CLEAN: return initialLogoutState;
-    default: return state;
+    case LogoutActions.LOGOUT_START:
+      return {...state, loading: true, error: null};
+
+    case LogoutActions.LOGOUT_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case LogoutActions.LOGOUT_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case LogoutActions.LOGOUT_CLEAN:
+      return initialLogoutState;
+
+    default:
+      return state;
   }
 }

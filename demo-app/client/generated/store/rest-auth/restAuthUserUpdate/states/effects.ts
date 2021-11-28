@@ -18,7 +18,7 @@ import {RestAuthUserUpdateActions, RestAuthUserUpdateError, RestAuthUserUpdateSt
 @Injectable()
 export class RestAuthUserUpdateEffects {
   @Effect()
-  RestAuthUserUpdate = this.storeActions.pipe(
+  public restAuthUserUpdate = this.storeActions.pipe(
     ofType<RestAuthUserUpdateStart>(RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START),
     switchMap((action: RestAuthUserUpdateStart) => this.restauthService.restAuthUserUpdate(action.payload)
       .pipe(

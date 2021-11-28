@@ -18,7 +18,7 @@ import {DashedActions, DashedError, DashedStart, DashedSuccess} from './actions'
 @Injectable()
 export class DashedEffects {
   @Effect()
-  Dashed = this.storeActions.pipe(
+  public dashed = this.storeActions.pipe(
     ofType<DashedStart>(DashedActions.DASHED_START),
     switchMap((action: DashedStart) => this.paramsService.dashed(action.payload)
       .pipe(

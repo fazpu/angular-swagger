@@ -28,11 +28,21 @@ export const getPutOrderStateSelector = createFeatureSelector<PutOrderState>(sel
 export function PutOrderReducer(
   state: PutOrderState = initialPutOrderState,
   action: PutOrderAction): PutOrderState {
+
   switch (action.type) {
-    case PutOrderActions.PUTORDER_START: return {...state, loading: true, error: null};
-    case PutOrderActions.PUTORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case PutOrderActions.PUTORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case PutOrderActions.PUTORDER_CLEAN: return initialPutOrderState;
-    default: return state;
+    case PutOrderActions.PUTORDER_START:
+      return {...state, loading: true, error: null};
+
+    case PutOrderActions.PUTORDER_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case PutOrderActions.PUTORDER_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case PutOrderActions.PUTORDER_CLEAN:
+      return initialPutOrderState;
+
+    default:
+      return state;
   }
 }

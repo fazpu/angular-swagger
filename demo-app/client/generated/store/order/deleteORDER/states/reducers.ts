@@ -28,11 +28,21 @@ export const getDeleteORDERStateSelector = createFeatureSelector<DeleteORDERStat
 export function DeleteORDERReducer(
   state: DeleteORDERState = initialDeleteORDERState,
   action: DeleteORDERAction): DeleteORDERState {
+
   switch (action.type) {
-    case DeleteORDERActions.DELETEORDER_START: return {...state, loading: true, error: null};
-    case DeleteORDERActions.DELETEORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case DeleteORDERActions.DELETEORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case DeleteORDERActions.DELETEORDER_CLEAN: return initialDeleteORDERState;
-    default: return state;
+    case DeleteORDERActions.DELETEORDER_START:
+      return {...state, loading: true, error: null};
+
+    case DeleteORDERActions.DELETEORDER_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case DeleteORDERActions.DELETEORDER_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case DeleteORDERActions.DELETEORDER_CLEAN:
+      return initialDeleteORDERState;
+
+    default:
+      return state;
   }
 }

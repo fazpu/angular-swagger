@@ -29,11 +29,21 @@ export const getRestAuthUserUpdateStateSelector = createFeatureSelector<RestAuth
 export function RestAuthUserUpdateReducer(
   state: RestAuthUserUpdateState = initialRestAuthUserUpdateState,
   action: RestAuthUserUpdateAction): RestAuthUserUpdateState {
+
   switch (action.type) {
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START: return {...state, loading: true, error: null};
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS: return {...state, data: action.payload, loading: false};
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR: return {...state, error: action.payload, loading: false};
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN: return initialRestAuthUserUpdateState;
-    default: return state;
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START:
+      return {...state, loading: true, error: null};
+
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN:
+      return initialRestAuthUserUpdateState;
+
+    default:
+      return state;
   }
 }

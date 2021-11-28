@@ -17,22 +17,22 @@ export enum PositionsActions {
 }
 
 export class PositionsStart implements Action {
-  readonly type = PositionsActions.POSITIONS_START;
+  public readonly type = PositionsActions.POSITIONS_START;
   constructor(public payload: PositionsParams) {}
 }
 
 export class PositionsSuccess implements Action {
-  readonly type = PositionsActions.POSITIONS_SUCCESS;
+  public readonly type = PositionsActions.POSITIONS_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class PositionsError implements Action {
-  readonly type = PositionsActions.POSITIONS_ERROR;
+  public readonly type = PositionsActions.POSITIONS_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class PositionsClean implements Action {
-  readonly type = PositionsActions.POSITIONS_CLEAN;
+  public readonly type = PositionsActions.POSITIONS_CLEAN;
 }
 
 export type PositionsAction = PositionsStart |

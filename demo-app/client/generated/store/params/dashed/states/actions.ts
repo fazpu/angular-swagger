@@ -17,22 +17,22 @@ export enum DashedActions {
 }
 
 export class DashedStart implements Action {
-  readonly type = DashedActions.DASHED_START;
+  public readonly type = DashedActions.DASHED_START;
   constructor(public payload: DashedParams) {}
 }
 
 export class DashedSuccess implements Action {
-  readonly type = DashedActions.DASHED_SUCCESS;
+  public readonly type = DashedActions.DASHED_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class DashedError implements Action {
-  readonly type = DashedActions.DASHED_ERROR;
+  public readonly type = DashedActions.DASHED_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class DashedClean implements Action {
-  readonly type = DashedActions.DASHED_CLEAN;
+  public readonly type = DashedActions.DASHED_CLEAN;
 }
 
 export type DashedAction = DashedStart |

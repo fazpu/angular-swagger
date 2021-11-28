@@ -29,11 +29,21 @@ export const getArrayStateSelector = createFeatureSelector<ArrayState>(selectorN
 export function ArrayReducer(
   state: ArrayState = initialArrayState,
   action: ArrayAction): ArrayState {
+
   switch (action.type) {
-    case ArrayActions.ARRAY_START: return {...state, loading: true, error: null};
-    case ArrayActions.ARRAY_SUCCESS: return {...state, data: action.payload, loading: false};
-    case ArrayActions.ARRAY_ERROR: return {...state, error: action.payload, loading: false};
-    case ArrayActions.ARRAY_CLEAN: return initialArrayState;
-    default: return state;
+    case ArrayActions.ARRAY_START:
+      return {...state, loading: true, error: null};
+
+    case ArrayActions.ARRAY_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case ArrayActions.ARRAY_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case ArrayActions.ARRAY_CLEAN:
+      return initialArrayState;
+
+    default:
+      return state;
   }
 }

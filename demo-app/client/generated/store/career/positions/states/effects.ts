@@ -18,7 +18,7 @@ import {PositionsActions, PositionsError, PositionsStart, PositionsSuccess} from
 @Injectable()
 export class PositionsEffects {
   @Effect()
-  Positions = this.storeActions.pipe(
+  public positions = this.storeActions.pipe(
     ofType<PositionsStart>(PositionsActions.POSITIONS_START),
     switchMap((action: PositionsStart) => this.careerService.positions(action.payload)
       .pipe(

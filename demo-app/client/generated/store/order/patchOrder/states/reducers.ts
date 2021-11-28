@@ -28,11 +28,21 @@ export const getPatchOrderStateSelector = createFeatureSelector<PatchOrderState>
 export function PatchOrderReducer(
   state: PatchOrderState = initialPatchOrderState,
   action: PatchOrderAction): PatchOrderState {
+
   switch (action.type) {
-    case PatchOrderActions.PATCHORDER_START: return {...state, loading: true, error: null};
-    case PatchOrderActions.PATCHORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case PatchOrderActions.PATCHORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case PatchOrderActions.PATCHORDER_CLEAN: return initialPatchOrderState;
-    default: return state;
+    case PatchOrderActions.PATCHORDER_START:
+      return {...state, loading: true, error: null};
+
+    case PatchOrderActions.PATCHORDER_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case PatchOrderActions.PATCHORDER_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case PatchOrderActions.PATCHORDER_CLEAN:
+      return initialPatchOrderState;
+
+    default:
+      return state;
   }
 }

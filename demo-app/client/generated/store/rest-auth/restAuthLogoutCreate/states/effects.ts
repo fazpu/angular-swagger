@@ -18,7 +18,7 @@ import {RestAuthLogoutCreateActions, RestAuthLogoutCreateError, RestAuthLogoutCr
 @Injectable()
 export class RestAuthLogoutCreateEffects {
   @Effect()
-  RestAuthLogoutCreate = this.storeActions.pipe(
+  public restAuthLogoutCreate = this.storeActions.pipe(
     ofType<RestAuthLogoutCreateStart>(RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START),
     switchMap(() => this.restauthService.restAuthLogoutCreate()
       .pipe(

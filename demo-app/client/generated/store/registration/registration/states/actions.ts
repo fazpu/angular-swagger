@@ -17,22 +17,22 @@ export enum RegistrationActions {
 }
 
 export class RegistrationStart implements Action {
-  readonly type = RegistrationActions.REGISTRATION_START;
+  public readonly type = RegistrationActions.REGISTRATION_START;
   constructor(public payload: RegistrationParams) {}
 }
 
 export class RegistrationSuccess implements Action {
-  readonly type = RegistrationActions.REGISTRATION_SUCCESS;
+  public readonly type = RegistrationActions.REGISTRATION_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class RegistrationError implements Action {
-  readonly type = RegistrationActions.REGISTRATION_ERROR;
+  public readonly type = RegistrationActions.REGISTRATION_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RegistrationClean implements Action {
-  readonly type = RegistrationActions.REGISTRATION_CLEAN;
+  public readonly type = RegistrationActions.REGISTRATION_CLEAN;
 }
 
 export type RegistrationAction = RegistrationStart |

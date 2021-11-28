@@ -29,11 +29,21 @@ export const getRestAuthUserReadStateSelector = createFeatureSelector<RestAuthUs
 export function RestAuthUserReadReducer(
   state: RestAuthUserReadState = initialRestAuthUserReadState,
   action: RestAuthUserReadAction): RestAuthUserReadState {
+
   switch (action.type) {
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_START: return {...state, loading: true, error: null};
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS: return {...state, data: action.payload, loading: false};
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR: return {...state, error: action.payload, loading: false};
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN: return initialRestAuthUserReadState;
-    default: return state;
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_START:
+      return {...state, loading: true, error: null};
+
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN:
+      return initialRestAuthUserReadState;
+
+    default:
+      return state;
   }
 }

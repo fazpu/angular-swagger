@@ -29,11 +29,21 @@ export const getShowTicketDetailStateSelector = createFeatureSelector<ShowTicket
 export function ShowTicketDetailReducer(
   state: ShowTicketDetailState = initialShowTicketDetailState,
   action: ShowTicketDetailAction): ShowTicketDetailState {
+
   switch (action.type) {
-    case ShowTicketDetailActions.SHOWTICKETDETAIL_START: return {...state, loading: true, error: null};
-    case ShowTicketDetailActions.SHOWTICKETDETAIL_SUCCESS: return {...state, data: action.payload, loading: false};
-    case ShowTicketDetailActions.SHOWTICKETDETAIL_ERROR: return {...state, error: action.payload, loading: false};
-    case ShowTicketDetailActions.SHOWTICKETDETAIL_CLEAN: return initialShowTicketDetailState;
-    default: return state;
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_START:
+      return {...state, loading: true, error: null};
+
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case ShowTicketDetailActions.SHOWTICKETDETAIL_CLEAN:
+      return initialShowTicketDetailState;
+
+    default:
+      return state;
   }
 }

@@ -18,7 +18,7 @@ import {RestAuthUserPartialUpdateActions, RestAuthUserPartialUpdateError, RestAu
 @Injectable()
 export class RestAuthUserPartialUpdateEffects {
   @Effect()
-  RestAuthUserPartialUpdate = this.storeActions.pipe(
+  public restAuthUserPartialUpdate = this.storeActions.pipe(
     ofType<RestAuthUserPartialUpdateStart>(RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_START),
     switchMap((action: RestAuthUserPartialUpdateStart) => this.restauthService.restAuthUserPartialUpdate(action.payload)
       .pipe(

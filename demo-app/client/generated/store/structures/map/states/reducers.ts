@@ -28,11 +28,21 @@ export const getMapStateSelector = createFeatureSelector<MapState>(selectorName)
 export function MapReducer(
   state: MapState = initialMapState,
   action: MapAction): MapState {
+
   switch (action.type) {
-    case MapActions.MAP_START: return {...state, loading: true, error: null};
-    case MapActions.MAP_SUCCESS: return {...state, data: action.payload, loading: false};
-    case MapActions.MAP_ERROR: return {...state, error: action.payload, loading: false};
-    case MapActions.MAP_CLEAN: return initialMapState;
-    default: return state;
+    case MapActions.MAP_START:
+      return {...state, loading: true, error: null};
+
+    case MapActions.MAP_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case MapActions.MAP_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case MapActions.MAP_CLEAN:
+      return initialMapState;
+
+    default:
+      return state;
   }
 }

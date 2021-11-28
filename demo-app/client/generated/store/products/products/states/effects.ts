@@ -18,7 +18,7 @@ import {ProductsActions, ProductsError, ProductsStart, ProductsSuccess} from './
 @Injectable()
 export class ProductsEffects {
   @Effect()
-  Products = this.storeActions.pipe(
+  public products = this.storeActions.pipe(
     ofType<ProductsStart>(ProductsActions.PRODUCTS_START),
     switchMap((action: ProductsStart) => this.productsService.products(action.payload)
       .pipe(

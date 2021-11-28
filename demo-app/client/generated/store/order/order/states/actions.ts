@@ -17,22 +17,22 @@ export enum OrderActions {
 }
 
 export class OrderStart implements Action {
-  readonly type = OrderActions.ORDER_START;
+  public readonly type = OrderActions.ORDER_START;
   constructor(public payload: OrderParams) {}
 }
 
 export class OrderSuccess implements Action {
-  readonly type = OrderActions.ORDER_SUCCESS;
+  public readonly type = OrderActions.ORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class OrderError implements Action {
-  readonly type = OrderActions.ORDER_ERROR;
+  public readonly type = OrderActions.ORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class OrderClean implements Action {
-  readonly type = OrderActions.ORDER_CLEAN;
+  public readonly type = OrderActions.ORDER_CLEAN;
 }
 
 export type OrderAction = OrderStart |

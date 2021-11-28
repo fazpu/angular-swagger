@@ -18,22 +18,22 @@ export enum GetGoodsListActions {
 }
 
 export class GetGoodsListStart implements Action {
-  readonly type = GetGoodsListActions.GETGOODSLIST_START;
+  public readonly type = GetGoodsListActions.GETGOODSLIST_START;
   constructor(public payload: GetGoodsListParams) {}
 }
 
 export class GetGoodsListSuccess implements Action {
-  readonly type = GetGoodsListActions.GETGOODSLIST_SUCCESS;
+  public readonly type = GetGoodsListActions.GETGOODSLIST_SUCCESS;
   constructor(public payload: __model.GetGoodsListGeneratedInlineModel) {}
 }
 
 export class GetGoodsListError implements Action {
-  readonly type = GetGoodsListActions.GETGOODSLIST_ERROR;
+  public readonly type = GetGoodsListActions.GETGOODSLIST_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class GetGoodsListClean implements Action {
-  readonly type = GetGoodsListActions.GETGOODSLIST_CLEAN;
+  public readonly type = GetGoodsListActions.GETGOODSLIST_CLEAN;
 }
 
 export type GetGoodsListAction = GetGoodsListStart |

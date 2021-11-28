@@ -18,7 +18,7 @@ import {RegistrationActions, RegistrationError, RegistrationStart, RegistrationS
 @Injectable()
 export class RegistrationEffects {
   @Effect()
-  Registration = this.storeActions.pipe(
+  public registration = this.storeActions.pipe(
     ofType<RegistrationStart>(RegistrationActions.REGISTRATION_START),
     switchMap((action: RegistrationStart) => this.registrationService.registration(action.payload)
       .pipe(

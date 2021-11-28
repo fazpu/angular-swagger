@@ -157,3 +157,8 @@ export function merge(favoured: any[], others: any[], ...keys: string[]): any[] 
     });
   return favoured.concat(othersFiltered);
 }
+
+
+export function firstLetterToLowercase(text: string): string {
+    return text[0].toLowerCase() + text.slice(1);
+}

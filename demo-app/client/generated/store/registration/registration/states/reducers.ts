@@ -28,11 +28,21 @@ export const getRegistrationStateSelector = createFeatureSelector<RegistrationSt
 export function RegistrationReducer(
   state: RegistrationState = initialRegistrationState,
   action: RegistrationAction): RegistrationState {
+
   switch (action.type) {
-    case RegistrationActions.REGISTRATION_START: return {...state, loading: true, error: null};
-    case RegistrationActions.REGISTRATION_SUCCESS: return {...state, data: action.payload, loading: false};
-    case RegistrationActions.REGISTRATION_ERROR: return {...state, error: action.payload, loading: false};
-    case RegistrationActions.REGISTRATION_CLEAN: return initialRegistrationState;
-    default: return state;
+    case RegistrationActions.REGISTRATION_START:
+      return {...state, loading: true, error: null};
+
+    case RegistrationActions.REGISTRATION_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case RegistrationActions.REGISTRATION_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case RegistrationActions.REGISTRATION_CLEAN:
+      return initialRegistrationState;
+
+    default:
+      return state;
   }
 }

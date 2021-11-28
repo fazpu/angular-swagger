@@ -17,22 +17,22 @@ export enum LoginActions {
 }
 
 export class LoginStart implements Action {
-  readonly type = LoginActions.LOGIN_START;
+  public readonly type = LoginActions.LOGIN_START;
   constructor(public payload: LoginParams) {}
 }
 
 export class LoginSuccess implements Action {
-  readonly type = LoginActions.LOGIN_SUCCESS;
+  public readonly type = LoginActions.LOGIN_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class LoginError implements Action {
-  readonly type = LoginActions.LOGIN_ERROR;
+  public readonly type = LoginActions.LOGIN_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class LoginClean implements Action {
-  readonly type = LoginActions.LOGIN_CLEAN;
+  public readonly type = LoginActions.LOGIN_CLEAN;
 }
 
 export type LoginAction = LoginStart |

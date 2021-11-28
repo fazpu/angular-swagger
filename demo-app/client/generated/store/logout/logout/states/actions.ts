@@ -16,22 +16,22 @@ export enum LogoutActions {
 }
 
 export class LogoutStart implements Action {
-  readonly type = LogoutActions.LOGOUT_START;
+  public readonly type = LogoutActions.LOGOUT_START;
   constructor() {}
 }
 
 export class LogoutSuccess implements Action {
-  readonly type = LogoutActions.LOGOUT_SUCCESS;
+  public readonly type = LogoutActions.LOGOUT_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class LogoutError implements Action {
-  readonly type = LogoutActions.LOGOUT_ERROR;
+  public readonly type = LogoutActions.LOGOUT_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class LogoutClean implements Action {
-  readonly type = LogoutActions.LOGOUT_CLEAN;
+  public readonly type = LogoutActions.LOGOUT_CLEAN;
 }
 
 export type LogoutAction = LogoutStart |
