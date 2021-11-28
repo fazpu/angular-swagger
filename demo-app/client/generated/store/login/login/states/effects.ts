@@ -18,7 +18,7 @@ import {LoginActions, LoginError, LoginStart, LoginSuccess} from './actions';
 @Injectable()
 export class LoginEffects {
   @Effect()
-  Login = this.storeActions.pipe(
+  public login = this.storeActions.pipe(
     ofType<LoginStart>(LoginActions.LOGIN_START),
     switchMap((action: LoginStart) => this.loginService.login(action.payload)
       .pipe(

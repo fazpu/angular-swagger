@@ -18,7 +18,7 @@ import {GetGoodsListActions, GetGoodsListError, GetGoodsListStart, GetGoodsListS
 @Injectable()
 export class GetGoodsListEffects {
   @Effect()
-  GetGoodsList = this.storeActions.pipe(
+  public getGoodsList = this.storeActions.pipe(
     ofType<GetGoodsListStart>(GetGoodsListActions.GETGOODSLIST_START),
     switchMap((action: GetGoodsListStart) => this.goodsService.getGoodsList(action.payload)
       .pipe(

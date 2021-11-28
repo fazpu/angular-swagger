@@ -18,7 +18,7 @@ import {ProductDetailActions, ProductDetailError, ProductDetailStart, ProductDet
 @Injectable()
 export class ProductDetailEffects {
   @Effect()
-  ProductDetail = this.storeActions.pipe(
+  public productDetail = this.storeActions.pipe(
     ofType<ProductDetailStart>(ProductDetailActions.PRODUCTDETAIL_START),
     switchMap((action: ProductDetailStart) => this.productdetailService.productDetail(action.payload)
       .pipe(

@@ -18,7 +18,7 @@ import {RestAuthUserReadActions, RestAuthUserReadError, RestAuthUserReadStart, R
 @Injectable()
 export class RestAuthUserReadEffects {
   @Effect()
-  RestAuthUserRead = this.storeActions.pipe(
+  public restAuthUserRead = this.storeActions.pipe(
     ofType<RestAuthUserReadStart>(RestAuthUserReadActions.RESTAUTHUSERREAD_START),
     switchMap(() => this.restauthService.restAuthUserRead()
       .pipe(

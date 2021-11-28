@@ -18,7 +18,7 @@ import {ArrayActions, ArrayError, ArrayStart, ArraySuccess} from './actions';
 @Injectable()
 export class ArrayEffects {
   @Effect()
-  Array = this.storeActions.pipe(
+  public array = this.storeActions.pipe(
     ofType<ArrayStart>(ArrayActions.ARRAY_START),
     switchMap((action: ArrayStart) => this.structuresService.array(action.payload)
       .pipe(

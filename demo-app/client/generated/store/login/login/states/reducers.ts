@@ -28,11 +28,21 @@ export const getLoginStateSelector = createFeatureSelector<LoginState>(selectorN
 export function LoginReducer(
   state: LoginState = initialLoginState,
   action: LoginAction): LoginState {
+
   switch (action.type) {
-    case LoginActions.LOGIN_START: return {...state, loading: true, error: null};
-    case LoginActions.LOGIN_SUCCESS: return {...state, data: action.payload, loading: false};
-    case LoginActions.LOGIN_ERROR: return {...state, error: action.payload, loading: false};
-    case LoginActions.LOGIN_CLEAN: return initialLoginState;
-    default: return state;
+    case LoginActions.LOGIN_START:
+      return {...state, loading: true, error: null};
+
+    case LoginActions.LOGIN_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case LoginActions.LOGIN_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case LoginActions.LOGIN_CLEAN:
+      return initialLoginState;
+
+    default:
+      return state;
   }
 }

@@ -18,22 +18,22 @@ export enum ProductsActions {
 }
 
 export class ProductsStart implements Action {
-  readonly type = ProductsActions.PRODUCTS_START;
+  public readonly type = ProductsActions.PRODUCTS_START;
   constructor(public payload: ProductsParams) {}
 }
 
 export class ProductsSuccess implements Action {
-  readonly type = ProductsActions.PRODUCTS_SUCCESS;
+  public readonly type = ProductsActions.PRODUCTS_SUCCESS;
   constructor(public payload: __model.Products) {}
 }
 
 export class ProductsError implements Action {
-  readonly type = ProductsActions.PRODUCTS_ERROR;
+  public readonly type = ProductsActions.PRODUCTS_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ProductsClean implements Action {
-  readonly type = ProductsActions.PRODUCTS_CLEAN;
+  public readonly type = ProductsActions.PRODUCTS_CLEAN;
 }
 
 export type ProductsAction = ProductsStart |

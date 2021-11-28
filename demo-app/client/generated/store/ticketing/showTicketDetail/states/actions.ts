@@ -18,22 +18,22 @@ export enum ShowTicketDetailActions {
 }
 
 export class ShowTicketDetailStart implements Action {
-  readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_START;
+  public readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_START;
   constructor(public payload: ShowTicketDetailParams) {}
 }
 
 export class ShowTicketDetailSuccess implements Action {
-  readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_SUCCESS;
+  public readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_SUCCESS;
   constructor(public payload: __model.TicketDetailOutput[]) {}
 }
 
 export class ShowTicketDetailError implements Action {
-  readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_ERROR;
+  public readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ShowTicketDetailClean implements Action {
-  readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_CLEAN;
+  public readonly type = ShowTicketDetailActions.SHOWTICKETDETAIL_CLEAN;
 }
 
 export type ShowTicketDetailAction = ShowTicketDetailStart |

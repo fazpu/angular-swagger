@@ -17,22 +17,22 @@ export enum DeleteORDERActions {
 }
 
 export class DeleteORDERStart implements Action {
-  readonly type = DeleteORDERActions.DELETEORDER_START;
+  public readonly type = DeleteORDERActions.DELETEORDER_START;
   constructor(public payload: DeleteORDERParams) {}
 }
 
 export class DeleteORDERSuccess implements Action {
-  readonly type = DeleteORDERActions.DELETEORDER_SUCCESS;
+  public readonly type = DeleteORDERActions.DELETEORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class DeleteORDERError implements Action {
-  readonly type = DeleteORDERActions.DELETEORDER_ERROR;
+  public readonly type = DeleteORDERActions.DELETEORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class DeleteORDERClean implements Action {
-  readonly type = DeleteORDERActions.DELETEORDER_CLEAN;
+  public readonly type = DeleteORDERActions.DELETEORDER_CLEAN;
 }
 
 export type DeleteORDERAction = DeleteORDERStart |

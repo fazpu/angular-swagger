@@ -28,11 +28,21 @@ export const getOrderStateSelector = createFeatureSelector<OrderState>(selectorN
 export function OrderReducer(
   state: OrderState = initialOrderState,
   action: OrderAction): OrderState {
+
   switch (action.type) {
-    case OrderActions.ORDER_START: return {...state, loading: true, error: null};
-    case OrderActions.ORDER_SUCCESS: return {...state, data: action.payload, loading: false};
-    case OrderActions.ORDER_ERROR: return {...state, error: action.payload, loading: false};
-    case OrderActions.ORDER_CLEAN: return initialOrderState;
-    default: return state;
+    case OrderActions.ORDER_START:
+      return {...state, loading: true, error: null};
+
+    case OrderActions.ORDER_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case OrderActions.ORDER_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case OrderActions.ORDER_CLEAN:
+      return initialOrderState;
+
+    default:
+      return state;
   }
 }

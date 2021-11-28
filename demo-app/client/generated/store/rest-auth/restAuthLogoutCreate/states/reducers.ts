@@ -28,11 +28,21 @@ export const getRestAuthLogoutCreateStateSelector = createFeatureSelector<RestAu
 export function RestAuthLogoutCreateReducer(
   state: RestAuthLogoutCreateState = initialRestAuthLogoutCreateState,
   action: RestAuthLogoutCreateAction): RestAuthLogoutCreateState {
+
   switch (action.type) {
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START: return {...state, loading: true, error: null};
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS: return {...state, data: action.payload, loading: false};
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR: return {...state, error: action.payload, loading: false};
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN: return initialRestAuthLogoutCreateState;
-    default: return state;
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START:
+      return {...state, loading: true, error: null};
+
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN:
+      return initialRestAuthLogoutCreateState;
+
+    default:
+      return state;
   }
 }

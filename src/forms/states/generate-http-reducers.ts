@@ -57,18 +57,24 @@ function getFeatureSelector(name: string, actionClassNameBase: string) {
 function getReducerDefinition(actionClassNameBase: string) {
   let res = `export function ${actionClassNameBase}Reducer(\n`;
   res += indent(`state: ${actionClassNameBase}State = initial${actionClassNameBase}State,\n`);
-  res += indent(`action: ${actionClassNameBase}Action): ${actionClassNameBase}State {\n\n`);
+  res += indent(`action: ${actionClassNameBase}Action): ${actionClassNameBase}State {\n`);
+  res += '\n';
   res += indent(`switch (action.type) {\n`);
-  res += indent([
-    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START: return {...state, loading: true, error: null};`,
-    // eslint-disable-next-line max-len
-    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS: return {...state, data: action.payload, loading: false};`,
-    // eslint-disable-next-line max-len
-    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR: return {...state, error: action.payload, loading: false};`,
-    `case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN: return initial${actionClassNameBase}State;`,
-    `default: return state;`,
-  ], 2);
-  res += indent(`\n}\n`);
+  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START:\n`, 2);
+  res += indent(`return {...state, loading: true, error: null};\n`, 3);
+  res += '\n';
+  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS:\n`, 2);
+  res += indent(`return {...state, data: action.payload, loading: false};\n`, 3);
+  res += '\n';
+  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR:\n`, 2);
+  res += indent(`return {...state, error: action.payload, loading: false};\n`, 3);
+  res += '\n';
+  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN:\n`, 2);
+  res += indent(`return initial${actionClassNameBase}State;\n`, 3);
+  res += '\n';
+  res += indent(`default:\n`, 2);
+  res += indent(`return state;\n`, 3);
+  res += indent(`}\n`);
   res += `}\n`;
 
   return res;

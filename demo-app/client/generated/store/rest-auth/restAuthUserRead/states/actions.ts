@@ -17,22 +17,22 @@ export enum RestAuthUserReadActions {
 }
 
 export class RestAuthUserReadStart implements Action {
-  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_START;
+  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_START;
   constructor() {}
 }
 
 export class RestAuthUserReadSuccess implements Action {
-  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS;
+  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserReadError implements Action {
-  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR;
+  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserReadClean implements Action {
-  readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN;
+  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN;
 }
 
 export type RestAuthUserReadAction = RestAuthUserReadStart |

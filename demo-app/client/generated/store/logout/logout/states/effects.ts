@@ -18,7 +18,7 @@ import {LogoutActions, LogoutError, LogoutStart, LogoutSuccess} from './actions'
 @Injectable()
 export class LogoutEffects {
   @Effect()
-  Logout = this.storeActions.pipe(
+  public logout = this.storeActions.pipe(
     ofType<LogoutStart>(LogoutActions.LOGOUT_START),
     switchMap(() => this.logoutService.logout()
       .pipe(

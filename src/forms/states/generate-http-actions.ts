@@ -53,7 +53,7 @@ function getActionTypes(controllerName: string, methodName: string, actionClassN
 
 function getActionStartDefinition(name: string, hasParams: boolean, actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Start implements Action {\n`;
-  res += indent(`readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START;\n`);
   const params = hasParams ? `public payload: ${ _.upperFirst(name) }Params` : '';
   res += indent(`constructor(${params}) {}\n`);
   res += `}\n`;
@@ -64,7 +64,7 @@ function getActionStartDefinition(name: string, hasParams: boolean, actionClassN
 
 function getActionSuccessDefinition(response: ResponseDef, actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Success implements Action {\n`;
-  res += indent(`readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS;\n`);
   res += indent(`constructor(public payload: ${response.type}) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -74,7 +74,7 @@ function getActionSuccessDefinition(response: ResponseDef, actionClassNameBase: 
 
 function getActionErrorDefinition(actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Error implements Action {\n`;
-  res += indent(`readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR;\n`);
   res += indent(`constructor(public payload: HttpErrorResponse) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -84,7 +84,7 @@ function getActionErrorDefinition(actionClassNameBase: string) {
 
 function getActionCleanDefinition(actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Clean implements Action {\n`;
-  res += indent(`readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN;\n`);
   res += `}\n`;
   res += `\n`;
 

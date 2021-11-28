@@ -18,22 +18,22 @@ export enum ArrayActions {
 }
 
 export class ArrayStart implements Action {
-  readonly type = ArrayActions.ARRAY_START;
+  public readonly type = ArrayActions.ARRAY_START;
   constructor(public payload: ArrayParams) {}
 }
 
 export class ArraySuccess implements Action {
-  readonly type = ArrayActions.ARRAY_SUCCESS;
+  public readonly type = ArrayActions.ARRAY_SUCCESS;
   constructor(public payload: __model.ArrayGeneratedInlineModel) {}
 }
 
 export class ArrayError implements Action {
-  readonly type = ArrayActions.ARRAY_ERROR;
+  public readonly type = ArrayActions.ARRAY_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ArrayClean implements Action {
-  readonly type = ArrayActions.ARRAY_CLEAN;
+  public readonly type = ArrayActions.ARRAY_CLEAN;
 }
 
 export type ArrayAction = ArrayStart |

@@ -18,7 +18,7 @@ import {OrderActions, OrderError, OrderStart, OrderSuccess} from './actions';
 @Injectable()
 export class OrderEffects {
   @Effect()
-  Order = this.storeActions.pipe(
+  public order = this.storeActions.pipe(
     ofType<OrderStart>(OrderActions.ORDER_START),
     switchMap((action: OrderStart) => this.orderService.order(action.payload)
       .pipe(

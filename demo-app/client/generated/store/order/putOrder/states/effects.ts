@@ -18,7 +18,7 @@ import {PutOrderActions, PutOrderError, PutOrderStart, PutOrderSuccess} from './
 @Injectable()
 export class PutOrderEffects {
   @Effect()
-  PutOrder = this.storeActions.pipe(
+  public putOrder = this.storeActions.pipe(
     ofType<PutOrderStart>(PutOrderActions.PUTORDER_START),
     switchMap((action: PutOrderStart) => this.orderService.putOrder(action.payload)
       .pipe(

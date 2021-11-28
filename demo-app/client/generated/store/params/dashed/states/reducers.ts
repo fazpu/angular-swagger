@@ -28,11 +28,21 @@ export const getDashedStateSelector = createFeatureSelector<DashedState>(selecto
 export function DashedReducer(
   state: DashedState = initialDashedState,
   action: DashedAction): DashedState {
+
   switch (action.type) {
-    case DashedActions.DASHED_START: return {...state, loading: true, error: null};
-    case DashedActions.DASHED_SUCCESS: return {...state, data: action.payload, loading: false};
-    case DashedActions.DASHED_ERROR: return {...state, error: action.payload, loading: false};
-    case DashedActions.DASHED_CLEAN: return initialDashedState;
-    default: return state;
+    case DashedActions.DASHED_START:
+      return {...state, loading: true, error: null};
+
+    case DashedActions.DASHED_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case DashedActions.DASHED_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case DashedActions.DASHED_CLEAN:
+      return initialDashedState;
+
+    default:
+      return state;
   }
 }

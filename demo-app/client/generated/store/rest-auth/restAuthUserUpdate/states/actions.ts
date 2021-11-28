@@ -18,22 +18,22 @@ export enum RestAuthUserUpdateActions {
 }
 
 export class RestAuthUserUpdateStart implements Action {
-  readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START;
+  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START;
   constructor(public payload: RestAuthUserUpdateParams) {}
 }
 
 export class RestAuthUserUpdateSuccess implements Action {
-  readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS;
+  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserUpdateError implements Action {
-  readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR;
+  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserUpdateClean implements Action {
-  readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN;
+  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN;
 }
 
 export type RestAuthUserUpdateAction = RestAuthUserUpdateStart |

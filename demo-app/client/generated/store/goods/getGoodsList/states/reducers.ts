@@ -29,11 +29,21 @@ export const getGetGoodsListStateSelector = createFeatureSelector<GetGoodsListSt
 export function GetGoodsListReducer(
   state: GetGoodsListState = initialGetGoodsListState,
   action: GetGoodsListAction): GetGoodsListState {
+
   switch (action.type) {
-    case GetGoodsListActions.GETGOODSLIST_START: return {...state, loading: true, error: null};
-    case GetGoodsListActions.GETGOODSLIST_SUCCESS: return {...state, data: action.payload, loading: false};
-    case GetGoodsListActions.GETGOODSLIST_ERROR: return {...state, error: action.payload, loading: false};
-    case GetGoodsListActions.GETGOODSLIST_CLEAN: return initialGetGoodsListState;
-    default: return state;
+    case GetGoodsListActions.GETGOODSLIST_START:
+      return {...state, loading: true, error: null};
+
+    case GetGoodsListActions.GETGOODSLIST_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case GetGoodsListActions.GETGOODSLIST_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case GetGoodsListActions.GETGOODSLIST_CLEAN:
+      return initialGetGoodsListState;
+
+    default:
+      return state;
   }
 }

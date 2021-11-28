@@ -17,22 +17,22 @@ export enum PutOrderActions {
 }
 
 export class PutOrderStart implements Action {
-  readonly type = PutOrderActions.PUTORDER_START;
+  public readonly type = PutOrderActions.PUTORDER_START;
   constructor(public payload: PutOrderParams) {}
 }
 
 export class PutOrderSuccess implements Action {
-  readonly type = PutOrderActions.PUTORDER_SUCCESS;
+  public readonly type = PutOrderActions.PUTORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class PutOrderError implements Action {
-  readonly type = PutOrderActions.PUTORDER_ERROR;
+  public readonly type = PutOrderActions.PUTORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class PutOrderClean implements Action {
-  readonly type = PutOrderActions.PUTORDER_CLEAN;
+  public readonly type = PutOrderActions.PUTORDER_CLEAN;
 }
 
 export type PutOrderAction = PutOrderStart |

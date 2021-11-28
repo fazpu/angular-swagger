@@ -17,22 +17,22 @@ export enum MapActions {
 }
 
 export class MapStart implements Action {
-  readonly type = MapActions.MAP_START;
+  public readonly type = MapActions.MAP_START;
   constructor(public payload: MapParams) {}
 }
 
 export class MapSuccess implements Action {
-  readonly type = MapActions.MAP_SUCCESS;
+  public readonly type = MapActions.MAP_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class MapError implements Action {
-  readonly type = MapActions.MAP_ERROR;
+  public readonly type = MapActions.MAP_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class MapClean implements Action {
-  readonly type = MapActions.MAP_CLEAN;
+  public readonly type = MapActions.MAP_CLEAN;
 }
 
 export type MapAction = MapStart |

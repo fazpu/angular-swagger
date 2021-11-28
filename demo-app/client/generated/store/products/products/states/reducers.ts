@@ -29,11 +29,21 @@ export const getProductsStateSelector = createFeatureSelector<ProductsState>(sel
 export function ProductsReducer(
   state: ProductsState = initialProductsState,
   action: ProductsAction): ProductsState {
+
   switch (action.type) {
-    case ProductsActions.PRODUCTS_START: return {...state, loading: true, error: null};
-    case ProductsActions.PRODUCTS_SUCCESS: return {...state, data: action.payload, loading: false};
-    case ProductsActions.PRODUCTS_ERROR: return {...state, error: action.payload, loading: false};
-    case ProductsActions.PRODUCTS_CLEAN: return initialProductsState;
-    default: return state;
+    case ProductsActions.PRODUCTS_START:
+      return {...state, loading: true, error: null};
+
+    case ProductsActions.PRODUCTS_SUCCESS:
+      return {...state, data: action.payload, loading: false};
+
+    case ProductsActions.PRODUCTS_ERROR:
+      return {...state, error: action.payload, loading: false};
+
+    case ProductsActions.PRODUCTS_CLEAN:
+      return initialProductsState;
+
+    default:
+      return state;
   }
 }

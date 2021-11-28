@@ -17,22 +17,22 @@ export enum PatchOrderActions {
 }
 
 export class PatchOrderStart implements Action {
-  readonly type = PatchOrderActions.PATCHORDER_START;
+  public readonly type = PatchOrderActions.PATCHORDER_START;
   constructor(public payload: PatchOrderParams) {}
 }
 
 export class PatchOrderSuccess implements Action {
-  readonly type = PatchOrderActions.PATCHORDER_SUCCESS;
+  public readonly type = PatchOrderActions.PATCHORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class PatchOrderError implements Action {
-  readonly type = PatchOrderActions.PATCHORDER_ERROR;
+  public readonly type = PatchOrderActions.PATCHORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class PatchOrderClean implements Action {
-  readonly type = PatchOrderActions.PATCHORDER_CLEAN;
+  public readonly type = PatchOrderActions.PATCHORDER_CLEAN;
 }
 
 export type PatchOrderAction = PatchOrderStart |

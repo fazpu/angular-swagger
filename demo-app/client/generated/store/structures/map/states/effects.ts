@@ -18,7 +18,7 @@ import {MapActions, MapError, MapStart, MapSuccess} from './actions';
 @Injectable()
 export class MapEffects {
   @Effect()
-  Map = this.storeActions.pipe(
+  public map = this.storeActions.pipe(
     ofType<MapStart>(MapActions.MAP_START),
     switchMap((action: MapStart) => this.structuresService.map(action.payload)
       .pipe(

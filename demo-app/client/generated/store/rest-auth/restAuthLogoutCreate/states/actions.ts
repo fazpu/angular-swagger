@@ -16,22 +16,22 @@ export enum RestAuthLogoutCreateActions {
 }
 
 export class RestAuthLogoutCreateStart implements Action {
-  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START;
+  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START;
   constructor() {}
 }
 
 export class RestAuthLogoutCreateSuccess implements Action {
-  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS;
+  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class RestAuthLogoutCreateError implements Action {
-  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR;
+  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthLogoutCreateClean implements Action {
-  readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN;
+  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN;
 }
 
 export type RestAuthLogoutCreateAction = RestAuthLogoutCreateStart |

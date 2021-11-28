@@ -18,22 +18,22 @@ export enum ProductDetailActions {
 }
 
 export class ProductDetailStart implements Action {
-  readonly type = ProductDetailActions.PRODUCTDETAIL_START;
+  public readonly type = ProductDetailActions.PRODUCTDETAIL_START;
   constructor(public payload: ProductDetailParams) {}
 }
 
 export class ProductDetailSuccess implements Action {
-  readonly type = ProductDetailActions.PRODUCTDETAIL_SUCCESS;
+  public readonly type = ProductDetailActions.PRODUCTDETAIL_SUCCESS;
   constructor(public payload: __model.ProductDetail) {}
 }
 
 export class ProductDetailError implements Action {
-  readonly type = ProductDetailActions.PRODUCTDETAIL_ERROR;
+  public readonly type = ProductDetailActions.PRODUCTDETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ProductDetailClean implements Action {
-  readonly type = ProductDetailActions.PRODUCTDETAIL_CLEAN;
+  public readonly type = ProductDetailActions.PRODUCTDETAIL_CLEAN;
 }
 
 export type ProductDetailAction = ProductDetailStart |
