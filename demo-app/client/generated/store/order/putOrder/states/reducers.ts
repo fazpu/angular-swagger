@@ -30,16 +30,16 @@ export function PutOrderReducer(
   action: PutOrderAction): PutOrderState {
 
   switch (action.type) {
-    case PutOrderActions.PUTORDER_START:
+    case PutOrderActions.PUT_ORDER_START:
       return {...state, loading: true, error: null};
 
-    case PutOrderActions.PUTORDER_SUCCESS:
+    case PutOrderActions.PUT_ORDER_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case PutOrderActions.PUTORDER_ERROR:
+    case PutOrderActions.PUT_ORDER_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case PutOrderActions.PUTORDER_CLEAN:
+    case PutOrderActions.PUT_ORDER_CLEAN:
       return initialPutOrderState;
 
     default:

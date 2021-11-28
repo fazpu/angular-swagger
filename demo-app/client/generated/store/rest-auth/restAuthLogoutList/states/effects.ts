@@ -19,7 +19,7 @@ import {RestAuthLogoutListActions, RestAuthLogoutListError, RestAuthLogoutListSt
 export class RestAuthLogoutListEffects {
   @Effect()
   public restAuthLogoutList = this.storeActions.pipe(
-    ofType<RestAuthLogoutListStart>(RestAuthLogoutListActions.RESTAUTHLOGOUTLIST_START),
+    ofType<RestAuthLogoutListStart>(RestAuthLogoutListActions.REST_AUTH_LOGOUT_LIST_START),
     switchMap(() => this.restauthService.restAuthLogoutList()
       .pipe(
         map(result => new RestAuthLogoutListSuccess(result)),

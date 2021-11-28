@@ -19,7 +19,7 @@ import {ProductDetailActions, ProductDetailError, ProductDetailStart, ProductDet
 export class ProductDetailEffects {
   @Effect()
   public productDetail = this.storeActions.pipe(
-    ofType<ProductDetailStart>(ProductDetailActions.PRODUCTDETAIL_START),
+    ofType<ProductDetailStart>(ProductDetailActions.PRODUCT_DETAIL_START),
     switchMap((action: ProductDetailStart) => this.productdetailService.productDetail(action.payload)
       .pipe(
         map(result => new ProductDetailSuccess(result)),

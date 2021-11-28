@@ -31,16 +31,16 @@ export function ProductDetailReducer(
   action: ProductDetailAction): ProductDetailState {
 
   switch (action.type) {
-    case ProductDetailActions.PRODUCTDETAIL_START:
+    case ProductDetailActions.PRODUCT_DETAIL_START:
       return {...state, loading: true, error: null};
 
-    case ProductDetailActions.PRODUCTDETAIL_SUCCESS:
+    case ProductDetailActions.PRODUCT_DETAIL_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case ProductDetailActions.PRODUCTDETAIL_ERROR:
+    case ProductDetailActions.PRODUCT_DETAIL_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case ProductDetailActions.PRODUCTDETAIL_CLEAN:
+    case ProductDetailActions.PRODUCT_DETAIL_CLEAN:
       return initialProductDetailState;
 
     default:

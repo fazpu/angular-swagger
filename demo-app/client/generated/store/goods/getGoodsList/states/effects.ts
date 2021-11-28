@@ -19,7 +19,7 @@ import {GetGoodsListActions, GetGoodsListError, GetGoodsListStart, GetGoodsListS
 export class GetGoodsListEffects {
   @Effect()
   public getGoodsList = this.storeActions.pipe(
-    ofType<GetGoodsListStart>(GetGoodsListActions.GETGOODSLIST_START),
+    ofType<GetGoodsListStart>(GetGoodsListActions.GET_GOODS_LIST_START),
     switchMap((action: GetGoodsListStart) => this.goodsService.getGoodsList(action.payload)
       .pipe(
         map(result => new GetGoodsListSuccess(result)),

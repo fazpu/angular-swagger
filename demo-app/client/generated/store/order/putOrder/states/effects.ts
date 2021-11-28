@@ -19,7 +19,7 @@ import {PutOrderActions, PutOrderError, PutOrderStart, PutOrderSuccess} from './
 export class PutOrderEffects {
   @Effect()
   public putOrder = this.storeActions.pipe(
-    ofType<PutOrderStart>(PutOrderActions.PUTORDER_START),
+    ofType<PutOrderStart>(PutOrderActions.PUT_ORDER_START),
     switchMap((action: PutOrderStart) => this.orderService.putOrder(action.payload)
       .pipe(
         map(result => new PutOrderSuccess(result)),

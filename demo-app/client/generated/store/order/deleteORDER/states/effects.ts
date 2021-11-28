@@ -19,7 +19,7 @@ import {DeleteORDERActions, DeleteORDERError, DeleteORDERStart, DeleteORDERSucce
 export class DeleteORDEREffects {
   @Effect()
   public deleteORDER = this.storeActions.pipe(
-    ofType<DeleteORDERStart>(DeleteORDERActions.DELETEORDER_START),
+    ofType<DeleteORDERStart>(DeleteORDERActions.DELETE_ORDER_START),
     switchMap((action: DeleteORDERStart) => this.orderService.deleteORDER(action.payload)
       .pipe(
         map(result => new DeleteORDERSuccess(result)),

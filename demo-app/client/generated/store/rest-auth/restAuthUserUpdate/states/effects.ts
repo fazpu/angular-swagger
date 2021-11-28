@@ -19,7 +19,7 @@ import {RestAuthUserUpdateActions, RestAuthUserUpdateError, RestAuthUserUpdateSt
 export class RestAuthUserUpdateEffects {
   @Effect()
   public restAuthUserUpdate = this.storeActions.pipe(
-    ofType<RestAuthUserUpdateStart>(RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START),
+    ofType<RestAuthUserUpdateStart>(RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_START),
     switchMap((action: RestAuthUserUpdateStart) => this.restauthService.restAuthUserUpdate(action.payload)
       .pipe(
         map(result => new RestAuthUserUpdateSuccess(result)),

@@ -31,16 +31,16 @@ export function RestAuthUserUpdateReducer(
   action: RestAuthUserUpdateAction): RestAuthUserUpdateState {
 
   switch (action.type) {
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START:
+    case RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_START:
       return {...state, loading: true, error: null};
 
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS:
+    case RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR:
+    case RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN:
+    case RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_CLEAN:
       return initialRestAuthUserUpdateState;
 
     default:

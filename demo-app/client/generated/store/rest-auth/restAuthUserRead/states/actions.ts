@@ -10,29 +10,29 @@ import {Action} from '@ngrx/store';
 import * as __model from '../../../../model';
 
 export enum RestAuthUserReadActions {
-  RESTAUTHUSERREAD_START = '[RestAuth restAuthUserRead] Start',
-  RESTAUTHUSERREAD_SUCCESS = '[RestAuth restAuthUserRead] Success',
-  RESTAUTHUSERREAD_ERROR = '[RestAuth restAuthUserRead] Error',
-  RESTAUTHUSERREAD_CLEAN = '[RestAuth restAuthUserRead] Clean',
+  REST_AUTH_USER_READ_START = '[RestAuth restAuthUserRead] Start',
+  REST_AUTH_USER_READ_SUCCESS = '[RestAuth restAuthUserRead] Success',
+  REST_AUTH_USER_READ_ERROR = '[RestAuth restAuthUserRead] Error',
+  REST_AUTH_USER_READ_CLEAN = '[RestAuth restAuthUserRead] Clean',
 }
 
 export class RestAuthUserReadStart implements Action {
-  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_START;
+  public readonly type = RestAuthUserReadActions.REST_AUTH_USER_READ_START;
   constructor() {}
 }
 
 export class RestAuthUserReadSuccess implements Action {
-  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS;
+  public readonly type = RestAuthUserReadActions.REST_AUTH_USER_READ_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserReadError implements Action {
-  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR;
+  public readonly type = RestAuthUserReadActions.REST_AUTH_USER_READ_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserReadClean implements Action {
-  public readonly type = RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN;
+  public readonly type = RestAuthUserReadActions.REST_AUTH_USER_READ_CLEAN;
 }
 
 export type RestAuthUserReadAction = RestAuthUserReadStart |

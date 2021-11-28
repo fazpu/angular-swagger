@@ -19,7 +19,7 @@ import {ShowTicketDetailActions, ShowTicketDetailError, ShowTicketDetailStart, S
 export class ShowTicketDetailEffects {
   @Effect()
   public showTicketDetail = this.storeActions.pipe(
-    ofType<ShowTicketDetailStart>(ShowTicketDetailActions.SHOWTICKETDETAIL_START),
+    ofType<ShowTicketDetailStart>(ShowTicketDetailActions.SHOW_TICKET_DETAIL_START),
     switchMap((action: ShowTicketDetailStart) => this.ticketingService.showTicketDetail(action.payload)
       .pipe(
         map(result => new ShowTicketDetailSuccess(result)),

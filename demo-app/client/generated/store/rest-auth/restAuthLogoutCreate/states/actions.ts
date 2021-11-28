@@ -9,29 +9,29 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
 
 export enum RestAuthLogoutCreateActions {
-  RESTAUTHLOGOUTCREATE_START = '[RestAuth restAuthLogoutCreate] Start',
-  RESTAUTHLOGOUTCREATE_SUCCESS = '[RestAuth restAuthLogoutCreate] Success',
-  RESTAUTHLOGOUTCREATE_ERROR = '[RestAuth restAuthLogoutCreate] Error',
-  RESTAUTHLOGOUTCREATE_CLEAN = '[RestAuth restAuthLogoutCreate] Clean',
+  REST_AUTH_LOGOUT_CREATE_START = '[RestAuth restAuthLogoutCreate] Start',
+  REST_AUTH_LOGOUT_CREATE_SUCCESS = '[RestAuth restAuthLogoutCreate] Success',
+  REST_AUTH_LOGOUT_CREATE_ERROR = '[RestAuth restAuthLogoutCreate] Error',
+  REST_AUTH_LOGOUT_CREATE_CLEAN = '[RestAuth restAuthLogoutCreate] Clean',
 }
 
 export class RestAuthLogoutCreateStart implements Action {
-  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START;
+  public readonly type = RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_START;
   constructor() {}
 }
 
 export class RestAuthLogoutCreateSuccess implements Action {
-  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS;
+  public readonly type = RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_SUCCESS;
   constructor(public payload: void) {}
 }
 
 export class RestAuthLogoutCreateError implements Action {
-  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR;
+  public readonly type = RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthLogoutCreateClean implements Action {
-  public readonly type = RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN;
+  public readonly type = RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_CLEAN;
 }
 
 export type RestAuthLogoutCreateAction = RestAuthLogoutCreateStart |

@@ -11,29 +11,29 @@ import {ProductDetailParams} from '../../../../controllers/ProductDetail';
 import * as __model from '../../../../model';
 
 export enum ProductDetailActions {
-  PRODUCTDETAIL_START = '[ProductDetail productDetail] Start',
-  PRODUCTDETAIL_SUCCESS = '[ProductDetail productDetail] Success',
-  PRODUCTDETAIL_ERROR = '[ProductDetail productDetail] Error',
-  PRODUCTDETAIL_CLEAN = '[ProductDetail productDetail] Clean',
+  PRODUCT_DETAIL_START = '[ProductDetail productDetail] Start',
+  PRODUCT_DETAIL_SUCCESS = '[ProductDetail productDetail] Success',
+  PRODUCT_DETAIL_ERROR = '[ProductDetail productDetail] Error',
+  PRODUCT_DETAIL_CLEAN = '[ProductDetail productDetail] Clean',
 }
 
 export class ProductDetailStart implements Action {
-  public readonly type = ProductDetailActions.PRODUCTDETAIL_START;
+  public readonly type = ProductDetailActions.PRODUCT_DETAIL_START;
   constructor(public payload: ProductDetailParams) {}
 }
 
 export class ProductDetailSuccess implements Action {
-  public readonly type = ProductDetailActions.PRODUCTDETAIL_SUCCESS;
+  public readonly type = ProductDetailActions.PRODUCT_DETAIL_SUCCESS;
   constructor(public payload: __model.ProductDetail) {}
 }
 
 export class ProductDetailError implements Action {
-  public readonly type = ProductDetailActions.PRODUCTDETAIL_ERROR;
+  public readonly type = ProductDetailActions.PRODUCT_DETAIL_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class ProductDetailClean implements Action {
-  public readonly type = ProductDetailActions.PRODUCTDETAIL_CLEAN;
+  public readonly type = ProductDetailActions.PRODUCT_DETAIL_CLEAN;
 }
 
 export type ProductDetailAction = ProductDetailStart |

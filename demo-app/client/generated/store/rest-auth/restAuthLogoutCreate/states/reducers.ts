@@ -30,16 +30,16 @@ export function RestAuthLogoutCreateReducer(
   action: RestAuthLogoutCreateAction): RestAuthLogoutCreateState {
 
   switch (action.type) {
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_START:
+    case RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_START:
       return {...state, loading: true, error: null};
 
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_SUCCESS:
+    case RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_ERROR:
+    case RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case RestAuthLogoutCreateActions.RESTAUTHLOGOUTCREATE_CLEAN:
+    case RestAuthLogoutCreateActions.REST_AUTH_LOGOUT_CREATE_CLEAN:
       return initialRestAuthLogoutCreateState;
 
     default:

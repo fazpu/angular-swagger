@@ -19,7 +19,7 @@ import {PatchOrderActions, PatchOrderError, PatchOrderStart, PatchOrderSuccess} 
 export class PatchOrderEffects {
   @Effect()
   public patchOrder = this.storeActions.pipe(
-    ofType<PatchOrderStart>(PatchOrderActions.PATCHORDER_START),
+    ofType<PatchOrderStart>(PatchOrderActions.PATCH_ORDER_START),
     switchMap((action: PatchOrderStart) => this.orderService.patchOrder(action.payload)
       .pipe(
         map(result => new PatchOrderSuccess(result)),
