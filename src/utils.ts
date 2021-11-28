@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as fs from 'fs';
 import * as conf from './conf';
 import {FileType} from './types';
@@ -161,4 +162,8 @@ export function merge(favoured: any[], others: any[], ...keys: string[]): any[] 
 
 export function firstLetterToLowercase(text: string): string {
     return text[0].toLowerCase() + text.slice(1);
+}
+
+export function toSnakeCaseUpper(text: string): string {
+  return _.snakeCase(text).toUpperCase()
 }

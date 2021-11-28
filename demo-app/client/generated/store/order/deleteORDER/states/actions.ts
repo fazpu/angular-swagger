@@ -10,29 +10,29 @@ import {Action} from '@ngrx/store';
 import {DeleteORDERParams} from '../../../../controllers/Order';
 
 export enum DeleteORDERActions {
-  DELETEORDER_START = '[Order deleteORDER] Start',
-  DELETEORDER_SUCCESS = '[Order deleteORDER] Success',
-  DELETEORDER_ERROR = '[Order deleteORDER] Error',
-  DELETEORDER_CLEAN = '[Order deleteORDER] Clean',
+  DELETE_ORDER_START = '[Order deleteORDER] Start',
+  DELETE_ORDER_SUCCESS = '[Order deleteORDER] Success',
+  DELETE_ORDER_ERROR = '[Order deleteORDER] Error',
+  DELETE_ORDER_CLEAN = '[Order deleteORDER] Clean',
 }
 
 export class DeleteORDERStart implements Action {
-  public readonly type = DeleteORDERActions.DELETEORDER_START;
+  public readonly type = DeleteORDERActions.DELETE_ORDER_START;
   constructor(public payload: DeleteORDERParams) {}
 }
 
 export class DeleteORDERSuccess implements Action {
-  public readonly type = DeleteORDERActions.DELETEORDER_SUCCESS;
+  public readonly type = DeleteORDERActions.DELETE_ORDER_SUCCESS;
   constructor(public payload: Record<string, unknown>) {}
 }
 
 export class DeleteORDERError implements Action {
-  public readonly type = DeleteORDERActions.DELETEORDER_ERROR;
+  public readonly type = DeleteORDERActions.DELETE_ORDER_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class DeleteORDERClean implements Action {
-  public readonly type = DeleteORDERActions.DELETEORDER_CLEAN;
+  public readonly type = DeleteORDERActions.DELETE_ORDER_CLEAN;
 }
 
 export type DeleteORDERAction = DeleteORDERStart |

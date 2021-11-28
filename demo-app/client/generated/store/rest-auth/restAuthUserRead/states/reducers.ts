@@ -31,16 +31,16 @@ export function RestAuthUserReadReducer(
   action: RestAuthUserReadAction): RestAuthUserReadState {
 
   switch (action.type) {
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_START:
+    case RestAuthUserReadActions.REST_AUTH_USER_READ_START:
       return {...state, loading: true, error: null};
 
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_SUCCESS:
+    case RestAuthUserReadActions.REST_AUTH_USER_READ_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_ERROR:
+    case RestAuthUserReadActions.REST_AUTH_USER_READ_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case RestAuthUserReadActions.RESTAUTHUSERREAD_CLEAN:
+    case RestAuthUserReadActions.REST_AUTH_USER_READ_CLEAN:
       return initialRestAuthUserReadState;
 
     default:

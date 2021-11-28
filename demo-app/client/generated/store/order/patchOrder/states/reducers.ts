@@ -30,16 +30,16 @@ export function PatchOrderReducer(
   action: PatchOrderAction): PatchOrderState {
 
   switch (action.type) {
-    case PatchOrderActions.PATCHORDER_START:
+    case PatchOrderActions.PATCH_ORDER_START:
       return {...state, loading: true, error: null};
 
-    case PatchOrderActions.PATCHORDER_SUCCESS:
+    case PatchOrderActions.PATCH_ORDER_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case PatchOrderActions.PATCHORDER_ERROR:
+    case PatchOrderActions.PATCH_ORDER_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case PatchOrderActions.PATCHORDER_CLEAN:
+    case PatchOrderActions.PATCH_ORDER_CLEAN:
       return initialPatchOrderState;
 
     default:

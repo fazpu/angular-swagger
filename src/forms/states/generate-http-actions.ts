@@ -5,7 +5,7 @@ import {stateDir} from '../../conf';
 import {Config} from '../../generate';
 import {ResponseDef} from '../../requests/requests.models';
 import {Parameter} from '../../types';
-import {indent, writeFile} from '../../utils';
+import {indent, toSnakeCaseUpper, writeFile} from '../../utils';
 
 export function generateHttpActions(config: Config, name: string, responseDef: ResponseDef,
                                     actionClassNameBase: string, simpleName: string,
@@ -41,10 +41,10 @@ function getActionImports(name: string, simpleName: string, hasParams: boolean,
 function getActionTypes(controllerName: string, methodName: string, actionClassNameBase: string) {
   let res = `export enum ${actionClassNameBase}Actions {\n`;
   res += indent([
-    `${methodName.toUpperCase()}_START = '[${controllerName} ${methodName}] Start',`,
-    `${methodName.toUpperCase()}_SUCCESS = '[${controllerName} ${methodName}] Success',`,
-    `${methodName.toUpperCase()}_ERROR = '[${controllerName} ${methodName}] Error',`,
-    `${methodName.toUpperCase()}_CLEAN = '[${controllerName} ${methodName}] Clean',`,
+    `${toSnakeCaseUpper(actionClassNameBase)}_START = '[${controllerName} ${methodName}] Start',`,
+    `${toSnakeCaseUpper(actionClassNameBase)}_SUCCESS = '[${controllerName} ${methodName}] Success',`,
+    `${toSnakeCaseUpper(actionClassNameBase)}_ERROR = '[${controllerName} ${methodName}] Error',`,
+    `${toSnakeCaseUpper(actionClassNameBase)}_CLEAN = '[${controllerName} ${methodName}] Clean',`,
   ]);
   res += `\n}\n\n`;
 
@@ -53,7 +53,7 @@ function getActionTypes(controllerName: string, methodName: string, actionClassN
 
 function getActionStartDefinition(name: string, hasParams: boolean, actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Start implements Action {\n`;
-  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_START;\n`);
   const params = hasParams ? `public payload: ${ _.upperFirst(name) }Params` : '';
   res += indent(`constructor(${params}) {}\n`);
   res += `}\n`;
@@ -64,7 +64,7 @@ function getActionStartDefinition(name: string, hasParams: boolean, actionClassN
 
 function getActionSuccessDefinition(response: ResponseDef, actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Success implements Action {\n`;
-  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_SUCCESS;\n`);
   res += indent(`constructor(public payload: ${response.type}) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -74,7 +74,7 @@ function getActionSuccessDefinition(response: ResponseDef, actionClassNameBase: 
 
 function getActionErrorDefinition(actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Error implements Action {\n`;
-  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_ERROR;\n`);
   res += indent(`constructor(public payload: HttpErrorResponse) {}\n`);
   res += `}\n`;
   res += `\n`;
@@ -84,7 +84,7 @@ function getActionErrorDefinition(actionClassNameBase: string) {
 
 function getActionCleanDefinition(actionClassNameBase: string) {
   let res = `export class ${actionClassNameBase}Clean implements Action {\n`;
-  res += indent(`public readonly type = ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN;\n`);
+  res += indent(`public readonly type = ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_CLEAN;\n`);
   res += `}\n`;
   res += `\n`;
 

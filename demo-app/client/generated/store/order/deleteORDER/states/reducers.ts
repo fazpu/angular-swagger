@@ -30,16 +30,16 @@ export function DeleteORDERReducer(
   action: DeleteORDERAction): DeleteORDERState {
 
   switch (action.type) {
-    case DeleteORDERActions.DELETEORDER_START:
+    case DeleteORDERActions.DELETE_ORDER_START:
       return {...state, loading: true, error: null};
 
-    case DeleteORDERActions.DELETEORDER_SUCCESS:
+    case DeleteORDERActions.DELETE_ORDER_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case DeleteORDERActions.DELETEORDER_ERROR:
+    case DeleteORDERActions.DELETE_ORDER_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case DeleteORDERActions.DELETEORDER_CLEAN:
+    case DeleteORDERActions.DELETE_ORDER_CLEAN:
       return initialDeleteORDERState;
 
     default:

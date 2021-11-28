@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import {stateDir} from '../../conf';
 import {Config} from '../../generate';
-import {indent, writeFile} from '../../utils';
+import {indent, toSnakeCaseUpper, writeFile} from '../../utils';
 
 export function generateHttpReducers(config: Config, name: string, actionClassNameBase: string,
                                      formSubDirName: string, responseType: string) {
@@ -60,16 +60,16 @@ function getReducerDefinition(actionClassNameBase: string) {
   res += indent(`action: ${actionClassNameBase}Action): ${actionClassNameBase}State {\n`);
   res += '\n';
   res += indent(`switch (action.type) {\n`);
-  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START:\n`, 2);
+  res += indent(`case ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_START:\n`, 2);
   res += indent(`return {...state, loading: true, error: null};\n`, 3);
   res += '\n';
-  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_SUCCESS:\n`, 2);
+  res += indent(`case ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_SUCCESS:\n`, 2);
   res += indent(`return {...state, data: action.payload, loading: false};\n`, 3);
   res += '\n';
-  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_ERROR:\n`, 2);
+  res += indent(`case ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_ERROR:\n`, 2);
   res += indent(`return {...state, error: action.payload, loading: false};\n`, 3);
   res += '\n';
-  res += indent(`case ${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_CLEAN:\n`, 2);
+  res += indent(`case ${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_CLEAN:\n`, 2);
   res += indent(`return initial${actionClassNameBase}State;\n`, 3);
   res += '\n';
   res += indent(`default:\n`, 2);

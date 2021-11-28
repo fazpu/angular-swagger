@@ -11,29 +11,29 @@ import {RestAuthUserUpdateParams} from '../../../../controllers/RestAuth';
 import * as __model from '../../../../model';
 
 export enum RestAuthUserUpdateActions {
-  RESTAUTHUSERUPDATE_START = '[RestAuth restAuthUserUpdate] Start',
-  RESTAUTHUSERUPDATE_SUCCESS = '[RestAuth restAuthUserUpdate] Success',
-  RESTAUTHUSERUPDATE_ERROR = '[RestAuth restAuthUserUpdate] Error',
-  RESTAUTHUSERUPDATE_CLEAN = '[RestAuth restAuthUserUpdate] Clean',
+  REST_AUTH_USER_UPDATE_START = '[RestAuth restAuthUserUpdate] Start',
+  REST_AUTH_USER_UPDATE_SUCCESS = '[RestAuth restAuthUserUpdate] Success',
+  REST_AUTH_USER_UPDATE_ERROR = '[RestAuth restAuthUserUpdate] Error',
+  REST_AUTH_USER_UPDATE_CLEAN = '[RestAuth restAuthUserUpdate] Clean',
 }
 
 export class RestAuthUserUpdateStart implements Action {
-  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_START;
+  public readonly type = RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_START;
   constructor(public payload: RestAuthUserUpdateParams) {}
 }
 
 export class RestAuthUserUpdateSuccess implements Action {
-  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_SUCCESS;
+  public readonly type = RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_SUCCESS;
   constructor(public payload: __model.UserDetails) {}
 }
 
 export class RestAuthUserUpdateError implements Action {
-  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_ERROR;
+  public readonly type = RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_ERROR;
   constructor(public payload: HttpErrorResponse) {}
 }
 
 export class RestAuthUserUpdateClean implements Action {
-  public readonly type = RestAuthUserUpdateActions.RESTAUTHUSERUPDATE_CLEAN;
+  public readonly type = RestAuthUserUpdateActions.REST_AUTH_USER_UPDATE_CLEAN;
 }
 
 export type RestAuthUserUpdateAction = RestAuthUserUpdateStart |

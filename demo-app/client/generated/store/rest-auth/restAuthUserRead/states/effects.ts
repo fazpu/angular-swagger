@@ -19,7 +19,7 @@ import {RestAuthUserReadActions, RestAuthUserReadError, RestAuthUserReadStart, R
 export class RestAuthUserReadEffects {
   @Effect()
   public restAuthUserRead = this.storeActions.pipe(
-    ofType<RestAuthUserReadStart>(RestAuthUserReadActions.RESTAUTHUSERREAD_START),
+    ofType<RestAuthUserReadStart>(RestAuthUserReadActions.REST_AUTH_USER_READ_START),
     switchMap(() => this.restauthService.restAuthUserRead()
       .pipe(
         map(result => new RestAuthUserReadSuccess(result)),

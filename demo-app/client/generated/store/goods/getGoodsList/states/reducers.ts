@@ -31,16 +31,16 @@ export function GetGoodsListReducer(
   action: GetGoodsListAction): GetGoodsListState {
 
   switch (action.type) {
-    case GetGoodsListActions.GETGOODSLIST_START:
+    case GetGoodsListActions.GET_GOODS_LIST_START:
       return {...state, loading: true, error: null};
 
-    case GetGoodsListActions.GETGOODSLIST_SUCCESS:
+    case GetGoodsListActions.GET_GOODS_LIST_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case GetGoodsListActions.GETGOODSLIST_ERROR:
+    case GetGoodsListActions.GET_GOODS_LIST_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case GetGoodsListActions.GETGOODSLIST_CLEAN:
+    case GetGoodsListActions.GET_GOODS_LIST_CLEAN:
       return initialGetGoodsListState;
 
     default:

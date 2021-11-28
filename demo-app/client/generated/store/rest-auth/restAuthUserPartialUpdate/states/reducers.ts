@@ -31,16 +31,16 @@ export function RestAuthUserPartialUpdateReducer(
   action: RestAuthUserPartialUpdateAction): RestAuthUserPartialUpdateState {
 
   switch (action.type) {
-    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_START:
+    case RestAuthUserPartialUpdateActions.REST_AUTH_USER_PARTIAL_UPDATE_START:
       return {...state, loading: true, error: null};
 
-    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_SUCCESS:
+    case RestAuthUserPartialUpdateActions.REST_AUTH_USER_PARTIAL_UPDATE_SUCCESS:
       return {...state, data: action.payload, loading: false};
 
-    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_ERROR:
+    case RestAuthUserPartialUpdateActions.REST_AUTH_USER_PARTIAL_UPDATE_ERROR:
       return {...state, error: action.payload, loading: false};
 
-    case RestAuthUserPartialUpdateActions.RESTAUTHUSERPARTIALUPDATE_CLEAN:
+    case RestAuthUserPartialUpdateActions.REST_AUTH_USER_PARTIAL_UPDATE_CLEAN:
       return initialRestAuthUserPartialUpdateState;
 
     default:

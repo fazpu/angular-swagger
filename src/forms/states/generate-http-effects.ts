@@ -1,7 +1,7 @@
 import * as path from 'path';
 import {Config} from '../../generate';
 import {Parameter} from '../../types';
-import {firstLetterToLowercase, indent, writeFile} from '../../utils';
+import {firstLetterToLowercase, indent, toSnakeCaseUpper, writeFile} from '../../utils';
 
 export function generateHttpEffects(config: Config, name: string, simpleName: string, actionClassNameBase: string,
                                     formSubDirName: string, paramGroups: Parameter[]) {
@@ -53,7 +53,7 @@ function getEffectDefinition(actionClassNameBase: string, name: string, simpleNa
   let res = indent(`@Effect()\n`);
   res += indent(`public ${firstLetterToLowercase(actionClassNameBase)} = this.storeActions.pipe(\n`);
   // eslint-disable-next-line max-len
-  res += indent(`ofType<${actionClassNameBase}Start>(${actionClassNameBase}Actions.${actionClassNameBase.toUpperCase()}_START),\n`, 2);
+  res += indent(`ofType<${actionClassNameBase}Start>(${actionClassNameBase}Actions.${toSnakeCaseUpper(actionClassNameBase)}_START),\n`, 2);
   const actionParam = hasParams ? `action: ${actionClassNameBase}Start` : '';
   res += indent(
     `switchMap((${actionParam}) => ` +
