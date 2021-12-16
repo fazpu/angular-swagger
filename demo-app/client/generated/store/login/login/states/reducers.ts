@@ -23,7 +23,7 @@ export const initialLoginState: LoginState = {
 };
 
 export const selectorName = 'Login_Login';
-export const getLoginStateSelector = createFeatureSelector<LoginState>(selectorName);
+export const getLoginState = createFeatureSelector<LoginState>(selectorName);
 
 export function LoginReducer(
   state: LoginState = initialLoginState,

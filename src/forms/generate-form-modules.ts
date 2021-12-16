@@ -11,6 +11,7 @@ import {createSharedModule} from './shared-module';
 import {generateHttpActions, getActionClassNameBase, getClassName} from './states/generate-http-actions';
 import {generateHttpEffects} from './states/generate-http-effects';
 import {generateHttpReducers} from './states/generate-http-reducers';
+import {generateHttpSelectors} from './states/generate-http-selectors';
 
 export function createForms(config: Config, name: string, processedMethods: MethodOutput[]) {
   const kebabName = _.kebabCase(name);
@@ -44,6 +45,8 @@ export function createForms(config: Config, name: string, processedMethods: Meth
       generateHttpReducers(config, name, actionClassNameBase, formSubDirName, responseDef.type);
       // effects.ts
       generateHttpEffects(config, name, simpleName, actionClassNameBase, formSubDirName, formParams);
+      // selectors.ts
+      generateHttpSelectors(config, actionClassNameBase, formSubDirName)
       // form-shared-module.ts
       createSharedModule(config);
       // module.ts

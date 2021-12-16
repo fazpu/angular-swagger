@@ -23,7 +23,7 @@ export const initialPatchOrderState: PatchOrderState = {
 };
 
 export const selectorName = 'Order_PatchOrder';
-export const getPatchOrderStateSelector = createFeatureSelector<PatchOrderState>(selectorName);
+export const getPatchOrderState = createFeatureSelector<PatchOrderState>(selectorName);
 
 export function PatchOrderReducer(
   state: PatchOrderState = initialPatchOrderState,

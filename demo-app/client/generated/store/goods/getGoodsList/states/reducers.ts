@@ -24,7 +24,7 @@ export const initialGetGoodsListState: GetGoodsListState = {
 };
 
 export const selectorName = 'Goods_GetGoodsList';
-export const getGetGoodsListStateSelector = createFeatureSelector<GetGoodsListState>(selectorName);
+export const getGetGoodsListState = createFeatureSelector<GetGoodsListState>(selectorName);
 
 export function GetGoodsListReducer(
   state: GetGoodsListState = initialGetGoodsListState,

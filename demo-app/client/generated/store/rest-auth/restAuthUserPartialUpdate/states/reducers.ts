@@ -24,7 +24,7 @@ export const initialRestAuthUserPartialUpdateState: RestAuthUserPartialUpdateSta
 };
 
 export const selectorName = 'RestAuth_RestAuthUserPartialUpdate';
-export const getRestAuthUserPartialUpdateStateSelector = createFeatureSelector<RestAuthUserPartialUpdateState>(selectorName);
+export const getRestAuthUserPartialUpdateState = createFeatureSelector<RestAuthUserPartialUpdateState>(selectorName);
 
 export function RestAuthUserPartialUpdateReducer(
   state: RestAuthUserPartialUpdateState = initialRestAuthUserPartialUpdateState,

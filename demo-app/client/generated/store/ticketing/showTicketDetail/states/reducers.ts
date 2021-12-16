@@ -24,7 +24,7 @@ export const initialShowTicketDetailState: ShowTicketDetailState = {
 };
 
 export const selectorName = 'Ticketing_ShowTicketDetail';
-export const getShowTicketDetailStateSelector = createFeatureSelector<ShowTicketDetailState>(selectorName);
+export const getShowTicketDetailState = createFeatureSelector<ShowTicketDetailState>(selectorName);
 
 export function ShowTicketDetailReducer(
   state: ShowTicketDetailState = initialShowTicketDetailState,

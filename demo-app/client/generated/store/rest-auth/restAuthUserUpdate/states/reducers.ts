@@ -24,7 +24,7 @@ export const initialRestAuthUserUpdateState: RestAuthUserUpdateState = {
 };
 
 export const selectorName = 'RestAuth_RestAuthUserUpdate';
-export const getRestAuthUserUpdateStateSelector = createFeatureSelector<RestAuthUserUpdateState>(selectorName);
+export const getRestAuthUserUpdateState = createFeatureSelector<RestAuthUserUpdateState>(selectorName);
 
 export function RestAuthUserUpdateReducer(
   state: RestAuthUserUpdateState = initialRestAuthUserUpdateState,

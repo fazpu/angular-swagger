@@ -23,7 +23,7 @@ export const initialRegistrationState: RegistrationState = {
 };
 
 export const selectorName = 'Registration_Registration';
-export const getRegistrationStateSelector = createFeatureSelector<RegistrationState>(selectorName);
+export const getRegistrationState = createFeatureSelector<RegistrationState>(selectorName);
 
 export function RegistrationReducer(
   state: RegistrationState = initialRegistrationState,

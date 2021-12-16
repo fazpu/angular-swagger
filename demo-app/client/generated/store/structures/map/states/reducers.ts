@@ -23,7 +23,7 @@ export const initialMapState: MapState = {
 };
 
 export const selectorName = 'Structures_Map';
-export const getMapStateSelector = createFeatureSelector<MapState>(selectorName);
+export const getMapState = createFeatureSelector<MapState>(selectorName);
 
 export function MapReducer(
   state: MapState = initialMapState,
