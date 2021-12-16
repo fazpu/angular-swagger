@@ -24,7 +24,7 @@ export const initialArrayState: ArrayState = {
 };
 
 export const selectorName = 'Structures_Array';
-export const getArrayStateSelector = createFeatureSelector<ArrayState>(selectorName);
+export const getArrayState = createFeatureSelector<ArrayState>(selectorName);
 
 export function ArrayReducer(
   state: ArrayState = initialArrayState,

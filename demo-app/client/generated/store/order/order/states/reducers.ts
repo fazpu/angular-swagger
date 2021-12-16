@@ -23,7 +23,7 @@ export const initialOrderState: OrderState = {
 };
 
 export const selectorName = 'Order_Order';
-export const getOrderStateSelector = createFeatureSelector<OrderState>(selectorName);
+export const getOrderState = createFeatureSelector<OrderState>(selectorName);
 
 export function OrderReducer(
   state: OrderState = initialOrderState,

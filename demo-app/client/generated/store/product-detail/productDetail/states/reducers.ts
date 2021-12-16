@@ -24,7 +24,7 @@ export const initialProductDetailState: ProductDetailState = {
 };
 
 export const selectorName = 'ProductDetail_ProductDetail';
-export const getProductDetailStateSelector = createFeatureSelector<ProductDetailState>(selectorName);
+export const getProductDetailState = createFeatureSelector<ProductDetailState>(selectorName);
 
 export function ProductDetailReducer(
   state: ProductDetailState = initialProductDetailState,

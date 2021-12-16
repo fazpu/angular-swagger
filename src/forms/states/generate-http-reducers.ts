@@ -48,7 +48,7 @@ function getInitialState(actionClassNameBase: string) {
 
 function getFeatureSelector(name: string, actionClassNameBase: string) {
   let res = `export const selectorName = '${name}_${actionClassNameBase}';\n`;
-  res += `export const get${actionClassNameBase}StateSelector = ` +
+  res += `export const get${actionClassNameBase}State = ` +
          `createFeatureSelector<${actionClassNameBase}State>(selectorName);\n\n`;
 
   return res;

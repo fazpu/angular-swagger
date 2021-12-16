@@ -23,7 +23,7 @@ export const initialLogoutState: LogoutState = {
 };
 
 export const selectorName = 'Logout_Logout';
-export const getLogoutStateSelector = createFeatureSelector<LogoutState>(selectorName);
+export const getLogoutState = createFeatureSelector<LogoutState>(selectorName);
 
 export function LogoutReducer(
   state: LogoutState = initialLogoutState,

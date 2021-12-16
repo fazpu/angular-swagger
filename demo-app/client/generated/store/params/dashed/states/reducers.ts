@@ -23,7 +23,7 @@ export const initialDashedState: DashedState = {
 };
 
 export const selectorName = 'Params_Dashed';
-export const getDashedStateSelector = createFeatureSelector<DashedState>(selectorName);
+export const getDashedState = createFeatureSelector<DashedState>(selectorName);
 
 export function DashedReducer(
   state: DashedState = initialDashedState,

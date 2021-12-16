@@ -23,7 +23,7 @@ export const initialDeleteORDERState: DeleteORDERState = {
 };
 
 export const selectorName = 'Order_DeleteORDER';
-export const getDeleteORDERStateSelector = createFeatureSelector<DeleteORDERState>(selectorName);
+export const getDeleteORDERState = createFeatureSelector<DeleteORDERState>(selectorName);
 
 export function DeleteORDERReducer(
   state: DeleteORDERState = initialDeleteORDERState,

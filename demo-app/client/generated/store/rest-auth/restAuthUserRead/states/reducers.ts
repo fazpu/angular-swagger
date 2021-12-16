@@ -24,7 +24,7 @@ export const initialRestAuthUserReadState: RestAuthUserReadState = {
 };
 
 export const selectorName = 'RestAuth_RestAuthUserRead';
-export const getRestAuthUserReadStateSelector = createFeatureSelector<RestAuthUserReadState>(selectorName);
+export const getRestAuthUserReadState = createFeatureSelector<RestAuthUserReadState>(selectorName);
 
 export function RestAuthUserReadReducer(
   state: RestAuthUserReadState = initialRestAuthUserReadState,
